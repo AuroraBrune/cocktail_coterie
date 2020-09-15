@@ -1,0 +1,23 @@
+{
+  "name": "bootcamp-project-2",
+  "version": "1.0.0",
+  "description": "Project 2 for Bootcamp",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "JulieAnn2330"
+  },
+  "author": "Julie Ann Schaub",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "path": "^0.12.7"
+  }
+}

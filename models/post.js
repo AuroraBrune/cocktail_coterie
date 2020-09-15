@@ -1,0 +1,1 @@
+//Model for creating table in database
