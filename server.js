@@ -10,7 +10,6 @@ Must user Handlebars for server-side templating
 Must meet good-quality coding standards (indentation, scoping, naming, etc.)
 Must protect API keys in Node with environement variables
 */
-
 // Requiring necessary npm packages
 var express = require("express");
 var session = require("express-session");
