@@ -2,14 +2,14 @@
     "development": {
       "username": "root",
       "password": "Tbjs233069$",
-      "database": "Petite_Soiree",
+      "database": "Cocktail_Coterie",
       "host": "127.0.0.1",
       "dialect": "mysql"
     },
     "test": {
       "username": "root",
       "password": null,
-      "database": "Petite_Soiree",
+      "database": "Cocktail_Coterie",
       "host": "127.0.0.1",
       "dialect": "mysql"
     },
