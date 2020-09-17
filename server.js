@@ -13,6 +13,7 @@ Must protect API keys in Node with environement variables
 // Requiring necessary npm packages
 var express = require("express");
 var session = require("express-session");
+var nodemon = require("nodemon");
 
 // Requiring passport as we've configured it
 //var passport = require("./config/passport");
