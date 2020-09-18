@@ -1,6 +1,18 @@
 module.exports = function(sequelize, DataTypes) {
     var Drink = sequelize.define("Drink", {
-        strDrink: {
+      userID: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+          len: [1]
+        }
+      },  
+      showDrink: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        default: true
+      },    
+      strDrink: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
