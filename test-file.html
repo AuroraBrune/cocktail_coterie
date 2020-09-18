@@ -68,7 +68,7 @@
         if (response.drinks[i][strIngrediant]) {
           ingredientString += ', ' + response.drinks[i][strIngrediant]
         }
-        
+     
         var ingredients = $("<h2>").text(ingredientString)
         var directions = $("<h2>").text(response.drinks[i]['strInstructions']);
         var drinkImage = $("<img>").attr("src", response.drinks[i]['strDrinkThumb']);
