@@ -1,0 +1,41 @@
+<header>Create New Party</header>
+<form>
+
+    <div class="form-group">
+        <label for="exampleFormControlSelect1">Related Service</label>
+        <select type="submit" class="form-control" id="exampleFormControlSelect1">
+            <option>Choose your Cocktail</option>
+            {{#each cocktail}}
+            <option>{{drinkName}}</option>
+            {{/each}}
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="Date">Date and Time</label>
+        <!--look up how to get drop down date & time 
+        also how to render & symbol for label-->
+    </div>
+
+    <div class="form-group">
+        <label for="peronal-message">Personalized Message</label>
+        <textarea class="form-control" id="personal-message" rows="3"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="cocktail-link">Your Cocktail Link</label>
+        <!--find a way to get a sharebale link that shows the chosen cocktail
+        and populate it in the input-->
+        <input type="text" class="form-control" id="cocktail-link" placeholder="Example input placeholder">
+    </div>
+
+    <div class="form-group">
+        <label for="zoom-link">Your Zoom Link</label>
+        <!--   {{#if Zoom isdefined}} {{Zoom}}
+    {{else}} -->
+        <input type="text" class="form-control" id="zoom-link" placeholder="Another input placeholder">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Send Invitations</button>
+    <!--look up what youtube share does-->
+</form>

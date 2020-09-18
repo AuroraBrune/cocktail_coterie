@@ -1,0 +1,10 @@
+{{> navbar}}
+{{#each cocktail}}
+    {{drinkName}}
+    {{drinkImage}}
+    <button>read more</button>
+    {{#unless read}}
+      {{ingrediants read=true}}
+      {{directions read=true}}
+    {{/unless}}
+{{/each}}
