@@ -2,9 +2,8 @@
 <form>
 
     <div class="form-group">
-        <label for="exampleFormControlSelect1">Related Service</label>
-        <select type="submit" class="form-control" id="exampleFormControlSelect1">
-            <option>Choose your Cocktail</option>
+        <label for="cocktailChoice">Choose your Cocktail</label>
+        <select type="submit" class="form-control" id="cocktailChoice">
             {{#each cocktail}}
             <option>{{drinkName}}</option>
             {{/each}}
@@ -25,15 +24,15 @@
     <div class="form-group">
         <label for="cocktail-link">Your Cocktail Link</label>
         <!--find a way to get a sharebale link that shows the chosen cocktail
+        http://Cocktail_Coterie.com/:cocktailName
         and populate it in the input-->
-        <input type="text" class="form-control" id="cocktail-link" placeholder="Example input placeholder">
+        <input type="text" class="form-control" id="cocktail-link" placeholder="cocktail-link">
     </div>
 
     <div class="form-group">
         <label for="zoom-link">Your Zoom Link</label>
-        <!--   {{#if Zoom isdefined}} {{Zoom}}
-    {{else}} -->
-        <input type="text" class="form-control" id="zoom-link" placeholder="Another input placeholder">
+        <input type="text" class="form-control" id="zoom-link" placeholder="zoom-link"
+            value={{#if sleep}}{{Zoom}}{{else}}{{/if}}>
     </div>
 
     <button type="submit" class="btn btn-primary">Send Invitations</button>
