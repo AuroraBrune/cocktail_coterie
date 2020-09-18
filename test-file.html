@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Look Up Drink</title>
+</head>
+
+<body>
+
+  <!-- Drink Select Box -->
+  <form id="drink-form">
+
+    <!-- Label for Text Box -->
+    <label for="drink-input">Choose Your Drink</label>
+
+    <!-- Text Input Box -->
+    <input type="text" id="drink-input"><br>
+
+    <!-- Submit Button -->
+    <input id="select-drink" type="submit" value="GO!">
+  </form>
+
+  <!-- Drink Information -->
+  <div id="drink-div"></div>
+
+    <!-- Ingredient Select Box -->
+    <form id="ingredient-form">
+
+      <!-- Label for Text Box -->
+      <label for="ingredient-input">Choose Your Liquor</label>
+  
+      <!-- Text Input Box -->
+      <input type="text" id="ingredient-input"><br>
+  
+      <!-- Submit Button -->
+      <input id="select-ingredient" type="submit" value="GO!">
+    </form>
+  
+    <!-- Artist Information -->
+    <div id="ingredient-div"></div>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  function searchCocktailDB(drink) {
+
+    // Querying the Cocktail DB api for the selected drink, the ?app_id parameter is required, but can equal anything
+    var queryURL = "https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=" + drink;
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(response) {
+
+         // Printing the entire object to console
+      console.log(response);
+      console.log(response.drinks.length)
+      // Constructing HTML containing the drink information
+      for(i=0; i>response.drinks.length; i++){
+        console.log(i);
+      var drinkName = $("<h1>").text(response.drinks[i]['strDrink']);
+      var ingredients = $("<h2>").text(response.drinks[i]['strIngredient1'] + ", " + response.drinks[i]['strIngredient2'] + ", " + response.drinks[i]['strIngredient3'] + ", " + response.drinks[i]['strIngredient4'] + ", " + response.drinks[i]['strIngredient5'])
+      var directions = $("<h2>").text(response.drinks[i]['strInstructions']);
+      var drinkImage = $("<img>").attr("src", response.drinks[i]['strDrinkThumb']);
+        
+      
+
+   
+      // Empty the contents of the drink-div, append the new drink content
+      //$("#drink-div").empty();
+      $("#drink-div").append(drinkName, ingredients, directions, drinkImage); }
+    });
+  }
+
+
+  // Event handler for user clicking the select-drink button
+  $("#select-drink").on("click", function(event) {
+    // Preventing the button from trying to submit the form
+    event.preventDefault();
+    // Storing the drink name
+    var inputDrink = $("#drink-input").val().trim();
+
+    // Running the searchCocktailDB function(passing in the artist as an argument)
+    searchCocktailDB(inputDrink);
+  });
+
+  function searchCocktailDB(ingredient) {
+
+// Querying the Cocktail DB api for the selected drink, the ?app_id parameter is required, but can equal anything
+var queryURL = "https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=" + ingredient;
+$.ajax({
+  url: queryURL,
+  method: "GET"
+}).then(function(response) {
+
+  //var drinks = [];
+ // for (var i = 0; i < drinks.length; i++) {
+   // arr[i] is each item of the array
+  //return drink[i];
+  //}
+
+  // Printing the entire object to console
+  console.log(response);
+
+  // Constructing HTML containing the drink information
+  var drinkName = $("<h1>").text(response.drinks[0]['strDrink']);
+  var ingredients = $("<h2>").text(response.drinks[0]['strIngredient1'] + ", " + response.drinks[0]['strIngredient2'] + ", " + response.drinks[0]['strIngredient3'] + ", " + response.drinks[0]['strIngredient4'] + ", " + response.drinks[0]['strIngredient5'])
+  var directions = $("<h2>").text(response.drinks[0]['strInstructions']);
+  var drinkImage = $("<img>").attr("src", response.drinks[0]['strDrinkThumb']);
+  
+  // Empty the contents of the drink-div, append the new drink content
+  $("#ingredient-div").empty();
+  $("#ingredient-div").append(drinkName, ingredients, directions, drinkImage);
+});
+}
+
+// Event handler for user clicking the select-drink button
+$("#select-ingredient").on("click", function(event) {
+// Preventing the button from trying to submit the form
+event.preventDefault();
+// Storing the drink name
+var inputIngredient = $("#ingredient-input").val().trim();
+
+// Running the searchCocktailDB function(passing in the artist as an argument)
+searchCocktailDB(inputIngredient);
+});
+</script>
+
+</html>
