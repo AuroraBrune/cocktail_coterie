@@ -14,6 +14,12 @@ Must protect API keys in Node with environement variables
 var express = require("express");
 var session = require("express-session");
 var nodemon = require("nodemon");
+//const dotenv = require('dotenv').config();
+
+// Dotenv files to protect DB examples.
+// let dbuev =  process.env.DB_UEV;
+// let dialect = process.env.DIALECT;
+
 
 // Requiring passport as we've configured it
 //var passport = require("./config/passport");
