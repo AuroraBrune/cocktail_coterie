@@ -72,10 +72,10 @@
         var ingredients = $("<h2>").text(ingredientString)
         var directions = $("<h2>").text(response.drinks[i]['strInstructions']);
         var drinkImage = $("<img>").attr("src", response.drinks[i]['strDrinkThumb']);
-          
+        let saveBttn = $("<button>").text("Save")
         // Empty the contents of the drink-div, append the new drink content
         //$("#drink-div").empty();
-        $("#drink-div").append(drinkName, ingredients, directions, drinkImage); 
+        $("#drink-div").append(drinkName, ingredients, directions, drinkImage, saveBttn); 
       }
     });
   }
@@ -111,65 +111,16 @@ $.ajax({
         var drinkName = $("<h1>").text(response.drinks[i]['strDrink']);
         let ingredientString = ''
         
+    
+        let strIngrediant = 'strIngredient' + (i+1)
         if (response.drinks[i]['strIngredient1']) {
           ingredientString += response.drinks[i]['strIngredient1']
         }
         
-        if (response.drinks[i]['strIngredient2']) {
-          ingredientString += ', ' + response.drinks[i]['strIngredient2']
-        }
-        
-        if (response.drinks[i]['strIngredient3']) {
-          ingredientString += ', ' + response.drinks[i]['strIngredient3']
-        }
-        
-        if (response.drinks[i]['strIngredient4']) {
-          ingredientString += ', ' + response.drinks[i]['strIngredient4']
-        }
-        
-        if (response.drinks[i]['strIngredient5']) {
-          ingredientString += ', ' + response.drinks[i]['strIngredient5']
+        if (response.drinks[i][strIngrediant]) {
+          ingredientString += ', ' + response.drinks[i][strIngrediant]
         }
 
-        if (response.drinks[i]['strIngredient6']) {
-          ingredientString += ', ' + response.drinks[i]['strIngredient5']
-        }
-
-        if (response.drinks[i]['strIngredient7']) {
-          ingredientString += ', ' + response.drinks[i]['strIngredient5']
-        }
-
-        if (response.drinks[i]['strIngredient8']) {
-          ingredientString += ', ' + response.drinks[i]['strIngredient5']
-        }
-
-        if (response.drinks[i]['strIngredient9']) {
-          ingredientString += ', ' + response.drinks[i]['strIngredient5']
-        }
-
-        if (response.drinks[i]['strIngredient10']) {
-          ingredientString += ', ' + response.drinks[i]['strIngredient5']
-        }
-
-        if (response.drinks[i]['strIngredient11']) {
-          ingredientString += ', ' + response.drinks[i]['strIngredient5']
-        }
-
-        if (response.drinks[i]['strIngredient12']) {
-          ingredientString += ', ' + response.drinks[i]['strIngredient5']
-        }
-
-        if (response.drinks[i]['strIngredient13']) {
-          ingredientString += ', ' + response.drinks[i]['strIngredient5']
-        }
-
-        if (response.drinks[i]['strIngredient14']) {
-          ingredientString += ', ' + response.drinks[i]['strIngredient5']
-        }
-
-        if (response.drinks[i]['strIngredient15']) {
-          ingredientString += ', ' + response.drinks[i]['strIngredient5']
-        }
        
         
         var ingredients = $("<h2>").text(ingredientString)
