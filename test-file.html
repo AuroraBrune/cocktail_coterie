@@ -111,7 +111,6 @@ $.ajax({
         var drinkName = $("<h1>").text(response.drinks[i]['strDrink']);
         let ingredientString = ''
         
-    
         let strIngrediant = 'strIngredient' + (i+1)
         if (response.drinks[i]['strIngredient1']) {
           ingredientString += response.drinks[i]['strIngredient1']
