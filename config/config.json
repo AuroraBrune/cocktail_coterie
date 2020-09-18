@@ -1,14 +1,14 @@
 {
     "development": {
       "username": "root",
-      "password": "Tbjs233069$",
+      "password": "MyNewPass",
       "database": "Cocktail_Coterie",
       "host": "127.0.0.1",
       "dialect": "mysql"
     },
     "test": {
       "username": "root",
-      "password": null,
+      "password": "MyNewPass",
       "database": "Cocktail_Coterie",
       "host": "127.0.0.1",
       "dialect": "mysql"

@@ -28,6 +28,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
+// Set Handlebars.
+var exphbs = require("express-handlebars");
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+
 // We need to use sessions to keep track of our user's login status
 //app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
 //app.use(passport.initialize());
@@ -35,8 +42,8 @@ app.use(express.static("public"));
 
 // Requiring our routes
 //require("./routes/")(app);
-//require("./routes/")(app);
-
+ require("./routes/html.-routes.js")
+ app.use(routes);
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
