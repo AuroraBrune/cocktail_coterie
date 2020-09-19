@@ -6,7 +6,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/register', (req, res) => {
-    res.render('partials/register');
+    res.render('register');
 });
 
 router.get('/login', (req, res) => {
