@@ -11,7 +11,7 @@ This app allows the user who is in seclusion during the Covid-19 pandemic to soc
 * [License](#license)
 
 ## Installation 
-npm mysql / npm bcryptjs / npm express / npm express-handlebards / npm nodemon / npm session / npm dotenv / npm sequelize
+npm mysql / npm bcryptjs / npm express / npm express-handlebars / npm nodemon / npm session / npm dotenv / npm sequelize
 
 ## Usage 
 We are bringing people together in a virtual environment.
