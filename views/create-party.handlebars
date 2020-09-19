@@ -32,12 +32,12 @@
             value={{zoom}}>
     </div>
 
-     <button id="invitation-complete" type="submit" class="btn btn-primary">Send Invitations</button>
+     <button id="invitation-complete" type="submit" class="btn btn-primary" data-toggle="modal" data-target="shareModal">Send Invitations</button>
     <!--look up customize share on share.com-->
 
     <button type="submit" class="btn btn-primary">Share Invitation Link</button>
-    {{#if invitation}}
-    <div class="modal fade" id="share" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    
+    <div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -52,7 +52,7 @@
             </div>
         </div>
     </div>
-    {{/if}}
+    
 
    
 </form>
