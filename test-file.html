@@ -130,10 +130,10 @@
         var ingredients = $("<h2>").text(ingredientString)
         var directions = $("<h2>").text(response.drinks[i]['strInstructions']);
         var drinkImage = $("<img>").attr("src", response.drinks[i]['strDrinkThumb']);
-          
+        let saveBttn = $("<button>").text("Save")
         // Empty the contents of the drink-div, append the new drink content
         //$("#drink-div").empty();
-        $("#drink-div").append(drinkName, ingredients, directions, drinkImage); 
+        $("#drink-div").append(drinkName, ingredients, directions, drinkImage, saveBttn); 
       }
     });
   }
