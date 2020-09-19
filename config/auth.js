@@ -49,7 +49,7 @@ db.query('SELECT * FROM users WHERE email = ?', [email], async (error, results) 
 exports.register = (req, res) => {
     console.log(req.body);
 
-    const { first_name, last_name, email, preferred_drink, zoomLink, password, passwordConfirmed } = req.body;
+    const { first_name, last_name, email, preferred_drink, zoomLink, password, passwordConfirmed} = req.body;
 
     db.query('SELECT email FROM users WHERE email= ?', [email], async (error, results) => {
         if (error) {
@@ -65,10 +65,10 @@ exports.register = (req, res) => {
             })
         } else{
             var salt = bcrypt.genSaltSync(10);
-        let hashedPassword = await bcrypt.hash(password, salt);
+        var hashedPassword = await bcrypt.hash(password, salt);
         console.log(hashedPassword);
 
-        db.query('INSERT INTO users SET ?', {first_name: first_name, last_name:last_name, email:email, preferred_drink:preferred_drink, zoomLink:zoomLink, password:password, passwordConfirmed: passwordConfirmed}, (error, results) =>{
+        db.query('INSERT INTO users SET ?', {first_name: first_name, last_name:last_name, email:email, preferred_drink:preferred_drink, zoomLink:zoomLink, password:hashedPassword, passwordConfirmed:hashedPassword}, (error, results) =>{
             if(error){
                 console.log(error);
             } else {
