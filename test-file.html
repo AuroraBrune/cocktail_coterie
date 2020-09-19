@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,12 +39,15 @@
       <input id="select-ingredient" type="submit" value="GO!">
     </form>
   
-    <!-- Artist Information -->
+    <!-- Drink Information -->
     <div id="ingredient-div"></div>
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
+
+ //require('dotenv').config()
+ 
   function searchCocktailDB(drink) {
      // process.env.API_COCKTAIL
     // Querying the Cocktail DB api for the selected drink, the ?app_id parameter is required, but can equal anything
@@ -59,16 +64,69 @@
       for(i=0; i<response.drinks.length; i++){
         console.log('C', i);
         var drinkName = $("<h1>").text(response.drinks[i]['strDrink']);
-        let ingredientString = ''
-        let strIngrediant = 'strIngredient' + (i+1)
-        if (response.drinks[i]['strIngredient1']) {
-          ingredientString += response.drinks[i]['strIngredient1']
+          let ingredientString = ''
+        
+        if (response.drinks[i]['strMeasure1'] + response.drinks[i]['strIngredient1']) {
+          ingredientString += response.drinks[i]['strMeasure1'] += response.drinks[i]['strIngredient1']
         }
         
-        if (response.drinks[i][strIngrediant]) {
-          ingredientString += ', ' + response.drinks[i][strIngrediant]
+        if (response.drinks[i]['strMeasure2'] + response.drinks[i]['strIngredient2']) {
+          ingredientString += ', ' + response.drinks[i]['strMeasure2'] + response.drinks[i]['strIngredient2']
         }
-     
+        
+        if (response.drinks[i]['strMeasure3'] + response.drinks[i]['strIngredient3']) {
+          ingredientString += ', ' + response.drinks[i]['strMeasure3'] + response.drinks[i]['strIngredient3']
+         }
+        
+        if (response.drinks[i]['strMeasure4'] + response.drinks[i]['strIngredient4']) {
+          ingredientString += ', ' + response.drinks[i]['strMeasure4'] + response.drinks[i]['strIngredient4']
+        }
+        
+        if (response.drinks[i]['strMeasure5'] + response.drinks[i]['strIngredient5']) {
+          ingredientString += ', ' + response.drinks[i]['strMeasure5'] + response.drinks[i]['strIngredient5']
+        }
+
+        if (response.drinks[i]['strMeasure6'] + response.drinks[i]['strIngredient6']) {
+          ingredientString += ', ' + response.drinks[i]['strMeasure6'] + response.drinks[i]['strIngredient6']
+        }
+
+        if (response.drinks[i]['strMeasure7'] + response.drinks[i]['strIngredient7']) {
+          ingredientString += ', ' + response.drinks[i]['strMeasure7'] + response.drinks[i]['strIngredient7']
+        }
+
+        if (response.drinks[i]['strMeasure8'] + response.drinks[i]['strIngredient8']) {
+          ingredientString += ', ' + response.drinks[i]['strMeasure8'] + response.drinks[i]['strIngredient8']
+        }
+
+        if (response.drinks[i]['strMeasure9'] + response.drinks[i]['strIngredient9']) {
+          ingredientString += ', ' + response.drinks[i]['strMeasure9'] + response.drinks[i]['strIngredient9']
+        }
+
+        if (response.drinks[i]['strMeasure10'] + response.drinks[i]['strIngredient10']) {
+          ingredientString += ', ' + response.drinks[i]['strMeasure10'] + response.drinks[i]['strIngredient10']
+        }
+
+        if (response.drinks[i]['strMeasure11'] + response.drinks[i]['strIngredient11']) {
+          ingredientString += ', ' + response.drinks[i]['strMeasure11'] + response.drinks[i]['strIngredient11']
+        }
+
+        if (response.drinks[i]['strMeasure12'] + response.drinks[i]['strIngredient12']) {
+          ingredientString += ', ' + response.drinks[i]['strMeasure12'] + response.drinks[i]['strIngredient12']
+        }
+
+        if (response.drinks[i]['strMeasure13'] + response.drinks[i]['strIngredient13']) {
+          ingredientString += ', ' + response.drinks[i]['strMeasure13'] + response.drinks[i]['strIngredient13']
+        }
+
+        if (response.drinks[i]['strMeasure14'] + response.drinks[i]['strIngredient14']) {
+          ingredientString += ', ' + response.drinks[i]['strMeasure14'] + response.drinks[i]['strIngredient14']
+        }
+
+        if (response.drinks[i]['strMeasure15'] + response.drinks[i]['strIngredient15']) {
+          ingredientString += ', ' + response.drinks[i]['strMeasure15'] + response.drinks[i]['strIngredient15']
+       }
+       
+        
         var ingredients = $("<h2>").text(ingredientString)
         var directions = $("<h2>").text(response.drinks[i]['strInstructions']);
         var drinkImage = $("<img>").attr("src", response.drinks[i]['strDrinkThumb']);
@@ -111,65 +169,65 @@ $.ajax({
         var drinkName = $("<h1>").text(response.drinks[i]['strDrink']);
         let ingredientString = ''
         
-        if (response.drinks[i]['strIngredient1']) {
-          ingredientString += response.drinks[i]['strIngredient1']
+        if (response.drinks[i]['strMeasure1'] + response.drinks[i]['strIngredient1']) {
+          ingredientString += response.drinks[i]['strMeasure1'] += response.drinks[i]['strIngredient1']
         }
         
-        if (response.drinks[i]['strIngredient2']) {
-          ingredientString += ', ' + response.drinks[i]['strIngredient2']
+        if (response.drinks[i]['strMeasure2'] + response.drinks[i]['strIngredient2']) {
+          ingredientString += ', ' + response.drinks[i]['strMeasure2'] + response.drinks[i]['strIngredient2']
         }
         
-        if (response.drinks[i]['strIngredient3']) {
-          ingredientString += ', ' + response.drinks[i]['strIngredient3']
+        if (response.drinks[i]['strMeasure3'] + response.drinks[i]['strIngredient3']) {
+          ingredientString += ', ' + response.drinks[i]['strMeasure3'] + response.drinks[i]['strIngredient3']
+         }
+        
+        if (response.drinks[i]['strMeasure4'] + response.drinks[i]['strIngredient4']) {
+          ingredientString += ', ' + response.drinks[i]['strMeasure4'] + response.drinks[i]['strIngredient4']
         }
         
-        if (response.drinks[i]['strIngredient4']) {
-          ingredientString += ', ' + response.drinks[i]['strIngredient4']
-        }
-        
-        if (response.drinks[i]['strIngredient5']) {
-          ingredientString += ', ' + response.drinks[i]['strIngredient5']
+        if (response.drinks[i]['strMeasure5'] + response.drinks[i]['strIngredient5']) {
+          ingredientString += ', ' + response.drinks[i]['strMeasure5'] + response.drinks[i]['strIngredient5']
         }
 
-        if (response.drinks[i]['strIngredient6']) {
-          ingredientString += ', ' + response.drinks[i]['strIngredient5']
+        if (response.drinks[i]['strMeasure6'] + response.drinks[i]['strIngredient6']) {
+          ingredientString += ', ' + response.drinks[i]['strMeasure6'] + response.drinks[i]['strIngredient6']
         }
 
-        if (response.drinks[i]['strIngredient7']) {
-          ingredientString += ', ' + response.drinks[i]['strIngredient5']
+        if (response.drinks[i]['strMeasure7'] + response.drinks[i]['strIngredient7']) {
+          ingredientString += ', ' + response.drinks[i]['strMeasure7'] + response.drinks[i]['strIngredient7']
         }
 
-        if (response.drinks[i]['strIngredient8']) {
-          ingredientString += ', ' + response.drinks[i]['strIngredient5']
+        if (response.drinks[i]['strMeasure8'] + response.drinks[i]['strIngredient8']) {
+          ingredientString += ', ' + response.drinks[i]['strMeasure8'] + response.drinks[i]['strIngredient8']
         }
 
-        if (response.drinks[i]['strIngredient9']) {
-          ingredientString += ', ' + response.drinks[i]['strIngredient5']
+        if (response.drinks[i]['strMeasure9'] + response.drinks[i]['strIngredient9']) {
+          ingredientString += ', ' + response.drinks[i]['strMeasure9'] + response.drinks[i]['strIngredient9']
         }
 
-        if (response.drinks[i]['strIngredient10']) {
-          ingredientString += ', ' + response.drinks[i]['strIngredient5']
+        if (response.drinks[i]['strMeasure10'] + response.drinks[i]['strIngredient10']) {
+          ingredientString += ', ' + response.drinks[i]['strMeasure10'] + response.drinks[i]['strIngredient10']
         }
 
-        if (response.drinks[i]['strIngredient11']) {
-          ingredientString += ', ' + response.drinks[i]['strIngredient5']
+        if (response.drinks[i]['strMeasure11'] + response.drinks[i]['strIngredient11']) {
+          ingredientString += ', ' + response.drinks[i]['strMeasure11'] + response.drinks[i]['strIngredient11']
         }
 
-        if (response.drinks[i]['strIngredient12']) {
-          ingredientString += ', ' + response.drinks[i]['strIngredient5']
+        if (response.drinks[i]['strMeasure12'] + response.drinks[i]['strIngredient12']) {
+          ingredientString += ', ' + response.drinks[i]['strMeasure12'] + response.drinks[i]['strIngredient12']
         }
 
-        if (response.drinks[i]['strIngredient13']) {
-          ingredientString += ', ' + response.drinks[i]['strIngredient5']
+        if (response.drinks[i]['strMeasure13'] + response.drinks[i]['strIngredient13']) {
+          ingredientString += ', ' + response.drinks[i]['strMeasure13'] + response.drinks[i]['strIngredient13']
         }
 
-        if (response.drinks[i]['strIngredient14']) {
-          ingredientString += ', ' + response.drinks[i]['strIngredient5']
+        if (response.drinks[i]['strMeasure14'] + response.drinks[i]['strIngredient14']) {
+          ingredientString += ', ' + response.drinks[i]['strMeasure14'] + response.drinks[i]['strIngredient14']
         }
 
-        if (response.drinks[i]['strIngredient15']) {
-          ingredientString += ', ' + response.drinks[i]['strIngredient5']
-        }
+        if (response.drinks[i]['strMeasure15'] + response.drinks[i]['strIngredient15']) {
+          ingredientString += ', ' + response.drinks[i]['strMeasure15'] + response.drinks[i]['strIngredient15']
+       }
        
         
         var ingredients = $("<h2>").text(ingredientString)
