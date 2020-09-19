@@ -4,7 +4,7 @@ const express = require("express")
 var router = express.Router();
 
 // Requiring our custom middleware for checking if a user is logged in
-var isAuthenticated = require("../config/middleware/isAuthenticated");
+var isAuthenticated = require("../config/auth");
 
 router.get("/", function (req, res) {
     res.render("index")
