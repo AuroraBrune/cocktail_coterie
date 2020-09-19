@@ -3,6 +3,7 @@
 <h1>{{user.firstName}}</h1>
 <h1>{{user.lastName}}</h1>
 <p>{{user.email}}</p>
+<p>{{#if Zoom}}{{Zoom}}{{else}}{{/if}}</p>
 <div>
     {{#each user.preferrance}}
     <div class="form-check form-check-inline">
@@ -11,5 +12,26 @@
     </div>
     {{/each}}
 </div>
-   <!--possible put part of sign up in a partial<button>edit</button>-->
-<p>{{#if Zoom}}{{Zoom}}{{else}}{{/if}}</p>
+
+<button type="submit" class="btn btn-primary">Edit</button>
+{{#if edit}}
+<form>
+   <div class="form-group">
+        <label for="inputFirstName">First Name</label>
+        <input class="form-control" id="inputFirstName">
+    </div>
+
+    <div class="form-group">
+        <label for="inputLastName">Last Name</label>
+        <input class="form-control" id="inputLastName">
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+
+{{>personal info}}
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+{{/if}}
