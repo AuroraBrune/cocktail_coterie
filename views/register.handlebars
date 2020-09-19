@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-</head>
-<body>
+{{>main-page}}
     <h1>Register Form</h1>
     <form action="/auth/register" method="POST">
         <label for="first_name">First Name:</label><br>
@@ -14,19 +7,14 @@
         <input type="text" id="last_name" name="last_name"><br>
         <label for="email">Email:</label><br>
         <input type="email" id="email" name="email"><br>
-        <label for="preferred_drink">Preferred Drink:</label><br>
-        <input type="text" id="preferred_drink" name="preferred_drink"><br>
-        <label for="zoomLink">Zoom Link:</label><br>
-        <input type="text" id="zoomLink" name="zoomLink"><br>
+        {{>personal-info}}
         <label for="password">Password:</label><br>
         <input type="password" id="password" name="password"><br>
         <label for="passwordConfirmed">Type Your Password Again:</label><br>
         <input type="password" id="passwordConfirmed" name="passwordConfirmed"><br>
         
-        <button type="submit"> Register User</button>
+        <button id="register" type="submit"> Register User</button>
     </form>
     {{#if message}}
     <h4 class="alert">{{message}}</h4>
     {{/if}}
-</body>
-</html>
