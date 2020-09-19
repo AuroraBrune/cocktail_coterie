@@ -37,9 +37,30 @@
     <div class="form-group">
         <label for="zoom-link">Your Zoom Link</label>
         <input type="text" class="form-control" id="zoom-link" placeholder="zoom-link"
-            value={{#if Zoom}}{{Zoom}}{{else}}{{/if}}>
+            value={{zoom}}>
     </div>
 
-    <button type="submit" class="btn btn-primary">Send Invitations</button>
+     <button type="submit" class="btn btn-primary">Send Invitations</button>
     <!--look up customize share on share.com-->
+
+    <button type="submit" class="btn btn-primary">Share Invitation Link</button>
+    {{#if invitation}}
+    <div class="modal fade" id="share" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="titleShare">Share</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="text" class="form-control" id="invitation-link" placeholder="party-link">
+                    <button type="button" class="btn" id="invitation-html">Share</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+
+   
 </form>
