@@ -56,9 +56,9 @@ app.use(cookieParser());
 //app.use(passport.session());
 
 // Requiring our routes
-//require("./routes/")(app);
-//require("./routes/")(app);
-app.use('/', require('./routes/pages.js'));
+
+app.use('/', require('./routes/api-routes.js'));
+app.use('/', require('./routes/html-routes.js'));
 app.use('/auth', require('./routes/auth'));
 
 // Syncing our database and logging a message to the user upon success
