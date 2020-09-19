@@ -6,8 +6,6 @@ var router = express.Router();
 // Requiring our custom middleware for checking if a user is logged in
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 
-module.exports = function (app) {
-
     router.get("/", function (req, res) {
         res.render("index")
     });
@@ -40,4 +38,4 @@ module.exports = function (app) {
         res.render("saved-cocktails ")
     });
 
-};
+module.exports = router;
