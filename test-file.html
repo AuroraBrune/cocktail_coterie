@@ -60,15 +60,24 @@
         console.log('C', i);
         var drinkName = $("<h1>").text(response.drinks[i]['strDrink']);
         let ingredientString = ''
-        let strIngrediant = 'strIngredient' + (i+1)
+        
         if (response.drinks[i]['strIngredient1']) {
           ingredientString += response.drinks[i]['strIngredient1']
         }
-        
-        if (response.drinks[i][strIngrediant]) {
-          ingredientString += ', ' + response.drinks[i][strIngrediant]
+        multipleIngrediats()
+    
+      }
+      function multipleIngrediats(){
+
+            for(j=0; j>response.drinks.length; j++){
+            console.log("D"+j)
+            let strIngrediant = 'strIngredient' + (j+1)
+            console.log("E" +strIngrediant)
+          if (response.drinks[i][strIngrediant]) {
+            ingredientString += ', ' + response.drinks[i][strIngrediant]
+          }
         }
-     
+    
         var ingredients = $("<h2>").text(ingredientString)
         var directions = $("<h2>").text(response.drinks[i]['strInstructions']);
         var drinkImage = $("<img>").attr("src", response.drinks[i]['strDrinkThumb']);
@@ -110,6 +119,7 @@ $.ajax({
         console.log('C', i);
         var drinkName = $("<h1>").text(response.drinks[i]['strDrink']);
         let ingredientString = ''
+        
         
         let strIngrediant = 'strIngredient' + (i+1)
         if (response.drinks[i]['strIngredient1']) {
