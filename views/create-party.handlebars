@@ -27,20 +27,12 @@
     </div>
 
     <div class="form-group">
-        <label for="cocktail-link">Your Cocktail Link</label>
-        <!--find a way to get a sharebale link that shows the chosen cocktail
-        url/:coctail_id
-        and populate it in the input-->
-        <input type="text" class="form-control" id="cocktail-link" placeholder="cocktail-link">
-    </div>
-
-    <div class="form-group">
         <label for="zoom-link">Your Zoom Link</label>
         <input type="text" class="form-control" id="zoom-link" placeholder="zoom-link"
             value={{zoom}}>
     </div>
 
-     <button type="submit" class="btn btn-primary">Send Invitations</button>
+     <button id="invitation-complete" type="submit" class="btn btn-primary">Send Invitations</button>
     <!--look up customize share on share.com-->
 
     <button type="submit" class="btn btn-primary">Share Invitation Link</button>
@@ -55,7 +47,7 @@
                 </div>
                 <div class="modal-body">
                     <input type="text" class="form-control" id="invitation-link" placeholder="party-link">
-                    <button type="button" class="btn" id="invitation-html">Share</button>
+                    <button id="invitation-share" type="button" class="btn" id="invitation-html">Share</button>
                 </div>
             </div>
         </div>
