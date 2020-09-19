@@ -4,9 +4,10 @@
 {{#each saved_cocktail}}
     {{drinkName}}
     {{drinkImage}}
-    <button>read more</button>
+    <button id="read-more">read more</button>
     {{#unless read}}
       {{ingrediants read=true}}
       {{directions read=true}}
     {{/unless}}
+    <button id="delete-cocktail">delete</button>
 {{/each}}
