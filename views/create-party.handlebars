@@ -11,7 +11,7 @@
         <label for="cocktailChoice">Choose your Cocktail</label>
         <select type="submit" class="form-control" id="cocktailChoice">
             {{#each cocktail}}
-            <option>{{drinkName}}</option>
+            <option data={{id}}>{{drinkName}}</option>
             {{/each}}
         </select>
     </div>
@@ -23,8 +23,8 @@
     </div>
 
     <div class="form-group">
-        <label for="peronal-message">Personalized Message</label>
-        <textarea class="form-control" id="personal-message" rows="3"></textarea>
+        <label for="peronal-message">Description</label>
+        <textarea class="form-control" id="description" rows="3"></textarea>
     </div>
 
     <div class="form-group">
@@ -35,8 +35,6 @@
 
      <button id="invitation-complete" type="submit" class="btn btn-primary" data-toggle="modal" data-target="shareModal">Send Invitations</button>
     <!--look up customize share on share.com-->
-
-    <button type="submit" class="btn btn-primary">Share Invitation Link</button>
     
     <div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
