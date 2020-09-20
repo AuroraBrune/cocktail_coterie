@@ -32,6 +32,11 @@ router.get("/saved-cocktails ", function (req, res) {
     res.render("saved-cocktails ")
 });
 
+//User log out
+router.get("/log-out", function (req, res) {
+    res.render("log-out")
+});
+
 router.get('/', (req, res) => {
     res.render('index');
 });

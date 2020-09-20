@@ -78,4 +78,6 @@ exports.register = (req, res) => {
                 })
             }
         })
+
+        
     }})}
