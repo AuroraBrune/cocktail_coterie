@@ -1,3 +1,4 @@
+{{>navbar}}
 <header>Create New Party</header>
 <form>
     
@@ -17,8 +18,8 @@
 
     <div class="form-group">
         <label for="Date">Date and Time</label>
-        <!--look up how to get drop down date & time 
-        also how to render & symbol for label-->
+        <button class="simplepicker-btn">Pick Your Party Date and Time</button>
+  <div class="event-log">Date and Time of Party:<br></div>
     </div>
 
     <div class="form-group">
@@ -32,12 +33,12 @@
             value={{zoom}}>
     </div>
 
-     <button id="invitation-complete" type="submit" class="btn btn-primary">Send Invitations</button>
+     <button id="invitation-complete" type="submit" class="btn btn-primary" data-toggle="modal" data-target="shareModal">Send Invitations</button>
     <!--look up customize share on share.com-->
 
     <button type="submit" class="btn btn-primary">Share Invitation Link</button>
-    {{#if invitation}}
-    <div class="modal fade" id="share" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    
+    <div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -52,7 +53,7 @@
             </div>
         </div>
     </div>
-    {{/if}}
+    
 
    
 </form>
