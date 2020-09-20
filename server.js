@@ -17,6 +17,7 @@ Must protect API keys in Node with environement variables - WORKING
 var express = require("express");
 var session = require("express-session");
 var nodemon = require("nodemon");
+var favicon = require('serve-favicon');
 //const dotenv = require('dotenv');
 const path = require('path');
 const mysql = require('mysql');
@@ -31,6 +32,7 @@ var db = require("./models");
 
 // Creating express app and configuring middleware needed for authentication
 var app = express();
+app.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
