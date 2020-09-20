@@ -1,6 +1,6 @@
 // saved cocktails] delete cocktail  -saved-cocktail.js
 function renderCocktials(){
-    $.get
+    $.get()
 }
 
 
