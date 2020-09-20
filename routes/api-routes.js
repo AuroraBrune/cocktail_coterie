@@ -5,24 +5,24 @@ var path = require("path");
 const express = require("express");
 var router = express.Router();
 //Create user
-router.post("/", user.create);
+router.post("../models/user.js", user.create);
 
 //Update user
-router.put("/:id", user.update);
+router.put("../models/user:id", user.update);
 
 //Retrieve cocktail saved
-router.get("/:id", SavedCocktail.findOne);
+router.get("../models/saved-cocktail:id", SavedCocktail.findOne);
 
 //Find all cocktails saved
-router.get("/:id", SavedCocktail.findAll);
+router.get("../models/saved-cocktail", SavedCocktail.findAll);
 
 //Update cocktail saved
-router.update("/:id", SavedCocktail.update);
+router.update("../models/saved-cocktail:id", SavedCocktail.update);
 
 //Delete cocktail
-router.delete("/:id", SavedCocktail.delete);
+router.delete("../models/saved-cocktail:id", SavedCocktail.delete);
 
 //Create Guest 
-router.post("/:id", guest.create);
+router.post("../models/guest:id", guest.create);
 
 module.exports = router;
