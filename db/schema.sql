@@ -3,6 +3,3 @@ DROP DATABASE IF EXISTS Cocktail_Coterie;
 -- Creates the Petite.Soiree database --
 CREATE DATABASE Cocktail_Coterie;
 USE Cocktail_Coterie;
-
-
-

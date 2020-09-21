@@ -25,40 +25,25 @@ module.exports = function(sequelize, DataTypes) {
           isEmail: true
         }
       },
+      userName: {
+        type: DataTypes.STRING,
+        unique: true,
+        allowNull: false,
+        validate: {
+            len: [5]
+          }
+      },
       password: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
             len: [5]
           }
-      },
-      passwordConfirmed: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-            len: [5]
-          }
-      },
-      zoomLink: {
-        type: DataTypes.STRING,
-        allowNull: true,
-        validate: {
-            len: [1]
-          }
-      },
-      prefDrink: {
-        type: DataTypes.STRING,
-        allowNull: true,
-        validate: {
-            len: [1]
-          }
-        }
+      }
     });
   
     User.associate = function(models) {
-      // We're saying that a Guest should belong to a User
-      // A Guest can't be created without a User due to the foreign key constraint
-      User.belongsTo(models.Guest, {
+      User.belongsTo(models.User, {
         foreignKey: {
           allowNull: false
         }
@@ -71,8 +56,9 @@ module.exports = function(sequelize, DataTypes) {
   };
 
 //Hash the password
+//had a null after genSalt
   User.addHook("beforeCreate", function(user) {
-    user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
+    user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10));
   });
   return User;
 };
