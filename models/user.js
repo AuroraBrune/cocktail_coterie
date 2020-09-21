@@ -43,9 +43,7 @@ module.exports = function(sequelize, DataTypes) {
     });
   
     User.associate = function(models) {
-      // We're saying that a Post should belong to an Author
-      // A Post can't be created without an Author due to the foreign key constraint
-      User.belongsTo(models.Guest, {
+      User.belongsTo(models.User, {
         foreignKey: {
           allowNull: false
         }
@@ -58,8 +56,9 @@ module.exports = function(sequelize, DataTypes) {
   };
 
 //Hash the password
+//had a null after genSalt
   User.addHook("beforeCreate", function(user) {
-    user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
+    user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10));
   });
   return User;
 };
