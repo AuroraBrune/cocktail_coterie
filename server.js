@@ -14,10 +14,10 @@ Must protect API keys in Node with environement variables - WORKING
 // For some reason, password won't convert to bcrypt when registering.
 
 // Requiring necessary npm packages
-var express = require("express");
-var session = require("express-session");
-var nodemon = require("nodemon");
-var favicon = require('serve-favicon');
+const express = require("express");
+const session = require("express-session");
+const nodemon = require("nodemon");
+const favicon = require('serve-favicon');
 //const dotenv = require('dotenv');
 const path = require('path');
 const mysql = require('mysql');
@@ -32,14 +32,13 @@ var db = require("./models");
 
 // Creating express app and configuring middleware needed for authentication
 var app = express();
-app.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
 // Set Handlebars.
 var exphbs = require("express-handlebars");
-
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
@@ -47,7 +46,7 @@ app.set("view engine", "handlebars");
 //Makes html public view, and accesses database and protects it
 const publicDirectory = path.join(__dirname, './public');
 app.use(express.static(publicDirectory));
-app.use(express.urlencoded({extended:false}));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookieParser());
 
@@ -58,17 +57,12 @@ app.use(passport.session());
 
 
 // Requiring our routes
-
 app.use('/', require('./routes/api-routes.js'));
-app.use('/', require('./routes/html-routes.js'));
-
-//Homework had the following
-//require("./routes/html-routes.js")(app);
-//require("./routes/api-routes.js")(app);
+app.use('/', require('./routes/html-routes.js')); 
 
 // Syncing our database and logging a message to the user upon success
-db.sequelize.sync().then(function() {
-  app.listen(PORT, function() {
-    console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
+db.sequelize.sync().then(function () {
+  app.listen(PORT, function () {
+    console.log("Listening on port " + PORT);
   });
 });

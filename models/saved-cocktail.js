@@ -1,4 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
+
     var SavedCocktail = sequelize.define("SavedCocktail", {
         userId: {
             type: DataTypes.INTEGER,

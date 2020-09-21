@@ -11,23 +11,17 @@ const guest = require("../models");
 
 
 //Create user
-router.post("../models/user", function (req, res, cb) {
-    db.user.create({
+router.post("/api/user", function (req, res, cb) {
+    db.User.create({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
-        userName: req.body.userName,
-        //password: req.body.password, <-- not necessary because password is handed on user.js file
-        //Should hashed password replace that?  password:hashedPassword
-        //passwordConfirmed: hashedPassword
+        password: req.body.password,
         prefDrink: req.body.prefDrink,
-    }).then(function (dbuser) {
-        res.json(dbuser);
-        //res.redirect(307, "/api/login");
+    }).then(function (dbUser) {
+        res.json(dbUser);
         cb();
-    }).catch(function(err) {
-        res.status(401).json(err);
-      });
+    });
 });
 
 //Update user
@@ -105,6 +99,11 @@ module.exports = function() {
       res.json(req.user);
     });
 
+        // Logging In
+  router.get("/login", function(req, res) {
+    req.login();
+    res.redirect("/");
+  });
     // Logging Out
   router.get("/logout", function(req, res) {
     req.logout();
