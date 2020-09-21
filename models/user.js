@@ -25,14 +25,6 @@ module.exports = function(sequelize, DataTypes) {
           isEmail: true
         }
       },
-      userName: {
-        type: DataTypes.STRING,
-        unique: true,
-        allowNull: false,
-        validate: {
-            len: [5]
-          }
-      },
       password: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -40,9 +32,23 @@ module.exports = function(sequelize, DataTypes) {
             len: [5]
           }
       },
-      prefDrink: {
+      passwordConfirmed: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate: {
+            len: [5]
+          }
+      },
+      zoomLink: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        validate: {
+            len: [1]
+          }
+      },
+      prefDrink: {
+        type: DataTypes.STRING,
+        allowNull: true,
         validate: {
             len: [1]
           }
@@ -50,8 +56,8 @@ module.exports = function(sequelize, DataTypes) {
     });
   
     User.associate = function(models) {
-      // We're saying that a Post should belong to an Author
-      // A Post can't be created without an Author due to the foreign key constraint
+      // We're saying that a Guest should belong to a User
+      // A Guest can't be created without a User due to the foreign key constraint
       User.belongsTo(models.Guest, {
         foreignKey: {
           allowNull: false

@@ -49,18 +49,18 @@ db.query('SELECT * FROM users WHERE email = ?', [email], async (error, results) 
 exports.register = (req, res) => {
     console.log(req.body);
 
-    const { first_name, last_name, email, preferred_drink, zoomLink, password, passwordConfirmed} = req.body;
+    const { firstName, lastName, email, prefDrink, zoomLink, password, passwordConfirmed} = req.body;
 
     db.query('SELECT email FROM users WHERE email= ?', [email], async (error, results) => {
         if (error) {
             console.log(error);
         }
         if (results.length > 0) {
-            return res.render('./partials/register', {
+            return res.render('./register', {
                 message: 'That email is already in use.'
             })
         } else if (password !== passwordConfirmed) {
-            return res.render('./partials/register', {
+            return res.render('./register', {
                 message: 'Passwords do not match.'
             })
         } else{
@@ -68,12 +68,12 @@ exports.register = (req, res) => {
         var hashedPassword = await bcrypt.hash(password, salt);
         console.log(hashedPassword);
 
-        db.query('INSERT INTO users SET ?', {first_name: first_name, last_name:last_name, email:email, preferred_drink:preferred_drink, zoomLink:zoomLink, password:hashedPassword, passwordConfirmed:hashedPassword}, (error, results) =>{
+        db.query('INSERT INTO users SET ?', {firstName: firstName, lastName:lastName, email:email, prefDrink:prefDrink, zoomLink:zoomLink, password:hashedPassword, passwordConfirmed:hashedPassword}, (error, results) =>{
             if(error){
                 console.log(error);
             } else {
                 console.log(results);
-                return res.render('./partials/register', {
+                return res.render('./register', {
                     message: 'User registered.'
                 })
             }
