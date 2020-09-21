@@ -6,6 +6,7 @@ module.exports = function(sequelize, DataTypes) {
       firstName: {
         type: DataTypes.STRING,
         allowNull: false,
+        field: 'firstName',
         validate: {
           len: [1]
         }
@@ -13,6 +14,7 @@ module.exports = function(sequelize, DataTypes) {
       lastName: {
         type: DataTypes.STRING,
         allowNull: false,
+        field: 'lastName',
         validate: {
             len: [1]
           }
@@ -20,6 +22,7 @@ module.exports = function(sequelize, DataTypes) {
       email: {
         type: DataTypes.STRING,
         allowNull: false,
+        field: 'email',
         unique: true,
         validate: {
           isEmail: true
@@ -28,6 +31,7 @@ module.exports = function(sequelize, DataTypes) {
       password: {
         type: DataTypes.STRING,
         allowNull: false,
+        field: 'password',
         validate: {
             len: [5]
           }
@@ -35,6 +39,7 @@ module.exports = function(sequelize, DataTypes) {
       passwordConfirmed: {
         type: DataTypes.STRING,
         allowNull: false,
+        field: 'passwordConfirmed',
         validate: {
             len: [5]
           }
@@ -42,6 +47,7 @@ module.exports = function(sequelize, DataTypes) {
       zoomLink: {
         type: DataTypes.STRING,
         allowNull: true,
+        field: 'zoomLink',
         validate: {
             len: [1]
           }
@@ -49,6 +55,7 @@ module.exports = function(sequelize, DataTypes) {
       prefDrink: {
         type: DataTypes.STRING,
         allowNull: true,
+        field: 'prefDrink',
         validate: {
             len: [1]
           }
