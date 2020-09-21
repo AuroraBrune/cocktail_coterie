@@ -1,5 +1,6 @@
 //Model for creating table in database
 var bcrypt = require("bcryptjs");
+//var sequelize = require("sequelize");
 
 module.exports = function(sequelize, DataTypes) {
     var User = sequelize.define("User", {
@@ -38,7 +39,7 @@ module.exports = function(sequelize, DataTypes) {
       },
       passwordConfirmed: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         field: 'passwordConfirmed',
         validate: {
             len: [5]
@@ -61,25 +62,25 @@ module.exports = function(sequelize, DataTypes) {
           }
         }
     });
-  
     User.associate = function(models) {
-      // We're saying that a Guest should belong to a User
-      // A Guest can't be created without a User due to the foreign key constraint
-      User.belongsTo(models.Guest, {
+      // We're saying that a Post should belong to an Author
+      // A Post can't be created without an Author due to the foreign key constraint
+      User.belongsTo(models.User, {
         foreignKey: {
           allowNull: false
         }
       });
     };
-
 //Comparing hashed and unhashed passwords
  User.prototype.validPassword = function(password) {
     return bcrypt.compareSync(password, this.password);
   };
-
 //Hash the password
   User.addHook("beforeCreate", function(user) {
     user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
   });
   return User;
 };
+
+/* sequelize.sync()
+.then (() => console.log('User Added')); */
