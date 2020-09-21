@@ -65,7 +65,7 @@ router.put("../models/saved-cocktail:id", function (req, res, cb) {
 
 // //Delete cocktail
 router.delete("../models/saved-cocktail:id", function (req, res, cb) {
-    db.SavedCocktail.fineOne({
+    db.SavedCocktail.findOne({
         where: {
             id: req.params.id
         }.then(function (dbSavedCocktail) {
