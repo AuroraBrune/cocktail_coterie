@@ -5,15 +5,15 @@
 <p>{{user.email}}</p>
 <p>{{user.zoom}}</p>
 <div>
-    {{#each user.preferrance}}
+    {{#each user.preferance}}
     <ul>
         {{this}}
     </ul>
     {{/each}}
 </div>
 
-<button id="edit-personal" type="submit" class="btn btn-primary" data="false">Edit</button>
-{{#if edit}}
+<button id="edit-personal" type="submit" class="btn btn-primary">Edit</button>
+<!--display none toggle on edit & save bttns-->
 <form>
     <div class="form-group">
         <label for="inputFirstName">First Name</label>
@@ -33,4 +33,3 @@
     {{>personal info}}
     <button id="save-personal" type="submit" class="btn btn-primary">Save</button>
 </form>
-{{/if}}

@@ -5,9 +5,11 @@
     {{drinkName}}
     {{drinkImage}}
     <button id="read-more">read more</button>
-    {{#unless read}}
+    <div>
+      <!--display none toggle this button on read more-->
       {{ingrediants read=true}}
       {{directions read=true}}
-    {{/unless}}
+    </div>
+    
     <button id="delete-cocktail">delete</button>
 {{/each}}

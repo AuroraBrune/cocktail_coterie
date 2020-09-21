@@ -4,7 +4,8 @@
 //select cocktial will find the selected cocktial in the database and feed the information into the new html
 
     $("#cocktailChoice").on("submit", function(){
-        let cocktailId = $("#cocktialChoice").attr("data")
+        let cocktailId = $("#cocktailChoice").attr("data")
+        $.get("/api/cocktailChoice")
 
     })
 
@@ -12,8 +13,10 @@
 //create invitation button will take the inputs from the user and write a new html file user_id + ".html"
     $("#invitation-complete").on("submit", function(){
         let partyName = $("#partyName").val().trim()
-        let cocktailId = $("#cocktialChoice").val()
+        let cocktailId = $("#cocktailChoice").val()
         let timeDate = $("#time-date").val()
         let description = $("#description").val()
         let zoom = $("#zoom-link").val().trim()
     })
+
+    
