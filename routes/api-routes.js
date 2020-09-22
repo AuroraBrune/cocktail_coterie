@@ -20,12 +20,14 @@ router.post("/api/signup", function (req, res, cb) {
         //res.redirect(307, "/api/login");
         cb();
     }).catch(function(err) {
+        console.log(err);
         res.status(401).json(err);
       });
 });
 
 //Update user
-router.put("../models/user:id", function (req, res, cb) {
+//Tutor changed this... don't know what it was before...
+router.put("/api/users/update", function (req, res, cb) {
     db.User.update({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -40,7 +42,7 @@ router.put("../models/user:id", function (req, res, cb) {
 
 //Retrieve cocktail saved
 router.get("../models/saved-cocktail:id", function (req, res, cb) {
-    db.SavedCocktail.findOne({
+    db.SavedCocktail.fineOne({
         where: {
             id: req.params.id
         }.then(function (dbSavedCocktail) {
@@ -81,7 +83,7 @@ router.delete("../models/saved-cocktail:id", function (req, res, cb) {
 
 //Create Guest 
 router.post("../models/guest", function(req, res, cb) {
-    db.guest.create({
+    db.Guest.create({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
@@ -92,39 +94,36 @@ router.post("../models/guest", function(req, res, cb) {
     })
 });
 
-//Working with Passport
-module.exports = function() {
-    // If the user has valid login credentials, send them to the members page.
-    router.post("/api/login", passport.authenticate("local"), function(req, res) {
-      res.json(req.user);
+
+// If the user has valid login credentials, send them to the members page.
+router.post("/api/login", passport.authenticate("local"), function(req, res) {
+    res.json(req.user);
+});
+
+    // Logging In
+router.get("/login", function(req, res) {
+req.login();
+res.redirect("/");
+});
+// Logging Out
+router.get("/logout", function(req, res) {
+req.logout();
+res.redirect("/");
+});
+
+// Allowing Profile for Navigation
+router.get("/api/profile", function(req, res) {
+if (!req.user) {
+    res.json({});
+} else {
+    // Otherwise send back the user's email and id for records
+    res.json({
+    email: req.user.email,
+    id: req.user.id
     });
-
-    // Logging Out
-  router.get("/logout", function(req, res) {
-    req.logout();
-    res.redirect("/");
-  });
-
-   // Allowing Profile for Navigation
-   router.get("/api/profile", function(req, res) {
-    if (!req.user) {
-      res.json({});
-    } else {
-      // Otherwise send back the user's email and id for records
-      res.json({
-        email: req.user.email,
-        id: req.user.id
-      });
-    }
-  });
-};
+}
+});
 
 
 module.exports = router;
 
-
-
-
-  
-
- 
