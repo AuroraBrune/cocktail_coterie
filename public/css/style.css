@@ -8,21 +8,47 @@ body{
 }
 header{
     text-align: center;
-    background-color: rgba(233, 126, 144, 0.685);
+    background-color: rgba(233, 126, 144, 0.822);
     border-radius:15px;
     padding:10px;
 }
 nav{
     font-size:24px;
     font-weight: 700;
-    background-color:pink;
+    background-color: rgba(233, 126, 144, 0.822);
     margin:0px;
     border-radius: 15px;
     height: 50px;
 }
+.navbar-nav{
+    width:100%;
+    justify-content: center;
+}
+.nav-link{
+    color:white;
+    margin:20px;
+}
+.nav-link:hover{
+    background-color:pink;
+    color:rgb(224, 100, 121);
+    border-radius:15px;
+}
+.developers{
+    color:white;
+    text-decoration:underline;
+    padding: 5px;
+}
+.developers:hover{
+    background-color:pink;
+    color:rgb(224, 100, 121);
+    border-radius:8px;
+}
+.emails{
+    font-size:16px;
+}
 pre{
     font-size:40px;
-    color:white
+    color:white;
 }
 .row{
     margin: 20px;
@@ -32,9 +58,6 @@ pre{
 }
 #title{
     font-size:65px;
-}
-a{
-    color:rgb(200, 79, 99);
 }
 #modal-login{
     text-align:left;
