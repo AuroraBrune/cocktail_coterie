@@ -58,7 +58,6 @@ app.use(cookieParser());
 //app.use(passport.session());
 
 // Requiring our routes
-
 app.use('/', require('./routes/api-routes.js'));
 app.use('/', require('./routes/html-routes.js'));
 app.use('/auth', require('./routes/auth'));
