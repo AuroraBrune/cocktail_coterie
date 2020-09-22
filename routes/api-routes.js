@@ -1,7 +1,4 @@
 const db = require("../models");
-const user = require("../models");
-const SavedCocktail = require("../models");
-const guest = require("../models");
 const path = require("path");
 const express = require("express");
 const router = express.Router();
@@ -36,7 +33,7 @@ router.put("../models/user:id", function (req, res, cb) {
 
 //Retrieve cocktail saved
 router.get("../models/saved-cocktail:id", function (req, res, cb) {
-    db.SavedCocktail.fineOne({
+    db.SavedCocktail.findOne({
         where: {
             id: req.params.id
         }.then(function (dbSavedCocktail) {
@@ -65,7 +62,7 @@ router.put("../models/saved-cocktail:id", function (req, res, cb) {
 
 // //Delete cocktail
 router.delete("../models/saved-cocktail:id", function (req, res, cb) {
-    db.SavedCocktail.fineOne({
+    db.SavedCocktail.findOne({
         where: {
             id: req.params.id
         }.then(function (dbSavedCocktail) {
