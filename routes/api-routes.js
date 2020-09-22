@@ -17,7 +17,8 @@ router.post("../models/user", function (req, res, cb) {
         lastName: req.body.lastName,
         email: req.body.email,
         userName: req.body.userName,
-        //password: req.body.password, <-- not necessary because password is handed on user.js file
+        password: req.body.password, 
+        //<-- not necessary because password is handed on user.js file
         //Should hashed password replace that?  password:hashedPassword
         //passwordConfirmed: hashedPassword
         prefDrink: req.body.prefDrink,
