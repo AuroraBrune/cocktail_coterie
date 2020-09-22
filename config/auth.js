@@ -8,7 +8,7 @@ const dotenv = require('dotenv').config();
 const db = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "password",
+    password: "Tbjs233069$",
     database: "Cocktail_Coterie"
 })
 
@@ -23,7 +23,7 @@ if(!email || !password){
 db.query('SELECT * FROM users WHERE email = ?', [email], async (error, results) =>{
     console.log(results);
     if(!results || !(await bcrypt.compare(req.body.password, results[0].password))){
-        res.status(401).render('./partials/login', {
+        res.status(401).render('./login', {
             message: 'Email or password is incorrect.'
         })
     } else {
