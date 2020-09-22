@@ -4,25 +4,19 @@ const express = require("express");
 const router = express.Router();
 const path = require("path");
 
-//Duplicates since they both require models??  Could use db?
-// const user = require("../models");
-// const guest = require("../models");
-
-
 //Create user
 router.post("/api/signup", function (req, res, cb) {
     db.User.create({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        email: req.body.email,
-        userName: req.body.userName,
+        email: req.body.email
         //password: req.body.password, 
         //<-- not necessary because password is handed on user.js file
         //Should hashed password replace that?  password:hashedPassword
         //passwordConfirmed: hashedPassword
-        prefDrink: req.body.prefDrink,
-    }).then(function (dbuser) {
-        res.json(dbuser);
+       // prefDrink: req.body.prefDrink,
+    }).then(function (dbUser) {
+        res.json(dbUser);
         //res.redirect(307, "/api/login");
         cb();
     }).catch(function(err) {
@@ -32,7 +26,7 @@ router.post("/api/signup", function (req, res, cb) {
 
 //Update user
 router.put("../models/user:id", function (req, res, cb) {
-    db.user.update({
+    db.User.update({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
