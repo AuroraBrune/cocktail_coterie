@@ -30,12 +30,12 @@ module.exports = function(sequelize, DataTypes) {
             }
           }
     });
-
+/*
   Guest.associate = function(models) {
     Guest.hasMany(models.User, {
       onDelete: "cascade"
     });
   };
-
+*/
   return Guest;
 }; 

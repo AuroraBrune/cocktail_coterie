@@ -7,7 +7,6 @@ module.exports = function(sequelize, DataTypes) {
       firstName: {
         type: DataTypes.STRING,
         allowNull: false,
-        field: 'firstName',
         validate: {
           len: [1]
         }
@@ -15,7 +14,6 @@ module.exports = function(sequelize, DataTypes) {
       lastName: {
         type: DataTypes.STRING,
         allowNull: false,
-        field: 'lastName',
         validate: {
             len: [1]
           }
@@ -23,62 +21,33 @@ module.exports = function(sequelize, DataTypes) {
       email: {
         type: DataTypes.STRING,
         allowNull: false,
-        field: 'email',
         unique: true,
         validate: {
           isEmail: true
         }
       },
-      userName: {
-        type: DataTypes.STRING,
-        unique: true,
-        allowNull: false,
-        field: 'password',
-        validate: {
-            len: [5]
-          }
-      },
       password: {
         type: DataTypes.STRING,
         allowNull: true,
-        field: 'passwordConfirmed',
         validate: {
             len: [5]
           }
-<<<<<<< HEAD
-      }
-=======
       },
       zoomLink: {
         type: DataTypes.STRING,
         allowNull: true,
-        field: 'zoomLink',
-        validate: {
-            len: [1]
-          }
       },
       prefDrink: {
         type: DataTypes.STRING,
         allowNull: true,
-        field: 'prefDrink',
-        validate: {
-            len: [1]
-          }
         }
->>>>>>> 241ee2abd7aa20ff22b28a67de924576dbb7fc7f
     });
-    User.associate = function(models) {
-<<<<<<< HEAD
-=======
-      // We're saying that a Post should belong to an Author
-      // A Post can't be created without an Author due to the foreign key constraint
->>>>>>> 241ee2abd7aa20ff22b28a67de924576dbb7fc7f
-      User.belongsTo(models.User, {
-        foreignKey: {
-          allowNull: false
-        }
+    //validate can be gone for non essential, allownUll true
+  /*  User.associate = function(models) {
+      User.hasOne(models.Drink, {
+        foreignKey: 'prefDrink'
       });
-    };
+    };*/
 //Comparing hashed and unhashed passwords
  User.prototype.validPassword = function(password) {
     return bcrypt.compareSync(password, this.password);

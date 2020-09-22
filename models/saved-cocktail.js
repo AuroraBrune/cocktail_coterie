@@ -15,12 +15,12 @@ module.exports = function(sequelize, DataTypes) {
               }
           }
     });
-  
+  /*
     SavedCocktail.associate = function(models) {
       SavedCocktail.hasMany(models.User, {
         onDelete: "cascade"
       });
     };
-  
+  */
     return SavedCocktail;
   }; 

@@ -11,27 +11,28 @@ const guest = require("../models");
 
 
 //Create user
-router.post("../models/user", function (req, res, cb) {
-    db.user.create({
+router.post("/api/users/create", function (req, res) {
+    console.log(req.body)
+    db.User.create({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
-        userName: req.body.userName,
-        //password: req.body.password, <-- not necessary because password is handed on user.js file
+        password: req.body.password, //<-- not necessary because password is handed on user.js file
         //Should hashed password replace that?  password:hashedPassword
         //passwordConfirmed: hashedPassword
         prefDrink: req.body.prefDrink,
     }).then(function (dbuser) {
+        console.log(dbuser)
         res.json(dbuser);
-        //res.redirect(307, "/api/login");
-        cb();
+        //Not a middleware route, person does not need to be authenticated
     }).catch(function(err) {
+        console.log(err);
         res.status(401).json(err);
       });
 });
 
 //Update user
-router.put("../models/user:id", function (req, res, cb) {
+router.put("/api/users/update", function (req, res, cb) {
     db.user.update({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -98,37 +99,35 @@ router.post("../models/guest", function(req, res, cb) {
     })
 });
 
-//Working with Passport
-module.exports = function() {
-    // If the user has valid login credentials, send them to the members page.
-    router.post("/api/login", passport.authenticate("local"), function(req, res) {
-      res.json(req.user);
+
+// If the user has valid login credentials, send them to the members page.
+router.post("/api/login", passport.authenticate("local"), function(req, res) {
+    res.json(req.user);
+});
+
+    // Logging In
+router.get("/login", function(req, res) {
+req.login();
+res.redirect("/");
+});
+// Logging Out
+router.get("/logout", function(req, res) {
+req.logout();
+res.redirect("/");
+});
+
+// Allowing Profile for Navigation
+router.get("/api/profile", function(req, res) {
+if (!req.user) {
+    res.json({});
+} else {
+    // Otherwise send back the user's email and id for records
+    res.json({
+    email: req.user.email,
+    id: req.user.id
     });
-
-        // Logging In
-  router.get("/login", function(req, res) {
-    req.login();
-    res.redirect("/");
-  });
-    // Logging Out
-  router.get("/logout", function(req, res) {
-    req.logout();
-    res.redirect("/");
-  });
-
-   // Allowing Profile for Navigation
-   router.get("/api/profile", function(req, res) {
-    if (!req.user) {
-      res.json({});
-    } else {
-      // Otherwise send back the user's email and id for records
-      res.json({
-        email: req.user.email,
-        id: req.user.id
-      });
-    }
-  });
-};
+}
+});
 
 
 module.exports = router;
