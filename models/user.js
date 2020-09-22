@@ -45,27 +45,9 @@ module.exports = function(sequelize, DataTypes) {
         validate: {
             len: [5]
           }
-      },
-      zoomLink: {
-        type: DataTypes.STRING,
-        allowNull: true,
-        field: 'zoomLink',
-        validate: {
-            len: [1]
-          }
-      },
-      prefDrink: {
-        type: DataTypes.STRING,
-        allowNull: true,
-        field: 'prefDrink',
-        validate: {
-            len: [1]
-          }
-        }
+      }
     });
     User.associate = function(models) {
-      // We're saying that a Post should belong to an Author
-      // A Post can't be created without an Author due to the foreign key constraint
       User.belongsTo(models.User, {
         foreignKey: {
           allowNull: false
