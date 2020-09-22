@@ -105,6 +105,14 @@ module.exports = function() {
       res.json(req.user);
     });
 
+<<<<<<< HEAD
+=======
+        // Logging In
+  router.get("/login", function(req, res) {
+    req.login();
+    res.redirect("/");
+  });
+>>>>>>> 241ee2abd7aa20ff22b28a67de924576dbb7fc7f
     // Logging Out
   router.get("/logout", function(req, res) {
     req.logout();

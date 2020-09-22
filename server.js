@@ -11,8 +11,6 @@ Must meet good-quality coding standards (indentation, scoping, naming, etc.)
 Must protect API keys in Node with environement variables - WORKING
 */
 
-// For some reason, password won't convert to bcrypt when registering.
-
 // Requiring necessary npm packages
 var express = require("express");
 var session = require("express-session");
@@ -55,7 +53,10 @@ app.use(cookieParser());
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+<<<<<<< HEAD
 
+=======
+>>>>>>> 241ee2abd7aa20ff22b28a67de924576dbb7fc7f
 
 // Requiring our routes
 
