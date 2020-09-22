@@ -1,13 +1,11 @@
 //Model for creating table in database
 var bcrypt = require("bcryptjs");
-//var sequelize = require("sequelize");
 
 module.exports = function(sequelize, DataTypes) {
     var User = sequelize.define("User", {
       firstName: {
         type: DataTypes.STRING,
         allowNull: false,
-        field: 'firstName',
         validate: {
           len: [1]
         }
@@ -15,7 +13,6 @@ module.exports = function(sequelize, DataTypes) {
       lastName: {
         type: DataTypes.STRING,
         allowNull: false,
-        field: 'lastName',
         validate: {
             len: [1]
           }
@@ -23,37 +20,33 @@ module.exports = function(sequelize, DataTypes) {
       email: {
         type: DataTypes.STRING,
         allowNull: false,
-        field: 'email',
         unique: true,
         validate: {
           isEmail: true
         }
       },
-      userName: {
+      password: {
         type: DataTypes.STRING,
-        unique: true,
-        allowNull: false,
-        field: 'password',
+        allowNull: true,
         validate: {
             len: [5]
           }
       },
-      password: {
+      zoomLink: {
         type: DataTypes.STRING,
         allowNull: true,
-        field: 'passwordConfirmed',
-        validate: {
-            len: [5]
-          }
-      }
-    });
-    User.associate = function(models) {
-      User.belongsTo(models.User, {
-        foreignKey: {
-          allowNull: false
+      },
+      prefDrink: {
+        type: DataTypes.STRING,
+        allowNull: true,
         }
+    });
+    //validate can be gone for non essential, allownUll true
+  /*  User.associate = function(models) {
+      User.hasOne(models.Drink, {
+        foreignKey: 'prefDrink'
       });
-    };
+    };*/
 //Comparing hashed and unhashed passwords
  User.prototype.validPassword = function(password) {
     return bcrypt.compareSync(password, this.password);
@@ -65,6 +58,3 @@ module.exports = function(sequelize, DataTypes) {
   });
   return User;
 };
-
-/* sequelize.sync()
-.then (() => console.log('User Added')); */
