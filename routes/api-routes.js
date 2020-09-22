@@ -17,7 +17,8 @@ router.post("../models/user", function (req, res, cb) {
         lastName: req.body.lastName,
         email: req.body.email,
         userName: req.body.userName,
-        //password: req.body.password, <-- not necessary because password is handed on user.js file
+        password: req.body.password, 
+        //<-- not necessary because password is handed on user.js file
         //Should hashed password replace that?  password:hashedPassword
         //passwordConfirmed: hashedPassword
         prefDrink: req.body.prefDrink,
@@ -46,7 +47,7 @@ router.put("../models/user:id", function (req, res, cb) {
 
 //Retrieve cocktail saved
 router.get("../models/saved-cocktail:id", function (req, res, cb) {
-    db.SavedCocktail.fineOne({
+    db.SavedCocktail.findOne({
         where: {
             id: req.params.id
         }.then(function (dbSavedCocktail) {
@@ -105,11 +106,6 @@ module.exports = function() {
       res.json(req.user);
     });
 
-        // Logging In
-  router.get("/login", function(req, res) {
-    req.login();
-    res.redirect("/");
-  });
     // Logging Out
   router.get("/logout", function(req, res) {
     req.logout();

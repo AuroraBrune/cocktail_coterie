@@ -2,33 +2,33 @@
 all on same page interior bookmarks
 login / sign up is a modal -->
 <header>
-    <h1>Cocktail_Coterie</h1>
+    <h1 id="title">Cocktail_Coterie</h1>
     <br>
-    <h2>Have your best party. Online.</h2>
+    <pre>Have your best party.  Online.</pre>
 </header>
 
 {{>main-page}}
 
-<section id="bio">
-    <h1>About</h1>
-    <p>
-        We are all social butterflies feeling caged and suffering without the ability to visit with our friends and
-        family during this pandemic.
-        It was such a hassle to try to organize any online event and even harder to get out friends excited about it
-        -this is when Cocktail_Coterie was born.
-        The app takes all the info you need to make an invitation convient for your virtual party guest to come hang
-        out!!
-    <ul>
-        <li>Cocktail Ingrediants: Check!</li>
-        <li>Zoom Link: Check!</li>
-        <li>Time and Date: Check!</li>
-    </ul>
-    <br>
-    And then you can conviently send out your personalized invitation
-    to all your friends over email, fb messenger, or even text!
-    </p>
+<div class="container" id="bio">
+    <div class="row">
+        <h1>About</h1>
+        <p>
+            We are all social butterflies feeling caged and suffering without the ability to visit with our friends and
+            family during this pandemic.
+            It was such a hassle to try to organize any online event and even harder to get out friends excited about it
+            -this is when Cocktail_Coterie was born.
+            The app takes all the info you need to make an invitation convient for your virtual party guest to come hang
+            out!!
+        <ul>
+            <li>Cocktail Ingrediants: Check!</li>
+            <li>Zoom Link: Check!</li>
+            <li>Time and Date: Check!</li>
+        </ul>
+        And then you can conviently send out your personalized invitation
+        to all your friends over email, fb messenger, or even text!
+        </p>
+    </div>
 
-    <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <h3>Developers</h3>
@@ -36,28 +36,27 @@ login / sign up is a modal -->
 
             <div class="col-lg-3">
                 <img>
-                <p>Aurora Brune</p>
+                <a class="developers" href="https://github.com/AuroraBrune" target="_blank">Aurora Brune</a>
             </div>
             <div class="col-lg-3">
                 <img>
-                <p>Julie Schaub</p>
+                <a class="developers" href="https://github.com/JulieAnn2330" target="_blank">Julie Schaub</a>
             </div>
             <div class="col-lg-3">
                 <img>
-                <p>Charlene Peters</p>
+                <a class="developers" href="https://github.com/petersvirtualservices" target="_blank">Charlene Peters</a>
             </div>
             <div class="col-lg-3">
                 <img>
-                <p>Anthony Stematz-Breitling</p>
+                <a class="developers" href="https://github.com/AnthonyStembreit" target="_blank">Anthony Stembreit</a>
+                <p class="emails">stembreit@gmail.com</p>
             </div>
         </div>
-    </div>
 
-</section>
+</div>
 
-<section id="contact">
-    <h1>Contact</h1>
-</section>
+
+
 
 <!-- Modal -->
 {{>login}}
