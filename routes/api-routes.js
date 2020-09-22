@@ -13,6 +13,7 @@ const guest = require("../models");
 //Create user
 router.post("/api/users/create", function (req, res) {
     console.log(req.body)
+    //Capitalize User from user
     db.User.create({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -32,8 +33,9 @@ router.post("/api/users/create", function (req, res) {
 });
 
 //Update user
+//Tutor changed this... don't know what it was before...
 router.put("/api/users/update", function (req, res, cb) {
-    db.user.update({
+    db.User.update({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
@@ -88,7 +90,7 @@ router.delete("../models/saved-cocktail:id", function (req, res, cb) {
 
 //Create Guest 
 router.post("../models/guest", function(req, res, cb) {
-    db.guest.create({
+    db.Guest.create({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,

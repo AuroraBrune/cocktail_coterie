@@ -1,6 +1,5 @@
 //Model for creating table in database
 var bcrypt = require("bcryptjs");
-//var sequelize = require("sequelize");
 
 module.exports = function(sequelize, DataTypes) {
     var User = sequelize.define("User", {
@@ -59,6 +58,3 @@ module.exports = function(sequelize, DataTypes) {
   });
   return User;
 };
-
-/* sequelize.sync()
-.then (() => console.log('User Added')); */
