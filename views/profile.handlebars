@@ -14,7 +14,7 @@
 
 <button id="edit-personal" type="submit" class="btn btn-primary">Edit</button>
 <!--display none toggle on edit & save bttns-->
-<form>
+<form style="display:none">
     <div class="form-group">
         <label for="inputFirstName">First Name</label>
         <input class="form-control" id="inputFirstName" val={{user.firstName}}>
@@ -30,6 +30,6 @@
         <input type="email" class="form-control" id="InputEmail1" val={{user.email}}</>
     </div>
 
-    {{>personal info}}
+    {{>personal-info}}
     <button id="save-personal" type="submit" class="btn btn-primary">Save</button>
 </form>
