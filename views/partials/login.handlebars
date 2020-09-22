@@ -1,8 +1,8 @@
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="modal-login">Login</h4>
+                <h3>Login</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
             </div>
@@ -11,7 +11,6 @@
                     <fieldset>
                         <div class="form-top">
                             <div class="form-top-left">
-                                <h3>Login</h3>
                                 <div class="form-top-right">
                                     <i class="fa fa-key"></i>
                                 </div>
@@ -30,9 +29,8 @@
                                         class="form-password form-control" id="password" type="password">
                                 </div>
 
-                                <button type="button" class="btn btn-login">Login</button>
-                                <p>OR</p>
-                                <button type="button" class="btn btn-signup"><a href="/register">register</a></button>
+                                <button type="button" id="popupLogin" class="btn btn-login">Login</button>
+                                <button type="button" id="popupSignup" class="btn btn-signup"><a href="/register">Register</a></button>
                             </div>
                     </fieldset>
                 </form>

@@ -16,7 +16,7 @@ nav{
     font-size:24px;
     font-weight: 700;
     background-color: rgba(233, 126, 144, 0.822);
-    margin:0px;
+    margin-bottom:30px;
     border-radius: 15px;
     height: 50px;
 }
@@ -33,6 +33,7 @@ nav{
     color:rgb(224, 100, 121);
     border-radius:15px;
 }
+/*index page before login*/
 .developers{
     color:white;
     text-decoration:underline;
@@ -59,9 +60,34 @@ pre{
 #title{
     font-size:65px;
 }
-#modal-login{
+/*login modal styles*/
+.modal-header{
+    background-color: rgba(233, 126, 144, 0.822);
+}
+.modal-body{
     text-align:left;
     color:rgb(200, 79, 99);
+    background-color:rgb(248, 117, 139) ;
+}
+/* register page */
+#signup{
+    background-color:pink;
+    color:rgb(224, 100, 121);  
+    border-radius:5px;
+    border-color:  pink;
+    font-weight: 700;
+}
+#signup:hover{
+    text-decoration:none;
+    background-color: rgba(233, 126, 144, 0.822);
+    border-color: rgba(233, 126, 144, 0.822);
+    color:white;
+   
+}
+#registerForm{
+    background-color:rgb(224, 100, 121);
+    border-radius: 5px;
+    padding:15px;
 }
 /* background-image: url(../images/CocktailCoterie.png);
     background-repeat: no-repeat;

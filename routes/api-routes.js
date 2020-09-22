@@ -2,30 +2,23 @@ const passport = require("../config/passport");
 const db = require("../models");
 const express = require("express");
 const router = express.Router();
-const SavedCocktail = require("../models");
 const path = require("path");
 
-//Duplicates since they both require models??  Could use db?
-const user = require("../models");
-const guest = require("../models");
-
-
 //Create user
-router.post("/api/users/create", function (req, res) {
-    console.log(req.body)
-    //Capitalize User from user
+router.post("/api/signup", function (req, res, cb) {
     db.User.create({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        email: req.body.email,
-        password: req.body.password, //<-- not necessary because password is handed on user.js file
+        email: req.body.email
+        //password: req.body.password, 
+        //<-- not necessary because password is handed on user.js file
         //Should hashed password replace that?  password:hashedPassword
         //passwordConfirmed: hashedPassword
-        prefDrink: req.body.prefDrink,
-    }).then(function (dbuser) {
-        console.log(dbuser)
-        res.json(dbuser);
-        //Not a middleware route, person does not need to be authenticated
+       // prefDrink: req.body.prefDrink,
+    }).then(function (dbUser) {
+        res.json(dbUser);
+        //res.redirect(307, "/api/login");
+        cb();
     }).catch(function(err) {
         console.log(err);
         res.status(401).json(err);
