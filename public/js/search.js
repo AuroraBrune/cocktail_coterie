@@ -85,7 +85,7 @@ function searchCocktailDB(drink) {
      var ingredients = $("<h2>").text(ingredientString)
      var directions = $("<h2>").text(response.drinks[i]['strInstructions']);
      var drinkImage = $("<img>").attr("src", response.drinks[i]['strDrinkThumb']);
-     let saveBttn = $("<button>").text("Save")
+     let saveBttn = $("<button>").text("Save").attr("id", "save-cocktail")
      // Empty the contents of the drink-div, append the new drink content
      //$("#drink-div").empty();
      $("#drink-div").append(drinkName, ingredients, directions, drinkImage, saveBttn); 
@@ -186,10 +186,10 @@ method: "GET"
      var ingredients = $("<h2>").text(ingredientString)
      var directions = $("<h2>").text(response.drinks[i]['strInstructions']);
      var drinkImage = $("<img>").attr("src", response.drinks[i]['strDrinkThumb']);
-       
+     let saveBttn = $("<button>").text("Save").attr("id", "save-cocktail") 
      // Empty the contents of the drink-div, append the new drink content
      //$("#drink-div").empty();
-     $("#drink-div").append(drinkName, ingredients, directions, drinkImage); 
+     $("#drink-div").append(drinkName, ingredients, directions, drinkImage, saveBttn); 
    }
  });
 }
@@ -204,3 +204,10 @@ $("#select-ingredient").on("click", function(event) {
  // Running the searchCocktailDB function(passing in the ingredient as an argument)
  searchCocktailDBByIngredient(inputIngredient);
 });
+
+
+  $("#save-cocktail").on("click", function(event) {
+    // Make sure to preventDefault on a submit event.
+    event.preventDefault();
+      $.post("/api/save-cocktail")
+  })

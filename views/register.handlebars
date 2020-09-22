@@ -1,23 +1,42 @@
 {{>main-page}}
-    <h1>Register Form</h1>
+<h1>Register Form</h1>
 
-    <!--FORM ACTION BELOW WILL NOT POST - /API/SIGNUP-->
-    <form action="/api/signup" method="POST">
-        <label for="firstName">First Name:</label><br>
-        <input type="text" id="firstName" name="firstName"><br>
-        <label for="lastName">Last Name:</label><br>
-        <input type="text" id="lastName" name="lastName"><br>
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email"><br>
-        {{>personal-info}}
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password"><br>
+<!--FORM ACTION BELOW WILL NOT POST - /API/SIGNUP-->
+<form action="/api/register" method="POST">
+    <div class="form-row">
+        <div class="col">
+            <label for="firstName">First Name:</label> <br>
+            <input type="text" id="firstName" class="form-control" name="firstName"><br>
+        </div>
+
+        <div class="col">
+            <label for="lastName">Last Name:</label><br>
+            <input type="text" id="lastName" class="form-control" name="lastName"><br>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="col">
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" class="form-control"  name="email"><br>
+        </div>
+
+        <div class="col">
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" class="form-control" name="password"><br>
+        </div>
+    </div>
+
+    <div class="form-row">
         <label for="passwordConfirmed">Type Your Password Again:</label><br>
-        <input type="password" id="passwordConfirmed" name="passwordConfirmed"><br>
-        
-        <button id="register" type="submit"> Register User</button>
-    </form>
-    {{#if message}}
-    <h4 class="alert">{{message}}</h4>
-    {{/if}}
-    {{>login}}
+        <input type="password" id="passwordConfirmed" class="form-control"  name="passwordConfirmed"><br>
+    </div>
+
+    {{>personal-info}}
+
+    <button id="register" type="submit"><a href="/profile">Register User</a></button>
+</form>
+{{#if message}}
+<h4 class="alert">{{message}}</h4>
+{{/if}}
+{{>login}}
