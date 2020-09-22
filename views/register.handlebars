@@ -1,8 +1,9 @@
 {{>main-page}}
-<h1>Register Form</h1>
 
 <!--FORM ACTION BELOW WILL NOT POST - /API/SIGNUP-->
-<form action="/api/register" method="POST">
+<form action="/api/signup" id="registerForm" method="POST">
+<h1>Register Form</h1>
+<br>
     <div class="form-row">
         <div class="col">
             <label for="firstName">First Name:</label> <br>
@@ -34,7 +35,7 @@
 
     {{>personal-info}}
 
-    <button id="register" type="submit"><a href="/profile">Register User</a></button>
+    <button id="signup" class="bttn  btn-lg" type="submit">Register User</button>
 </form>
 {{#if message}}
 <h4 class="alert">{{message}}</h4>

@@ -29,15 +29,7 @@ module.exports = function(sequelize, DataTypes) {
           isEmail: true
         }
       },
-      userName: {
-        type: DataTypes.STRING,
-        unique: true,
-        allowNull: false,
-        field: 'password',
-        validate: {
-            len: [5]
-          }
-      },
+      
       password: {
         type: DataTypes.STRING,
         allowNull: true,

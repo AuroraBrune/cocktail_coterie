@@ -2,22 +2,21 @@ const passport = require("../config/passport");
 const db = require("../models");
 const express = require("express");
 const router = express.Router();
-const SavedCocktail = require("../models");
 const path = require("path");
 
 //Duplicates since they both require models??  Could use db?
-const user = require("../models");
-const guest = require("../models");
+// const user = require("../models");
+// const guest = require("../models");
 
 
 //Create user
-router.post("../models/user", function (req, res, cb) {
-    db.user.create({
+router.post("/api/signup", function (req, res, cb) {
+    db.User.create({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
         userName: req.body.userName,
-        password: req.body.password, 
+        //password: req.body.password, 
         //<-- not necessary because password is handed on user.js file
         //Should hashed password replace that?  password:hashedPassword
         //passwordConfirmed: hashedPassword
