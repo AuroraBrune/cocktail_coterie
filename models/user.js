@@ -45,9 +45,6 @@ module.exports = function(sequelize, DataTypes) {
         validate: {
             len: [5]
           }
-<<<<<<< HEAD
-      }
-=======
       },
       zoomLink: {
         type: DataTypes.STRING,
@@ -65,7 +62,6 @@ module.exports = function(sequelize, DataTypes) {
             len: [1]
           }
         }
->>>>>>> 241ee2abd7aa20ff22b28a67de924576dbb7fc7f
     });
     User.associate = function(models) {
 <<<<<<< HEAD

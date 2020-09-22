@@ -1,9 +1,5 @@
 const passport = require("../config/passport");
 const db = require("../models");
-<<<<<<< HEAD
-const path = require("path");
-=======
->>>>>>> fb6ce7e2f166dbf5819ae3ff181782b8ef46ca27
 const express = require("express");
 const router = express.Router();
 const SavedCocktail = require("../models");
