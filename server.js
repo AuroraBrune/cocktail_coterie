@@ -11,8 +11,6 @@ Must meet good-quality coding standards (indentation, scoping, naming, etc.)
 Must protect API keys in Node with environement variables - WORKING
 */
 
-// For some reason, password won't convert to bcrypt when registering.
-
 // Requiring necessary npm packages
 var express = require("express");
 var session = require("express-session");
@@ -24,7 +22,7 @@ const mysql = require('mysql');
 const cookieParser = require('cookie-parser');
 
 // Requiring passport as we've configured it
-//var passport = require("./config/passport");
+var passport = require("./config/passport");
 
 // Setting up port and requiring models for syncing
 var PORT = process.env.PORT || 8080;
@@ -41,9 +39,8 @@ app.use(express.static("public"));
 var exphbs = require("express-handlebars");
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-// app.engine('.handlebars', hbs({extname: '.handlebars'}))
 app.set("view engine", "handlebars");
-// app.set('view engine', '.handlebars');
+
 
 //Makes html public view, and accesses database and protects it
 const publicDirectory = path.join(__dirname, './public');
@@ -53,14 +50,22 @@ app.use(express.json());
 app.use(cookieParser());
 
 // We need to use sessions to keep track of our user's login status
-//app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
-//app.use(passport.initialize());
-//app.use(passport.session());
+app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+<<<<<<< HEAD
+
+=======
+>>>>>>> 241ee2abd7aa20ff22b28a67de924576dbb7fc7f
 
 // Requiring our routes
+
 app.use('/', require('./routes/api-routes.js'));
 app.use('/', require('./routes/html-routes.js'));
-app.use('/auth', require('./routes/auth'));
+
+//Homework had the following
+//require("./routes/html-routes.js")(app);
+//require("./routes/api-routes.js")(app);
 
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync().then(function() {
