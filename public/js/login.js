@@ -8,6 +8,7 @@ $(document).ready(function () {
   var loginForm = $("#popup");
   var emailInput = $("#email");
   var passwordInput = $("#password");
+  
 
   // When the form is submitted, we validate there's an email and password entered
   loginForm.on("submit", function (event) {
