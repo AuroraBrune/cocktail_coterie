@@ -33,9 +33,14 @@ router.get("/saved-cocktails", function (req, res) {
   res.render("saved-cocktails")
 });
 
+router.get("/:pageName", function (req, res){
+     res.sendFile(path.join(__dirname, "../views/Invitations/" + req.params.pageName + ".html"))
+})
+
 router.get('/', (req, res) => {
   res.render('index');
 });
+
 
 //Reaction after Signup
 // router.get("/", function (req, res) {

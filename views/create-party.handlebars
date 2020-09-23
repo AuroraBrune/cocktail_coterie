@@ -1,58 +1,88 @@
 {{>navbar}}
-<header>Create New Party</header>
-<form>
-
-    <div class="form-group">
-        <label for="partyName">Party Name</label>
-        <input class="form-control" id="partyName">
+<div id="party-form" class="container">
+    <div class="row">
+        <h1>Create New Party</h1>
     </div>
+    <div class="row">
+        <div class="col"></div>
+        <form class="col-lg-8">
 
-    <div class="form-group">
-        <label for="cocktailChoice">Choose your Cocktail</label>
-        <select type="submit" class="form-control" id="cocktailChoice">
-            {{#each cocktail}}
-            <option data={{id}}>{{drinkName}}</option>
-            {{/each}}
-        </select>
+            <div class="form-group">
+                <label for="peronal-message">Email</label>
+                <input class="form-control" id="emailId" ></input>
+            </div>
+
+            <div class="form-group">
+                <label for="partyName">Party Name</label>
+                <input class="form-control" id="partyName">
+            </div>
+
+            <div class="form-group">
+                <label for="cocktailChoice">Choose your Cocktail</label>
+                <select type="submit" class="form-control" id="cocktailChoice">
+                    {{#each cocktail}}
+                    <option data={{id}}>{{drinkName}}</option>
+                    {{/each}}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Date">Date</label>
+                <input class="form-control" id="date" placeholder="  /  /  ">
+            </div>
+
+            <div class="form-group">
+                <label for="Date">Time</label>
+                <input class="form-control" id="time" placeholder="  :  ">
+            </div>
+            <!-- <button class="simplepicker-btn">Pick Your Party Date and Time</button>
+        <div class="event-log">Date and Time of Party:<br></div>-->
+
+            <div class="form-group">
+                <label for="peronal-message">Description</label>
+                <textarea class="form-control" id="description" rows="3"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="zoom-link">Your Zoom Link</label>
+                <input type="text" class="form-control" id="zoom-link" placeholder="zoom-link" value={{zoom}}>
+            </div>
+            <button id="invitation-complete"  class="btn btn-primary" data-toggle="modal"
+                data-target="#shareModal">Send Invitations</button>
+            <p>*Remember You Can Only Have One Party At a Time!</p>
+            <!--look up customize share on share.com-->
+
+        </form>
+
+        <div class="col"></div>
     </div>
+</div>
+<div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="myModalLabel" style="display:none">
+    <div class="modal-dialog  modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Share</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <form class="link-share">
+                    <fieldset>
+                        <div class="form-top">
+                            <div class="form-top-left">
+                                <div class="form-top-right">
+                                    <i class="fa fa-key"></i>
+                                </div>
+                            </div>
 
-    <div class="form-group">
-        <label for="Date">Date and Time</label>
-        <button class="simplepicker-btn">Pick Your Party Date and Time</button>
-        <div class="event-log">Date and Time of Party:<br></div>
-    </div>
+                            <div class="form-row">
+                                <label for="link">Copy this link</label><br>
+                                <a name="link-popup" href="#" class="form-control" id="link" type="text"></a>
+                            </div>
 
-    <div class="form-group">
-        <label for="peronal-message">Description</label>
-        <textarea class="form-control" id="description" rows="3"></textarea>
-    </div>
-
-    <div class="form-group">
-        <label for="zoom-link">Your Zoom Link</label>
-        <input type="text" class="form-control" id="zoom-link" placeholder="zoom-link" value={{zoom}}>
-    </div>
-
-    <button id="invitation-complete" type="submit" class="btn btn-primary" data-toggle="modal"
-        data-target="shareModal">Send Invitations</button>
-    <!--look up customize share on share.com-->
-
-    <div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="titleShare">Share</h4>
-                </div>
-                <div class="modal-body">
-                    <input type="text" class="form-control" id="invitation-link" placeholder="party-link">
-                    <button id="invitation-share" type="button" class="btn" id="invitation-html">Share</button>
-                </div>
+                    </fieldset>
+                </form>
             </div>
         </div>
     </div>
-
-
-
-</form>
+</div>

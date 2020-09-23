@@ -6,6 +6,9 @@ body{
     font-size:18px;
     font-family: 'Libre Baskerville', serif;
 }
+h1{
+    text-align:center;
+}
 header{
     text-align: center;
     background-color: rgba(233, 126, 144, 0.822);
@@ -42,12 +45,22 @@ nav{
     border-radius:8px;
     text-decoration:underline;
     padding: 10px;
-    margin-top:15px;
+    margin:5px;
 }
 .developers:hover{
     color:white;
     background-color: rgba(233, 126, 144, 0.822);
     border-color: rgba(233, 126, 144, 0.822);
+}
+.dev-card{
+    width: 260px;
+    margin:0px;
+}
+.card{
+    width: 235px;
+    height: 275px;
+    margin:0px;
+    background-color: rgb(248, 136, 201);
 }
 .emails{
     font-size:16px;
@@ -120,6 +133,26 @@ pre{
     background-position-y: top;
     background-size: contain;*/
 /*search cocktails page */
+.searching{
+    background-color:rgb(175 34 79 / 66%);
+    padding:20px;
+    margin:10px;
+    
+}
+.cocktailSearch{
+    padding:5px;
+    margin:10px;
+    font-weight: 900;
+    color:white;
+    background-color: rgb(246, 80, 108);
+    border-color:rgb(246, 80, 108);
+}
+.cocktailSearch:hover{
+    background-color:pink;
+    border-color:pink;
+    color:rgb(172, 60, 79);
+    
+}
     .cocktailImg {
         border: 1px solid #ddd;
         border-radius: 4px;
@@ -130,4 +163,22 @@ pre{
     margin:30px;
     background-color:rgb(175 34 79 / 66%);
     padding:20px;
+}
+/*new party page*/
+#party-form{
+    background-color:rgb(175 34 79 / 66%);
+    padding:20px;   
+}
+#invitation-complete{
+    margin-top: 10px;
+    margin-bottom:15px;
+    color:white;
+    background-color: rgb(246, 80, 108);
+    border-color:rgb(246, 80, 108);
+}
+#invitation-complete:hover{
+    background-color:pink;
+    border-color:pink;
+    color:rgb(172, 60, 79);
+    font-weight: 900;
 }

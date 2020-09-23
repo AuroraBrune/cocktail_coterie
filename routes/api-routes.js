@@ -97,15 +97,16 @@ router.post("/api/guest", function(req, res, cb) {
 
 // If the user has valid login credentials, send them to the members page.
 router.post("/api/login", passport.authenticate("local"), function(req, res) {
-    //res.json(req.user);
+    console.log("logged in")
+   // res.json(req.User);
     res.redirect("/profile")
 });
 
     // Logging In
-router.get("/login", function(req, res) {
-req.login();
-res.redirect("/profile");
-});
+// router.get("/login", function(req, res) {
+// req.login();
+// res.redirect("/profile");
+// });
 // Logging Out
 router.get("/logout", function(req, res) {
 req.logout();
@@ -124,6 +125,45 @@ if (!req.user) {
     });
 }
 });
+
+router.post("/api/writeInvitation", function(req, res){
+const fs = require("fs")
+const util = require("util")
+
+//changes fs.writeFile into a promise oriented object
+const writeFileAsync = util.promisify(fs.writeFile)
+console.log(req.body)
+let {email, name, date, time, description, zoom} = req.body
+//use email to get user id 
+let pageName = email.split("@")[0] + "-" + name
+writeFileAsync( "./views/Invitations/" + pageName + ".html",
+`<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!--brings in bootstrap and the jquery bootstrap requires-->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+		<!-- google fonts-->
+		<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+		<!--personal css-->
+		<link rel="stylesheet" href="/css/style.css" />
+		<!--tab icon -->
+		<link rel="icon" href="images/favicon.ico" alt = "logo"><br>
+    <title>${name}</title>
+  </head>
+  <body>
+  <h1>${name}</h1>
+  <h1>${date}</h1>
+  <h1>${time}</h1>
+  <h1>${description}</h1>
+  <h1>${zoom}</h1>
+  </body>
+  </html>`)
+  .then(function(err){
+      if(err) res.json(err);
+      res.json(pageName)
+  })
+})
 
 
 module.exports = router;

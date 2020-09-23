@@ -1,11 +1,10 @@
 {{>navbar}}
-<header>Welcome to Cocktail_Coterie</header>
 <h1>{{User.firstName}}</h1>
 <h1>{{User.lastName}}</h1>
 <p>{{User.email}}</p>
 <p>{{User.zoom}}</p>
 <div>
-    {{#each User.preferance}}
+    {{#each User.prefDrink}}
     <ul>
         {{this}}
     </ul>
