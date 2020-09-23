@@ -98,7 +98,7 @@ $("#select-drink").on("click", function(event) {
  // Preventing the button from trying to submit the form
  event.preventDefault();
  // Storing the drink name
- var inputDrink = $("#drink-input").val().trim();
+ let inputDrink = $("#drink-input").val().trim();
 
  // Running the searchCocktailDB function(passing in the artist as an argument)
  searchCocktailDB(inputDrink);
@@ -107,7 +107,7 @@ $("#select-drink").on("click", function(event) {
 function searchCocktailDBByIngredient(ingredient) {
 // process.env.API_COCKTAIL
 // Querying the Cocktail DB api for the selected drink, the ?app_id parameter is required, but can equal anything
-var queryURL = "https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=" + ingredient;
+let queryURL = "https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=" + ingredient;
 $.ajax({
 url: queryURL,
 method: "GET"
@@ -119,7 +119,7 @@ method: "GET"
    // Constructing HTML containing the drink information
    for(i=0; i<response.drinks.length; i++){
      console.log('C', i);
-     var drinkName = $("<h1>").text(response.drinks[i]['strDrink']);
+     let drinkName = $("<h1>").text(response.drinks[i]['strDrink']);
      let ingredientString = ''
      
      if (response.drinks[i]['strMeasure1'] + response.drinks[i]['strIngredient1']) {
@@ -183,9 +183,9 @@ method: "GET"
     }
     
      let drinkContain =$("<div>").attr("class", "cocktailContainer")
-     var ingredients = $("<h2>").text(ingredientString)
-     var directions = $("<h2>").text(response.drinks[i]['strInstructions']);
-     var drinkImage = $("<img>").attr("src", response.drinks[i]['strDrinkThumb']).attr("class", "cocktailImg");
+     let ingredients = $("<h2>").text(ingredientString)
+     let directions = $("<h2>").text(response.drinks[i]['strInstructions']);
+     let drinkImage = $("<img>").attr("src", response.drinks[i]['strDrinkThumb']).attr("class", "cocktailImg");
      let saveBttn = $("<button>").text("Save").attr("id", "save-cocktail") 
      // Empty the contents of the drink-div, append the new drink content
      //$("#drink-div").empty();
@@ -201,7 +201,7 @@ $("#select-ingredient").on("click", function(event) {
  // Preventing the button from trying to submit the form
  event.preventDefault();
  // Storing the drink name
- var inputIngredient = $("#ingredient-input").val().trim();
+ let inputIngredient = $("#ingredient-input").val().trim();
 
  // Running the searchCocktailDB function(passing in the ingredient as an argument)
  searchCocktailDBByIngredient(inputIngredient);

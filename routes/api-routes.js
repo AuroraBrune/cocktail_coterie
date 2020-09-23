@@ -96,10 +96,9 @@ router.post("/api/guest", function(req, res, cb) {
 
 
 // If the user has valid login credentials, send them to the members page.
-router.post("/api/login", 
-//passport.authenticate("local"), 
-function(req, res) {
-    //res.json(req.user);
+router.post("/api/login", passport.authenticate("local"), function(req, res) {
+    console.log("logged in")
+    res.json(req.User);
     res.redirect("/profile")
 });
 

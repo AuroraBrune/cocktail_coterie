@@ -1,26 +1,35 @@
 {{>navbar}}
 <!--basically set up in test-file.html -->
-<header>Search for your new fav Cocktail!</header>
-<form id="drink-form">
-    <label for="drink-input">Search by Drink Name</label>
-    <input type="text" id="drink-input"><br>
+<div class="container">
 
-    <!-- Submit Button -->
-    <input id="select-drink" type="submit" value="GO!">
-</form>
+    <div class="row">
+    <div class="col-lg-12">
+        <h1 class="searching">Search for your new fav Cocktail!</h1>
+    </div>
+    
+        <div class="col">
+            <form class="searching" id="drink-form">
+                <label for="drink-input">Search by Drink Name:</label><br>
+                <input type="text" id="drink-input">
 
-<!-- Ingredient Select Box -->
-<form id="ingredient-form">
-    <label for="ingredient-input">Search by Ingredient Included</label>
-    <input type="text" id="ingredient-input"><br>
+                <!-- Submit Button -->
+                <input class="cocktailSearch" id="select-drink" type="submit" value="GO!">
+            </form>
+        </div>
 
-    <!-- Submit Button -->
-    <input id="select-ingredient" type="submit" value="GO!">
-</form>
+        <div class="col">
+            <form class="searching" id="ingredient-form">
+                <label for="ingredient-input">Search by Ingredient:</label><br>
+                <input  type="text" id="ingredient-input">
 
+                <!-- Submit Button -->
+                <input class="cocktailSearch" id="select-ingredient" type="submit" value="GO!">
+            </form>
+        </div>
+    </div>
+</div>
 <!-- Drink Information -->
 <div id="drink-div"></div>
 
 <!-- Drink Information -->
 <div id="ingredient-div"></div>
-
