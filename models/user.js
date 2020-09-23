@@ -54,7 +54,9 @@ module.exports = function(sequelize, DataTypes) {
 //Hash the password
 //had a null after genSalt
   User.addHook("beforeCreate", function(user) {
+    console.log(typeof user.password);
     user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
+   
   });
   return User;
 };
