@@ -131,3 +131,13 @@ pre{
     background-color:rgb(175 34 79 / 66%);
     padding:20px;
 }
+/*new party page*/
+#party-form{
+    background-color:rgb(175 34 79 / 66%);
+    padding:20px;   
+}
+#invitation-complete{
+    color:white;
+    background-color: rgb(246, 80, 108);
+    border-color:rgb(246, 80, 108);
+}

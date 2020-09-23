@@ -7,7 +7,7 @@
                         aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
-                <form method="post" action="/members">
+                <form class="login">
                     <fieldset>
                         <div class="form-top">
                             <div class="form-top-left">
@@ -19,7 +19,7 @@
 
                             <div class="form-row">
                                 <label for="email">Email</label><br>
-                                <input name="email" placeholder="Email..." class="form-control" id="email" type="text">
+                                <input name="email-popup" placeholder="Email..." class="form-control" id="email" type="text">
                             </div>
 
                             <br>
@@ -27,7 +27,7 @@
                             <div class="form-row">
                                 <label for="password">Password</label><br>
                                 <input name="password" placeholder="Password..." class="form-password form-control"
-                                    id="password" type="password">
+                                    id="password-popup" type="password">
                             </div>
 
                             <br>
@@ -35,7 +35,7 @@
                                 <div class="col"></div>
 
                                 <div class="col">
-                                    <button type="button" method="submit" id="popup" class="btn btn-login popUp">Login</button>
+                                    <button type="submit" method="post" id="popupBtn" class="btn popUp">Login</button>
                                 </div>
                                 
                                 <div class="col"></div>

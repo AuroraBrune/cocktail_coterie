@@ -5,19 +5,22 @@
 
 $(document).ready(function () {
   // Getting references to our form and inputs
-  var loginForm = $("#popup");
-  var emailInput = $("#email");
-  var passwordInput = $("#password");
+  let loginForm = $("form.login");
+  let emailInput = $("#email-popup");
+  let passwordInput = $("#password-popup");
   
 
   // When the form is submitted, we validate there's an email and password entered
   loginForm.on("submit", function (event) {
     event.preventDefault();
-    var userData = {
+    console.log("onclick")
+    console.log(emailInput)
+    console.log(passwordInput)
+    let userData = {
       email: emailInput.val().trim(),
       password: passwordInput.val().trim()
     };
-
+    console.log(userData)
     if (!userData.email || !userData.password) {
       return;
     }
