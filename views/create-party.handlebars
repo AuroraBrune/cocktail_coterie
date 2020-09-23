@@ -1,11 +1,16 @@
 {{>navbar}}
 <div id="party-form" class="container">
     <div class="row">
-    <h1>Create New Party</h1>
+        <h1>Create New Party</h1>
     </div>
     <div class="row">
         <div class="col"></div>
         <form class="col-lg-8">
+
+            <div class="form-group">
+                <label for="peronal-message">Email</label>
+                <input class="form-control" id="emailId" ></input>
+            </div>
 
             <div class="form-group">
                 <label for="partyName">Party Name</label>
@@ -30,7 +35,7 @@
                 <label for="Date">Time</label>
                 <input class="form-control" id="time" placeholder="  :  ">
             </div>
-                <!-- <button class="simplepicker-btn">Pick Your Party Date and Time</button>
+            <!-- <button class="simplepicker-btn">Pick Your Party Date and Time</button>
         <div class="event-log">Date and Time of Party:<br></div>-->
 
             <div class="form-group">
@@ -42,8 +47,9 @@
                 <label for="zoom-link">Your Zoom Link</label>
                 <input type="text" class="form-control" id="zoom-link" placeholder="zoom-link" value={{zoom}}>
             </div>
-            <button id="invitation-complete" type="submit" class="btn btn-primary" data-toggle="modal"
-                data-target="#shareModal">Send Invitations</button> <p>*Remember You Can Only Have One Party At a Time!</p>
+            <button id="invitation-complete"  class="btn btn-primary" data-toggle="modal"
+                data-target="#shareModal">Send Invitations</button>
+            <p>*Remember You Can Only Have One Party At a Time!</p>
             <!--look up customize share on share.com-->
 
         </form>
@@ -51,7 +57,7 @@
         <div class="col"></div>
     </div>
 </div>
-<div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="myModalLabel" style="display:none">
     <div class="modal-dialog  modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
