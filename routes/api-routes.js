@@ -9,15 +9,15 @@ router.post("/api/signup", function (req, res, cb) {
     db.User.create({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        email: req.body.email
-        //password: req.body.password, 
+        email: req.body.email,
+        password: req.body.password, 
         //<-- not necessary because password is handed on user.js file
         //Should hashed password replace that?  password:hashedPassword
         //passwordConfirmed: hashedPassword
        // prefDrink: req.body.prefDrink,
     }).then(function (dbUser) {
         res.json(dbUser);
-        //res.redirect(307, "/api/login");
+        // res.redirect(307, "/api/login");
         cb();
     }).catch(function(err) {
         console.log(err);

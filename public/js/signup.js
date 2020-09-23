@@ -9,31 +9,29 @@ $(document).ready(function () {
   let lastName = $("input#lastName");
   let emailInput = $("#emailRegister");
   let passwordInput = $("#passwordRegister");
+  console.log(passwordInput)
   // How to work in {{>personal-info}} information?
   //let zoomInput = $("input#zoom");
   
-  
+
+
   // When the signup button is clicked, we validate the email and password are not blank
   signUpForm.on("submit", function (event) {
-      event.preventDefault();
-      console.log(passwordInput)
+    event.preventDefault();
     let userData = {
-        email: emailInput.val().trim(),
-        password: passwordInput.val().trim(),
-        firstName: firstName.val().trim(),
-        lastName: lastName.val().trim(),
+      email: emailInput.val().trim(),
+      password: passwordInput.val().trim(),
+      firstName: firstName.val().trim(),
+      lastName: lastName.val().trim(),
     };
-    console.log(userData.password)
-
-    if ((userData.email === null) || (!userData.password === null)) {
-        alert("must have email and password")
-        return; 
+console.log(userData.password)
+    if (!userData.email || !userData.password) {
+      return;
     }
     // Minimum data necessary
-   else{
-          signUpUser(userData.email, userData.password, userData.firstName, userData.lastName);
-   }
-       
+    else{
+        signUpUser(userData.email, userData.password, userData.firstName, userData.lastName);
+    }
     emailInput.val("");
     passwordInput.val("");
 

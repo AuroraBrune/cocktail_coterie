@@ -88,7 +88,7 @@ function searchCocktailDB(drink) {
      let saveBttn = $("<button>").text("Save").attr("id", "save-cocktail")
      // Empty the contents of the drink-div, append the new drink content
      //$("#drink-div").empty();
-     $("#drink-div").append(drinkName, ingredients, directions, drinkImage, saveBttn); 
+     $("#drink-div").append(drinkName, drinkImage, ingredients, directions, saveBttn); 
    }
  });
 }
@@ -182,14 +182,16 @@ method: "GET"
        ingredientString += ', ' + response.drinks[i]['strMeasure15'] + response.drinks[i]['strIngredient15']
     }
     
-     
+     let drinkContain =$("<div>").attr("class", "cocktailContainer")
      var ingredients = $("<h2>").text(ingredientString)
      var directions = $("<h2>").text(response.drinks[i]['strInstructions']);
-     var drinkImage = $("<img>").attr("src", response.drinks[i]['strDrinkThumb']);
+     var drinkImage = $("<img>").attr("src", response.drinks[i]['strDrinkThumb']).attr("class", "cocktailImg");
      let saveBttn = $("<button>").text("Save").attr("id", "save-cocktail") 
      // Empty the contents of the drink-div, append the new drink content
      //$("#drink-div").empty();
-     $("#drink-div").append(drinkName, ingredients, directions, drinkImage, saveBttn); 
+     
+     drinkContain.append(drinkName, drinkImage, ingredients, directions, saveBttn); 
+     $("#drink-div").append(drinkContain)
    }
  });
 }
