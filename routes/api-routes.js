@@ -140,6 +140,15 @@ writeFileAsync( "./views/Invitations/" + pageName + ".html",
 `<!DOCTYPE html>
 <html lang="en">
   <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!--brings in bootstrap and the jquery bootstrap requires-->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+		<!-- google fonts-->
+		<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+		<!--personal css-->
+		<link rel="stylesheet" href="/css/style.css" />
+		<!--tab icon -->
+		<link rel="icon" href="images/favicon.ico" alt = "logo"><br>
     <title>${name}</title>
   </head>
   <body>
