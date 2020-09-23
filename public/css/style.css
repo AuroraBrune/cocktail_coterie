@@ -119,10 +119,15 @@ pre{
     background-position-x: center;
     background-position-y: top;
     background-size: contain;*/
-
-    img {
+/*search cocktails page */
+    .cocktailImg {
         border: 1px solid #ddd;
         border-radius: 4px;
         padding: 5px;
         width: 150px;
-      }
+    }
+.cocktailContainer{
+    margin:30px;
+    background-color:rgb(175 34 79 / 66%);
+    padding:20px;
+}

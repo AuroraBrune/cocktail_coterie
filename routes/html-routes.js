@@ -29,8 +29,8 @@ router.get("/search-cocktails", function (req, res) {
   res.render("search-cocktails")
 });
 
-router.get("/saved-cocktails ", function (req, res) {
-  res.render("saved-cocktails ")
+router.get("/saved-cocktails", function (req, res) {
+  res.render("saved-cocktails")
 });
 
 router.get('/', (req, res) => {
