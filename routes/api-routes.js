@@ -98,7 +98,7 @@ router.post("/api/guest", function(req, res, cb) {
 // If the user has valid login credentials, send them to the members page.
 router.post("/api/login", passport.authenticate("local"), function(req, res) {
     console.log("logged in")
-    res.json(req.User);
+   // res.json(req.User);
     res.redirect("/profile")
 });
 
@@ -125,6 +125,36 @@ if (!req.user) {
     });
 }
 });
+
+router.post("/api/writeInvitation", function(req, res){
+const fs = require("fs")
+const util = require("util")
+
+//changes fs.writeFile into a promise oriented object
+const writeFileAsync = util.promisify(fs.writeFile)
+console.log(req.body)
+let {email, name, date, time, description, zoom} = req.body
+//use email to get user id 
+let pageName = email.split("@")[0] + "-" + name
+writeFileAsync( "./views/Invitations/" + pageName + ".html",
+`<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>${name}</title>
+  </head>
+  <body>
+  <h1>${name}</h1>
+  <h1>${date}</h1>
+  <h1>${time}</h1>
+  <h1>${description}</h1>
+  <h1>${zoom}</h1>
+  </body>
+  </html>`)
+  .then(function(err){
+      if(err) res.json(err);
+      res.json(pageName)
+  })
+})
 
 
 module.exports = router;

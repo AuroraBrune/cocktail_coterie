@@ -7,7 +7,7 @@
 function searchCocktailDB(drink) {
   // process.env.API_COCKTAIL
  // Querying the Cocktail DB api for the selected drink, the ?app_id parameter is required, but can equal anything
- var queryURL = "https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=" + drink;
+ let queryURL = "https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=" + drink;
  $.ajax({
    url: queryURL,
    method: "GET"
@@ -19,7 +19,7 @@ function searchCocktailDB(drink) {
    // Constructing HTML containing the drink information
    for(i=0; i<response.drinks.length; i++){
      console.log('C', i);
-     var drinkName = $("<h1>").text(response.drinks[i]['strDrink']);
+     let drinkName = $("<h1>").text(response.drinks[i]['strDrink']);
        let ingredientString = ''
      
      if (response.drinks[i]['strMeasure1'] + response.drinks[i]['strIngredient1']) {
@@ -81,14 +81,15 @@ function searchCocktailDB(drink) {
      if (response.drinks[i]['strMeasure15'] + response.drinks[i]['strIngredient15']) {
        ingredientString += ', ' + response.drinks[i]['strMeasure15'] + response.drinks[i]['strIngredient15']
     }
-    
-     var ingredients = $("<h2>").text(ingredientString)
-     var directions = $("<h2>").text(response.drinks[i]['strInstructions']);
-     var drinkImage = $("<img>").attr("src", response.drinks[i]['strDrinkThumb']);
+     let drinkContain =$("<div>").attr("class", "cocktailContainer")
+     let ingredients = $("<h2>").text(ingredientString)
+     let directions = $("<h2>").text(response.drinks[i]['strInstructions']);
+     let drinkImage = $("<img>").attr("src", response.drinks[i]['strDrinkThumb']);
      let saveBttn = $("<button>").text("Save").attr("id", "save-cocktail")
      // Empty the contents of the drink-div, append the new drink content
      //$("#drink-div").empty();
-     $("#drink-div").append(drinkName, drinkImage, ingredients, directions, saveBttn); 
+     drinkContain.append(drinkName, drinkImage, ingredients, directions, saveBttn); 
+     $("#drink-div").append(drinkContain)
    }
  });
 }
