@@ -38,25 +38,25 @@ router.get('/', (req, res) => {
 });
 
 //Reaction after Signup
-router.get("/", function (req, res) {
-  if (req.user) {
-    res.redirect("/profile");
-  }
-  res.sendFile(path.join(__dirname, "../public/signup.html"));
-});
+// router.get("/", function (req, res) {
+//   if (req.user) {
+//     res.redirect("/profile");
+//   }
+//   res.sendFile(path.join(__dirname, "../public/profile.html"));
+// });
 
-//Login Results
-router.get("/login", function (req, res) {
-  if (req.user) {
-    res.redirect("/profile");
-  }
-  res.sendFile(path.join(__dirname, "../public/login.html"));
-});
+// //Login Results
+// router.get("/login", function (req, res) {
+//   if (req.user) {
+//     res.redirect("/profile");
+//   }
+//   res.sendFile(path.join(__dirname, "../public/login.html"));
+// });
 
-// If a user who is not logged in tries to access this route they will be redirected to the signup page
-router.get("/profile", isAuthenticated, function (req, res) {
-  res.sendFile(path.join(__dirname, "/index"));
-});
+// // If a user who is not logged in tries to access this route they will be redirected to the signup page
+// router.get("/profile", isAuthenticated, function (req, res) {
+//   res.sendFile(path.join(__dirname, "/index"));
+// });
 
 module.exports = router;
 

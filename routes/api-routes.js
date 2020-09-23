@@ -16,9 +16,9 @@ router.post("/api/signup", function (req, res, cb) {
         //passwordConfirmed: hashedPassword
        // prefDrink: req.body.prefDrink,
     }).then(function (dbUser) {
-        res.json(dbUser);
-        // res.redirect(307, "/api/login");
-        cb();
+       // res.json(dbUser);
+        res.redirect("/profile");
+       cb()
     }).catch(function(err) {
         console.log(err);
         res.status(401).json(err);
@@ -97,13 +97,14 @@ router.post("/api/guest", function(req, res, cb) {
 
 // If the user has valid login credentials, send them to the members page.
 router.post("/api/login", passport.authenticate("local"), function(req, res) {
-    res.json(req.user);
+    //res.json(req.user);
+    res.redirect("/profile")
 });
 
     // Logging In
 router.get("/login", function(req, res) {
 req.login();
-res.redirect("/");
+res.redirect("/profile");
 });
 // Logging Out
 router.get("/logout", function(req, res) {
