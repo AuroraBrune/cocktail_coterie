@@ -41,7 +41,7 @@ router.put("/api/users/update", function (req, res, cb) {
 });
 
 //Retrieve cocktail saved
-router.get("../models/saved-cocktail:id", function (req, res, cb) {
+router.get("/api/saved-cocktail:id", function (req, res, cb) {
     db.SavedCocktail.fineOne({
         where: {
             id: req.params.id
@@ -53,7 +53,7 @@ router.get("../models/saved-cocktail:id", function (req, res, cb) {
 });
 
 //Find all cocktails saved
-router.get("../models/saved-cocktail", function (req, res, cb) {
+router.get("/api/saved-cocktail", function (req, res, cb) {
     db.SavedCocktail.findAll({}).then(function (dbSavedCocktail) {
         res.json(dbSavedCocktail);
         cb();
@@ -61,7 +61,7 @@ router.get("../models/saved-cocktail", function (req, res, cb) {
 });
 
 // //Update cocktail saved
-router.put("../models/saved-cocktail:id", function (req, res, cb) {
+router.put("/api/saved-cocktail:id", function (req, res, cb) {
     db.SavedCocktail.update({
         userId: req.body.userId,
         cocktailID: req.body.cocktailID
@@ -70,7 +70,7 @@ router.put("../models/saved-cocktail:id", function (req, res, cb) {
 });
 
 // //Delete cocktail
-router.delete("../models/saved-cocktail:id", function (req, res, cb) {
+router.delete("/api/saved-cocktail:id", function (req, res, cb) {
     db.SavedCocktail.findOne({
         where: {
             id: req.params.id
@@ -82,7 +82,7 @@ router.delete("../models/saved-cocktail:id", function (req, res, cb) {
 });
 
 //Create Guest 
-router.post("../models/guest", function(req, res, cb) {
+router.post("/api/guest", function(req, res, cb) {
     db.Guest.create({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
