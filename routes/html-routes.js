@@ -37,39 +37,37 @@ router.get("/search-cocktails", function (req, res) {
   res.render("search-cocktails")
 });
 
-router.get("/saved-cocktails", function (req, res) {
-  res.render("saved-cocktails")
-});
+// router.get("/saved-cocktails", function (req, res) {
+//   res.render("saved-cocktails")
+// });
 
-// router.get("/:pageName", function (req, res) {
-//   res.sendFile(path.join(__dirname, "../views/Invitations/" + req.params.pageName + ".html"))
-// })
+router.get("/:pageName", function (req, res) {
+  console.log(req.params.pageName)
+  switch(req.params.pageName){
+    case  "saved-cocktails":
+    break;
+
+    case  "search-cocktails":
+    break;
+
+    case "create-party":
+    break;
+
+    case "profile":
+    break;
+
+    case "register":
+    break;
+
+    default:
+    res.sendFile(path.join(__dirname, "../views/Invitations/" + req.params.pageName + ".html"))
+  
+  }
+})
 
 router.get('/', (req, res) => {
   res.render('index');
 });
-
-
-//Reaction after Signup
-// router.get("/", function (req, res) {
-//   if (req.user) {
-//     res.redirect("/profile");
-//   }
-//   res.sendFile(path.join(__dirname, "../public/profile.html"));
-// });
-
-// //Login Results
-// router.get("/login", function (req, res) {
-//   if (req.user) {
-//     res.redirect("/profile");
-//   }
-//   res.sendFile(path.join(__dirname, "../public/login.html"));
-// });
-
-// // If a user who is not logged in tries to access this route they will be redirected to the signup page
-// router.get("/profile", isAuthenticated, function (req, res) {
-//   res.sendFile(path.join(__dirname, "/index"));
-// });
 
 module.exports = router;
 
