@@ -1,13 +1,11 @@
 const express = require("express")
+const db = require("../models");
 const router = express.Router();
-var path = require("path");
+const path = require("path");
 
 // Requiring our custom middleware for checking if a user is logged in
-var isAuthenticated = require("../config/middleware/isAuthenticated");
+const isAuthenticated = require("../config/middleware/isAuthenticated");
 
-router.get("/", function (req, res) {
-  res.render("index")
-});
 
 router.get('/register', (req, res) => {
   res.render('register');
@@ -17,8 +15,18 @@ router.get("/login", function (req, res) {
   res.render("login")
 });
 
-router.get("/profile", function (req, res) {
+router.get("/profile", isAuthenticated, async function (req, res, cb) {
+  console.log("got it")
+  // let user = await db.User.findOne({
+  //   where: {
+  //     id: req.params.id
+  //   }
+  // })
+  //console.log(user.dataValues)
   res.render("profile")
+  //{ user: user.dataValues })
+  cb()
+  
 });
 
 router.get("/create-party", function (req, res) {
@@ -33,9 +41,9 @@ router.get("/saved-cocktails", function (req, res) {
   res.render("saved-cocktails")
 });
 
-router.get("/:pageName", function (req, res){
-     res.sendFile(path.join(__dirname, "../views/Invitations/" + req.params.pageName + ".html"))
-})
+// router.get("/:pageName", function (req, res) {
+//   res.sendFile(path.join(__dirname, "../views/Invitations/" + req.params.pageName + ".html"))
+// })
 
 router.get('/', (req, res) => {
   res.render('index');

@@ -1,10 +1,10 @@
 {{>navbar}}
-<h1>{{User.firstName}}</h1>
-<h1>{{User.lastName}}</h1>
-<p>{{User.email}}</p>
-<p>{{User.zoom}}</p>
+<h1>{{user.firstName}}</h1>
+<h1>{{user.lastName}}</h1>
+<p>{{user.email}}</p>
+<p>{{user.zoom}}</p>
 <div>
-    {{#each User.prefDrink}}
+    {{#each user.prefDrink}}
     <ul>
         {{this}}
     </ul>
@@ -16,17 +16,17 @@
 <form style="display:none">
     <div class="form-group">
         <label for="inputFirstName">First Name</label>
-        <input class="form-control" id="inputFirstName" val={{User.firstName}}>
+        <input class="form-control" id="inputFirstName" val={{user.firstName}}>
     </div>
 
     <div class="form-group">
         <label for="inputLastName">Last Name</label>
-        <input class="form-control" id="inputLastName" val={{User.lastName}}>
+        <input class="form-control" id="inputLastName" val={{user.lastName}}>
     </div>
 
     <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="InputEmail1" val={{User.email}}</>
+        <input type="email" class="form-control" id="InputEmail1" val={{user.email}}</>
     </div>
 
     {{>personal-info}}
