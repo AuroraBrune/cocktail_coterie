@@ -1,17 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var Drink = sequelize.define("Drink", {
-      userID: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        validate: {
-          len: [1]
-        }
-      },  
-      showDrink: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-        default: true
-      },    
+    var Drink = sequelize.define("Drink", {   
       strDrink: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -155,219 +143,126 @@ module.exports = function(sequelize, DataTypes) {
         strIngredient1: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-              len: [1]
-            }
           },
         strIngredient2: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-              len: [1]
-            }
           },
         strIngredient3: {
             type: DataTypes.STRING,
             allowNull: true,
-            validate: {
-              len: [1]
-            }
           }, 
         strIngredient4: {
             type: DataTypes.STRING,
             allowNull: true,
-            validate: {
-              len: [1]
-            }
           },
         strIngredient5: {
             type: DataTypes.STRING,
             allowNull: true,
-            validate: {
-              len: [1]
-            }
           },
         strIngredient6: {
             type: DataTypes.STRING,
             allowNull: true,
-            validate: {
-              len: [1]
-            }
           }, 
         strIngredient7: {
             type: DataTypes.STRING,
             allowNull: true,
-            validate: {
-              len: [1]
-            }
           },
         strIngredient8:{
             type: DataTypes.STRING,
             allowNull: true,
-            validate: {
-              len: [1]
-            }
           }, 
         strIngredient9: {
             type: DataTypes.STRING,
             allowNull: true,
-            validate: {
-              len: [1]
-            }
           }, 
         strIngredient10: {
             type: DataTypes.STRING,
             allowNull: true,
-            validate: {
-              len: [1]
-            }
           },
         strIngredient11: {
             type: DataTypes.STRING,
             allowNull: true,
-            validate: {
-              len: [1]
-            }
           }, 
         strIngredient12: {
             type: DataTypes.STRING,
             allowNull: true,
-            validate: {
-              len: [1]
-            }
           },
         strIngredient13: {
             type: DataTypes.STRING,
             allowNull: true,
-            validate: {
-              len: [1]
-            }
           },
         strIngredient14: {
             type: DataTypes.STRING,
             allowNull: true,
-            validate: {
-              len: [1]
-            }
           },
         strIngredient15: {
             type: DataTypes.STRING,
             allowNull: true,
-            validate: {
-              len: [1]
-            }
           },
         strMeasure1: {
             type: DataTypes.STRING,
             allowNull: true,
-            validate: {
-              len: [1]
-            }
           },
         strMeasure2: {
             type: DataTypes.STRING,
             allowNull: true,
-            validate: {
-              len: [1]
-            }
           },
         strMeasure3: {
             type: DataTypes.STRING,
             allowNull: true,
-            validate: {
-              len: [1]
-            }
           },
         strMeasure4: {
             type: DataTypes.STRING,
             allowNull: true,
-            validate: {
-              len: [1]
-            }
           },
         strMeasure5: {
             type: DataTypes.STRING,
             allowNull: true,
-            validate: {
-              len: [1]
-            }
           },
         strMeasure6: {
             type: DataTypes.STRING,
             allowNull: true,
-            validate: {
-              len: [1]
-            }
           },
         strMeasure7: {
             type: DataTypes.STRING,
             allowNull: true,
-            validate: {
-              len: [1]
-            }
           },
         strMeasure8: {
             type: DataTypes.STRING,
             allowNull: true,
-            validate: {
-              len: [1]
-            }
           },
         strMeasure9: {
             type: DataTypes.STRING,
             allowNull: true,
-            validate: {
-              len: [1]
-            }
           },
         strMeasure10: {
             type: DataTypes.STRING,
             allowNull: true,
-            validate: {
-              len: [1]
-            }
           },
         strMeasure11: {
             type: DataTypes.STRING,
             allowNull: true,
-            validate: {
-              len: [1]
-            }
           },
         strMeasure12: {
             type: DataTypes.STRING,
             allowNull: true,
-            validate: {
-              len: [1]
-            }
           },
         strMeasure13: {
             type: DataTypes.STRING,
             allowNull: true,
-            validate: {
-              len: [1]
-            }
           },
         strMeasure14: {
             type: DataTypes.STRING,
             allowNull: true,
-            validate: {
-              len: [1]
-            }
           },
         strMeasure15: {
             type: DataTypes.STRING,
             allowNull: true,
-            validate: {
-              len: [1]
-            }
           },
         strCreativeCommonsConfirmed: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-              len: [1]
-            }
           }
       });
       
