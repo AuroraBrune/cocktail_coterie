@@ -21,7 +21,7 @@ router.get('/profile/:id', async function (req, res, cb) {
       id: req.params.id,
     }
   })
-  res.render('profile', {user: user.dataValues});
+  res.render('profile', { user: user.dataValues });
 });
 
 router.get('/profile/', isAuthenticated, function (req, res) {
@@ -59,7 +59,7 @@ router.get('/:pageName', function (req, res) {
   }
 });
 
-router.get('/', function(req, res) {
+router.get('/', function (req, res) {
   res.render('index');
 });
 
