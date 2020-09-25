@@ -1,20 +1,21 @@
 // search button will call the cocktail api and write response on the page
 // save cocktial will update the database
 
+
+
 function searchCocktailDB(drink) {
-  // process.env.API_COCKTAIL
   // Querying the Cocktail DB api for the selected drink, the ?app_id parameter is required, but can equal anything
-  let queryURL = 'https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=' + drink;
+  let queryURL = '/cocktailsdb/drinks/' + drink
   $.ajax({
     url: queryURL,
     method: 'GET',
   }).then(displayDrinks);
 }
 
+
 function searchCocktailDBByIngredient(ingredient) {
-  // process.env.API_COCKTAIL
-  // Querying the Cocktail DB api for the selected drink, the ?app_id parameter is required, but can equal anything
-  let queryURL = 'https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=' + ingredient;
+    // Querying the Cocktail DB api for the selected drink, the ?app_id parameter is required, but can equal anything
+  let queryURL = '/cocktailsdb/drinks/' + ingredient;
   $.ajax({
     url: queryURL,
     method: 'GET',
@@ -66,7 +67,8 @@ function displayDrinks(response) {
         url: '/api/save-drink',
         data: {drink: drink},
       });
-    })
+      alert("Your drink has been saved!")
+     })
 
     // append the new drink content
     drinkContain.append(drinkName, drinkImage, directions, ingredients, saveBttn);

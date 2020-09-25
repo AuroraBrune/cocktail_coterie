@@ -3,9 +3,14 @@ const db = require('../models');
 const express = require('express');
 const router = express.Router();
 const path = require('path');
+<<<<<<< HEAD
 const fs = require('fs');
 const util = require('util');
 
+=======
+const axios = require('axios');
+const { response } = require('express');
+>>>>>>> ccf5637aa8d9e20663659a0efdc41d9b534872da
 
 // Create user
 router.post('/api/signup', async function (req, res, cb) {
@@ -40,6 +45,23 @@ router.post('/api/login', passport.authenticate('local'), async function (req, r
   res.json(dbUser.id);
 });
 
+// Cocktail API/Search: Drink
+router.get('/cocktailsdb/drinks/:drink', function (req, res) {
+  const drink = req.params.drink;
+  let queryURL = 'https://www.thecocktaildb.com/api/json/v2/' + process.env.API_KEY + '/search.php?s=' + drink;
+  axios.get(queryURL).then((data) => {
+    res.json(data.data);
+  });
+})
+
+// Cocktail API/Search: Ingredient
+router.get('/cocktailsdb/drinks/:ingredient', function (req, res) {
+  const ingredient = req.params.ingredient;
+  let queryURL = 'https://www.thecocktaildb.com/api/json/v2/' + process.env.API_KEY + '/search.php?s=' + ingredient;
+  axios.get(queryURL).then((data) => {
+    res.json(data.data);
+  });
+})
 
 // Log the user out
 router.get('/logout', function (req, res) {
