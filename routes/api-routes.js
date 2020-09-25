@@ -143,7 +143,7 @@ router.post('/api/writeInvitation', function (req, res) {
       <div class="col-lg-1"></div>
 
       <div class="col-lg-1"></div>
-      <div class="col-lg-10"><h3 class="interior-box">Cocktail: ${cocktailName}</h3></div><
+      <div class="col-lg-10"><h3 class="interior-box">Cocktail: ${cocktailName}</h3></div>
       <div class="col-lg-1"></div>
 
       <div class="col-lg-1"></div>
