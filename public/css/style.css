@@ -128,18 +128,14 @@ nav{
     border-radius: 5px;
     padding:15px;
 }
-/* background-image: url(../images/CocktailCoterie.png);
-    background-repeat: no-repeat;
-    background-position-x: center;
-    background-position-y: top;
-    background-size: contain;*/
-/*search cocktails page */
-.searching{
+/*global*/
+.interior-box{
     background-color:rgb(175 34 79 / 66%);
     padding:20px;
     margin:10px;
     
 }
+/*search cocktails page */
 .cocktailSearch{
     padding:5px;
     margin:10px;
@@ -154,12 +150,12 @@ nav{
     color:rgb(172, 60, 79);
     
 }
-    .cocktailImg {
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        padding: 5px;
-        width: 150px;
-    }
+.cocktailImg {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+}
 .cocktailContainer{
     margin:30px;
     background-color:rgb(175 34 79 / 66%);
@@ -183,3 +179,9 @@ nav{
     color:rgb(172, 60, 79);
     font-weight: 900;
 }
+
+/* background-image: url(../images/CocktailCoterie.png);
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: top;
+    background-size: contain;*/

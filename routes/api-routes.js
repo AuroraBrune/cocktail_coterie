@@ -66,7 +66,7 @@ router.post('/api/writeInvitation', function (req, res) {
   // changes fs.writeFile into a promise oriented object
   const writeFileAsync = util.promisify(fs.writeFile);
   console.log(req.body);
-  let { email, name, date, time, description, zoom } = req.body;
+  let { email, name, cocktailName, date, time, description, zoom } = req.body;
   // use email to get user id
   let pageName = email.split('@')[0] + '-' + name;
   writeFileAsync(
@@ -89,6 +89,7 @@ router.post('/api/writeInvitation', function (req, res) {
   <h1>${name}</h1>
   <h1>${date}</h1>
   <h1>${time}</h1>
+  <h1>${cocktailName}
   <h1>${description}</h1>
   <h1>${zoom}</h1>
   </body>

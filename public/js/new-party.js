@@ -12,12 +12,13 @@
 
 //create invitation button will take the inputs from the user and write a new html file user_id + ".html"
     $("#invitation-complete").on("click", function(event){ 
+        event.preventDefault();
        
-       event.preventDefault();
+        let cocktailId = $("#cocktailChoice").data()
 
         let email = $("#emailId").val().trim()
         let partyName = $("#partyName").val().trim()
-        let cocktailId = $("#cocktailChoice").val()
+        let cocktailName = $("#coctailChoice").val()
         let time = $("#time").val()
         let date = $("#date").val()
         let description = $("#description").val()
@@ -26,6 +27,7 @@
         let partyData = {
             email: email,
             name: partyName,
+            cocktailName: cocktailName,
             date: date,
             time: time,
             description: description,
