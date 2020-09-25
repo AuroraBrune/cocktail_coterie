@@ -10,6 +10,9 @@ router.get('/register', function (req, res) {
   res.render('register');
 });
 
+router.get('/search-cocktails', function (req, res) {
+  res.render('/search-cocktails');
+});
 router.get('/login', function (req, res) {
   res.render('login');
 });
@@ -87,14 +90,17 @@ router.get("/:pageName", function (req, res) {
     case  "saved-cocktails":
     break;
 
+    case "search-cocktails":
+    break;
+
     case 'create-party':
-      break;
+    break;
 
     case 'profile':
-      break;
+    break;
 
     case 'register':
-      break;
+    break;
 
     default:
       res.sendFile(path.join(__dirname, '../views/Invitations/' + req.params.pageName + '.html'));
