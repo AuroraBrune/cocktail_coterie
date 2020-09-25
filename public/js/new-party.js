@@ -1,12 +1,10 @@
 
-// new party] create invitation button, select cocktail -new-party.js
 
-//select cocktial will find the selected cocktial in the database and feed the information into the new html
 
-    // $("#cocktailChoice").on("submit", function(){
-    //     let cocktailId = $("#cocktailChoice").attr("data")
-    //     //$.get("/api/cocktailChoice")
-    // })
+     $("#cocktailChoice").on("click", function(){     
+        cocktailId = $(this).val()
+        //$.post("/api/cocktailChoice")
+     })
     
     
     
@@ -15,7 +13,6 @@
         event.preventDefault();
         
         // let cocktailName = $("#coctailChoice").attr("name")
-        // let cocktailId = $("#cocktailChoice").data()
 
         let email = $("#emailId").val().trim()
         let partyName = $("#partyName").val().trim()
@@ -23,12 +20,11 @@
         let date = $("#date").val()
         let description = $("#description").val()
         let zoom = $("#zoom-link").val().trim()
-        console.log($("#cocktailChoice"))
 
         let partyData = {
             email: email,
             name: partyName,
-            cocktailName: cocktailName,
+            // cocktailName: cocktailName,
             date: date,
             time: time,
             description: description,

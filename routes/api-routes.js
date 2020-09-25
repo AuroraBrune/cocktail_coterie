@@ -75,7 +75,7 @@ router.post('/api/save-drink', async function (req, res) {
 router.post('/api/writeInvitation', function (req, res) {
   // changes fs.writeFile into a promise oriented object
   const writeFileAsync = util.promisify(fs.writeFile);
-  let { email, name, date, time, description, zoom } = req.body;
+  let { email, name, cocktailName, date, time, description, zoom } = req.body;
   // use email to get user id
   let pageName = email.split('@')[0] + '-' + name;
   
@@ -108,15 +108,22 @@ router.post('/api/writeInvitation', function (req, res) {
     </div>
 
     
-      <div class="col-2"></div>
-      <div class="col-lg-8"><p class="interior-box">${description}</p></div>
-      <div class="col-2"></div>
-    
-    
-      <div class="col-lg-6"><p class="interior-box">Time: ${time}</p></div>
-      <div class="col-lg-6"><p class="interior-box">Date: ${date}</p></div>
-    
-      <div class="col-lg-12"><p class="interior-box">Zoom-Link: <a style="color:white" href=${zoom}>${zoom}</a></p></div>
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10"><p class="interior-box">${description}</p></div>
+      <div class="col-lg-1"></div>
+
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10"><h3 class="interior-box">Cocktail: ${cocktailName}</h3></div><
+      <div class="col-lg-1"></div>
+      
+      <div class="col-lg-1"></div>
+      <div class="col-lg-5"><p class="interior-box">Time: ${time}</p></div>
+      <div class="col-lg-5"><p class="interior-box">Date: ${date}</p></div>
+      <div class="col-lg-1"></div>
+
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10"><p class="interior-box">Zoom-Link: <a style="color:white" href=${zoom}>${zoom}</a></p></div>
+      <div class="col-lg-1"></div>
     </div>
 
   </div>
