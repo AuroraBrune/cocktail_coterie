@@ -20,10 +20,9 @@
 
             <div class="form-group">
                 <label for="cocktailChoice">Choose your Cocktail</label>
-                <select type="submit" class="form-control custom-select" id="cocktailChoice">
-                     <option selected>Cocktail Choices</option>
+                <select type="submit" class="form-control" id="cocktailChoice">
                     {{#each usersDrinks}}
-                    <option value={{id}} name={{strDrink}}>{{strDrink}}</option>
+                    <option value={{id}} >{{strDrink}}</option>
                     {{/each}}
                 </select>
             </div>

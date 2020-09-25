@@ -91,7 +91,7 @@ router.post('/api/save-drink', async function (req, res) {
   return res.json({status: 'success'});
 })
 
-router.post('api/cocktailChoice/:drinkId', async function(req, res){
+router.post('/api/cocktailChoice/:drinkId', async function(req, res){
   let drinkInfo = await db.Drink.findAll({
 
     where: {
@@ -99,7 +99,8 @@ router.post('api/cocktailChoice/:drinkId', async function(req, res){
     }
 
   })
-  console.log(drinkInfo)
+  res.json(drinkInfo[0].dataValues)
+  console.log(drinkInfo[0].dataValues)
 })
 router.post('/api/writeInvitation', function (req, res) {
   // changes fs.writeFile into a promise oriented object

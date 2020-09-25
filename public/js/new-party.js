@@ -2,22 +2,27 @@
 
 
      $("#cocktailChoice").on("click", function(){     
-        cocktailId = $(this).val()
-        //$.post("/api/cocktailChoice")
-        let queryURL = '/api/cocktailChoice' + cocktailId
-        $.ajax({
-          url: queryURL,
-          method: 'POST',
-        }).then(
-            console.log(res)
-        )
-     })
-    
-    
-    
-    //create invitation button will take the inputs from the user and write a new html file user_id + ".html"
-    $("#invitation-complete").on("click", function(event){ 
-        event.preventDefault();
+         // console.log(cocktailName)
+         // console.log(drinkId)
+         // $(this).attr("value")
+         //$.post("/api/cocktailChoice")
+        })
+        
+        
+        
+        //create invitation button will take the inputs from the user and write a new html file user_id + ".html"
+        $("#invitation-complete").on("click", function(event){ 
+            event.preventDefault();
+        //    let drinkId = $("#cocktailChoice").find("option:selected").attr("value");
+           let cocktailName = $("#cocktailChoice").find("option:selected").text();
+       
+        // let queryURL = '/api/cocktailChoice/' + drinkId
+        // $.ajax({
+        //   url: queryURL,
+        //   method: 'POST',
+        // }).then(
+        //     console.log(response)
+        // )
         
         // let cocktailName = $("#coctailChoice").attr("name")
 
@@ -31,7 +36,7 @@
         let partyData = {
             email: email,
             name: partyName,
-            // cocktailName: cocktailName,
+            cocktailName: cocktailName,
             date: date,
             time: time,
             description: description,
