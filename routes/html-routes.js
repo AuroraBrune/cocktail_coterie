@@ -13,16 +13,20 @@ router.get('/register', function (req, res) {
 router.get('/search-cocktails', function (req, res) {
   res.render('search-cocktails');
 });
+
 router.get('/login', function (req, res) {
   res.render('login');
 });
 
 // nb: add isAuthenticated, before async to protect this route
 router.get('/profile/:id', async function (req, res, cb) {
+
   const user = await db.User.findOne({
+
     where: {
       id: req.params.id,
     }
+
   })
   res.render('profile', { user: user.dataValues });
 });
@@ -34,52 +38,52 @@ router.get('/profile/', isAuthenticated, function (req, res) {
 
 
 router.get("/create-party", isAuthenticated, async function (req, res, cb) {
+
   const savedDrinks = await db.SavedDrink.findAll({
     where: {
       userId: req.user.id,
     }
   })
 
-  
+
   let usersDrinks = []
   for (i=0; i<savedDrinks.length; i++) {
+
     let drinkInfo = await db.Drink.findAll({
+
       where: {
         id: savedDrinks[i].dataValues.drinkId
       }
-    })
-    console.log(drinkInfo)
-    console.log(drinkInfo[0].dataValues)
 
+    })
     usersDrinks.push(drinkInfo[0].dataValues)
-    console.log(usersDrinks)
   }
-  
   res.render('create-party', {usersDrinks: usersDrinks});
 })
 
 router.get("/saved-cocktails", isAuthenticated, async function (req, res, cb) {
+
   const savedDrinks = await db.SavedDrink.findAll({
+
     where: {
       userId: req.user.id,
     }
-  })
 
-  
+  })
+ 
   let usersDrinks = []
+
   for (i=0; i<savedDrinks.length; i++) {
+
     let drinkInfo = await db.Drink.findAll({
+
       where: {
         id: savedDrinks[i].dataValues.drinkId
       }
-    })
-    console.log(drinkInfo)
-    console.log(drinkInfo[0].dataValues)
 
+    })
     usersDrinks.push(drinkInfo[0].dataValues)
-    console.log(usersDrinks)
   }
-  
   res.render('saved-cocktails', {usersDrinks: usersDrinks});
 })
 
@@ -87,18 +91,18 @@ router.get("/saved-cocktails", isAuthenticated, async function (req, res, cb) {
 router.get("/:pageName", function (req, res) {
   console.log(req.params.pageName)
   switch(req.params.pageName){
-    case  "saved-cocktails":
-    break;
-
-    case "search-cocktails":
-    break;
-
-    case 'create-party':
-    break;
-
     case 'profile':
     break;
-
+    
+    case "search-cocktails":
+    break;
+      
+    case 'create-party':
+    break;
+        
+    case  "saved-cocktails":
+    break;
+        
     case 'register':
     break;
 

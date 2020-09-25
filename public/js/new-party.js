@@ -3,10 +3,10 @@
 
 //select cocktial will find the selected cocktial in the database and feed the information into the new html
 
-    $("#cocktailChoice").on("submit", function(){
-        let cocktailId = $("#cocktailChoice").attr("data")
-        //$.get("/api/cocktailChoice")
-    })
+    // $("#cocktailChoice").on("submit", function(){
+    //     let cocktailId = $("#cocktailChoice").attr("data")
+    //     //$.get("/api/cocktailChoice")
+    // })
     
     
     
@@ -14,8 +14,8 @@
     $("#invitation-complete").on("click", function(event){ 
         event.preventDefault();
         
-        let cocktailName = $("#coctailChoice").attr("name")
-        let cocktailId = $("#cocktailChoice").data()
+        // let cocktailName = $("#coctailChoice").attr("name")
+        // let cocktailId = $("#cocktailChoice").data()
 
         let email = $("#emailId").val().trim()
         let partyName = $("#partyName").val().trim()
