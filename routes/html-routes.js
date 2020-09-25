@@ -29,13 +29,16 @@ router.get('/profile/', isAuthenticated, function (req, res) {
   res.redirect('/profile/' + req.user.id)
 })
 
+
 router.get('/create-party', function (req, res) {
   res.render('create-party');
 });
 
+
 router.get('/search-cocktails', function (req, res) {
   res.render('search-cocktails');
 });
+
 
 router.get('/:pageName', function (req, res) {
   switch (req.params.pageName) {

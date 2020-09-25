@@ -12,7 +12,7 @@
 
 //create invitation button will take the inputs from the user and write a new html file user_id + ".html"
     $("#invitation-complete").on("click", function(event){ 
-       // $("#shareModal").attr("style", "display:block")
+       
        event.preventDefault();
 
         let email = $("#emailId").val().trim()
