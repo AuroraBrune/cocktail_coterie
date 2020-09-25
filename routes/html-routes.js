@@ -1,18 +1,17 @@
-const express = require("express")
-const db = require("../models");
+const express = require('express');
+const db = require('../models');
 const router = express.Router();
-const path = require("path");
+const path = require('path');
 
 // Requiring our custom middleware for checking if a user is logged in
-const isAuthenticated = require("../config/middleware/isAuthenticated");
+const isAuthenticated = require('../config/middleware/isAuthenticated');
 
-
-router.get('/register', (req, res) => {
+router.get('/register', function (req, res) {
   res.render('register');
 });
 
-router.get("/login", function (req, res) {
-  res.render("login")
+router.get('/login', function (req, res) {
+  res.render('login');
 });
 
 // nb: add isAuthenticated, before async to protect this route
@@ -30,15 +29,12 @@ router.get('/profile/', isAuthenticated, function (req, res) {
   res.redirect('/profile/' + req.user.id)
 })
 
-router.get("/create-party", function (req, res) {
-  res.render("create-party")
+
+router.get('/create-party', function (req, res) {
+  res.render('create-party');
 });
 
-router.get("/search-cocktails", function (req, res) {
-  res.render("search-cocktails")
-});
-
-outer.get("/saved-cocktails", isAuthenticated, async function (req, res, cb) {
+router.get("/saved-cocktails", isAuthenticated, async function (req, res, cb) {
   const savedDrinks = await db.SavedDrink.findAll({
     where: {
       userId: req.user.id,
@@ -70,30 +66,22 @@ router.get("/:pageName", function (req, res) {
     case  "saved-cocktails":
     break;
 
-    case  "search-cocktails":
-    break;
+    case 'create-party':
+      break;
 
-    case "create-party":
-    break;
+    case 'profile':
+      break;
 
-    case "profile":
-    break;
-
-    case "register":
-    break;
+    case 'register':
+      break;
 
     default:
-    res.sendFile(path.join(__dirname, "../views/Invitations/" + req.params.pageName + ".html"))
-  
+      res.sendFile(path.join(__dirname, '../views/Invitations/' + req.params.pageName + '.html'));
   }
-})
+});
 
-router.get('/', (req, res) => {
+router.get('/', function (req, res) {
   res.render('index');
 });
 
 module.exports = router;
-
-
-
-
