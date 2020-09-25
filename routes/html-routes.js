@@ -31,9 +31,9 @@ router.get('/profile/:id', async function (req, res, cb) {
   res.render('profile', { user: user.dataValues });
 });
 
-router.get('/profile/', isAuthenticated, function (req, res) {
+router.get('/profile', isAuthenticated, function (req, res) {
   // req.user is populated by passport after the user authenticates
-  res.redirect('/profile/' + req.user.id)
+  res.redirect(req.user.id)
 })
 
 
