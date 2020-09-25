@@ -53,7 +53,7 @@ function displayDrinks(response) {
       }
     }
 
-    let drinkContain = $('<div>').attr('class', 'cocktailContainer');
+    let drinkContain = $('<div>').attr('class', 'cocktailContainer row');
     
     let ingredients = $('<h2>').html(ingredientString);
     let directions = $('<h2>').text(drink['strInstructions']);

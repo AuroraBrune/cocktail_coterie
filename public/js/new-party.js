@@ -5,24 +5,25 @@
 
     $("#cocktailChoice").on("submit", function(){
         let cocktailId = $("#cocktailChoice").attr("data")
-        $.get("/api/cocktailChoice")
-
+        //$.get("/api/cocktailChoice")
     })
-
-
-//create invitation button will take the inputs from the user and write a new html file user_id + ".html"
+    
+    
+    
+    //create invitation button will take the inputs from the user and write a new html file user_id + ".html"
     $("#invitation-complete").on("click", function(event){ 
         event.preventDefault();
-       
+        
+        let cocktailName = $("#coctailChoice").attr("name")
         let cocktailId = $("#cocktailChoice").data()
 
         let email = $("#emailId").val().trim()
         let partyName = $("#partyName").val().trim()
-        let cocktailName = $("#coctailChoice").val()
         let time = $("#time").val()
         let date = $("#date").val()
         let description = $("#description").val()
         let zoom = $("#zoom-link").val().trim()
+        console.log($("#cocktailChoice"))
 
         let partyData = {
             email: email,
@@ -33,9 +34,9 @@
             description: description,
             zoom:zoom
         }
-        console.log(partyData)
         writeInvitation(partyData)
     })
+
     function writeInvitation(obj){
         $.post("/api/writeInvitation", obj)
         .then(function(res){
@@ -45,4 +46,3 @@
         })
     }
 
-    

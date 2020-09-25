@@ -22,7 +22,7 @@
                 <label for="cocktailChoice">Choose your Cocktail</label>
                 <select type="submit" class="form-control" id="cocktailChoice">
                     {{#each usersDrinks}}
-                    <option data={{id}}>{{strDrink}}</option>
+                    <option data={{id}} name={{strDrink}}>{{strDrink}}</option>
                     {{/each}}
                 </select>
             </div>
