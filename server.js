@@ -19,6 +19,7 @@ var favicon = require('serve-favicon');
 const dotenv = require('dotenv');
 const path = require('path');
 const mysql = require('mysql');
+require('dotenv').config();
 //const cookieParser = require('cookie-parser');
 
 // Requiring passport as we've configured it
