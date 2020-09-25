@@ -30,9 +30,30 @@ router.get('/profile/', isAuthenticated, function (req, res) {
 })
 
 
-router.get('/create-party', function (req, res) {
-  res.render('create-party');
-});
+router.get("/create-party", isAuthenticated, async function (req, res, cb) {
+  const savedDrinks = await db.SavedDrink.findAll({
+    where: {
+      userId: req.user.id,
+    }
+  })
+
+  
+  let usersDrinks = []
+  for (i=0; i<savedDrinks.length; i++) {
+    let drinkInfo = await db.Drink.findAll({
+      where: {
+        id: savedDrinks[i].dataValues.drinkId
+      }
+    })
+    console.log(drinkInfo)
+    console.log(drinkInfo[0].dataValues)
+
+    usersDrinks.push(drinkInfo[0].dataValues)
+    console.log(usersDrinks)
+  }
+  
+  res.render('create-party', {usersDrinks: usersDrinks});
+})
 
 router.get("/saved-cocktails", isAuthenticated, async function (req, res, cb) {
   const savedDrinks = await db.SavedDrink.findAll({
