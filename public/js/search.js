@@ -44,7 +44,7 @@ function displayDrinks(response) {
     const drink = response.drinks[i];
 
     // start parsing new responses
-    let drinkName = $('<h1>').text(drink['strDrink']).attr("class", "col-lg-12").attr("class interior-box");
+    let drinkName = $('<h1>').text(drink['strDrink']).attr("class", "col-lg-12 interior-box")
     let ingredientString = '';
     for (let i=0; i<20; i++) {
       if (drink['strMeasure' + i]) {
