@@ -86,31 +86,32 @@ router.post('/api/writeInvitation', function (req, res) {
     <title>${name}</title>
   </head>
   <body>
+  <header>
+    <h1 id="title">Via Cocktail_Coterie</h1>
+    <br>
+    <pre>You are Cordially Invited To...</pre>
+</header>
   <div class="container">
   <div class="row">
-    <div class=col-lg-12>
-      <h1>${name}</h1>
+    <div class="col-lg-12">
+      <h1 class="interior-box">${name}</h1>
     </div>
 
-    <div class="row">
-      <div class="col"></div>
-      <div class="col-lg-8">${description}</div>
-      <div class="col"></div>
-    </div>
+    
+      <div class="col-2"></div>
+      <div class="col-lg-8"><p class="interior-box">${description}</p></div>
+      <div class="col-2"></div>
+    
 
-    <div class="row">
-      <div class="col-lg-12">${cocktailName}</div>
-      <!--<div class="col"><img src=${thumbnail}></div>
-      <div class="col">
-        ${ingrediants}
-      </div>
-      <div class="col-lg-12"><p>${recipe}</p></div>-->
-    </div>
+    
+      <div class="col-lg-12"><h3 class="interior-box">Cocktail: ${cocktailName}</h3></div>
+    
 
-    <div class="row">
-      <div class="col"><p>${time}</p></div>
-      <div class="col"><p>${date}</p></div>
-      <div class="col-lg-12"><a>${zoom}</a></div>
+    
+      <div class="col-lg-6"><p class="interior-box">Time: ${time}</p></div>
+      <div class="col-lg-6"><p class="interior-box">Date: ${date}</p></div>
+    
+      <div class="col-lg-12"><p class="interior-box">Zoom-Link: <a style="color:white" href=${zoom}>${zoom}</a></p></div>
     </div>
 
   </div>
