@@ -86,14 +86,38 @@ router.post('/api/writeInvitation', function (req, res) {
     <title>${name}</title>
   </head>
   <body>
-  <h1>${name}</h1>
-  <h1>${date}</h1>
-  <h1>${time}</h1>
-  <h1>${cocktailName}
-  <h1>${description}</h1>
-  <h1>${zoom}</h1>
-  </body>
-  </html>`
+  <div class="container">
+  <div class="row">
+    <div class=col-lg-12>
+      <h1>${name}</h1>
+    </div>
+
+    <div class="row">
+      <div class="col"></div>
+      <div class="col-lg-8">${description}</div>
+      <div class="col"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12">${cocktailName}</div>
+      <!--<div class="col"><img src=${thumbnail}></div>
+      <div class="col">
+        ${ingrediants}
+      </div>
+      <div class="col-lg-12"><p>${recipe}</p></div>-->
+    </div>
+
+    <div class="row">
+      <div class="col"><p>${time}</p></div>
+      <div class="col"><p>${date}</p></div>
+      <div class="col-lg-12"><a>${zoom}</a></div>
+    </div>
+
+  </div>
+</div>
+    
+</body>
+</html>`
   ).then(function (err) {
     if (err) res.json(err);
     res.json(pageName);

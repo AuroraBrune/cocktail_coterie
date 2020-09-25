@@ -1,11 +1,12 @@
 {{>navbar}}
-<div id="party-form" class="container">
-    <div class="row interior-box">
-        <h1>Create New Party</h1>
-    </div>
-    <div class="row interior-box">
-        <div class="col"></div>
-        <form class="col-lg-8">
+<div class="container">
+    <div class="row">
+        
+        <div class="col-lg-12">
+            <h1 class="interior-box">Create New Party</h1>
+        </div>
+       <div class="col-lg-12">
+        <form class="interior-box">
 
             <div class="form-group">
                 <label for="peronal-message">Email</label>
@@ -47,12 +48,11 @@
             </div>
             <button id="invitation-complete" class="btn btn-primary" data-toggle="modal" data-target="#shareModal">Send
                 Invitations</button>
-            <p>*Remember You Can Only Have One Party At a Time!</p>
+         
             <!--look up customize share on share.com-->
 
         </form>
-
-        <div class="col"></div>
+        </div>
     </div>
 </div>
 <div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="myModalLabel" style="display:none">
