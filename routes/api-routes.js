@@ -20,6 +20,7 @@ router.post('/api/signup', async function (req, res, cb) {
   })
 });
 
+
 // Log the user in with passport -- creates req.user
 router.post('/api/login', passport.authenticate('local'), async function (req, res, cb) {
   const dbUser = await db.User.findOne({
@@ -30,6 +31,7 @@ router.post('/api/login', passport.authenticate('local'), async function (req, r
   cb();
   res.json(dbUser.id);
 });
+
 
 // Log the user out
 router.get('/logout', function (req, res) {
