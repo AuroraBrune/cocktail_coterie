@@ -4,18 +4,22 @@
 
 <div class="container">
   <div class="row">
-      <img src={{strDrinkThumb}} alt="cocktail image">
-  </div>
-
-  <div class="row">
     <h1>{{strDrink}}</h1>
   </div>
 
   <div class="row">
-    <p>
-    {{strInstructions}}
-    </p>
+    <div class="col">
+      <img src={{strDrinkThumb}} alt="cocktail image">
+    </div>
+
+    <div class="col">
+      <p>
+        {{strInstructions}}
+      </p>
+    </div>
   </div>
+
+
 </div>
 {{/each}}
 <!--<button id="read-more">read more</button>
