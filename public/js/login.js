@@ -1,8 +1,4 @@
 
-
-//***************************HOMEWORK FILE
-
-
 $(document).ready(function () {
   // Getting references to our form and inputs
   let loginNav = $("#loginNav")
@@ -15,24 +11,18 @@ $(document).ready(function () {
 
   // When the form is submitted, we validate there's an email and password entered
   function loginListener(loginBtn) {
-    console.log("loginListener")
 
     loginBtn.on("click", function (event) {
       event.preventDefault();
-      console.log("onclick")
 
       let passwordInput = $("#password-popup").val();
       let emailInput = $("#email-popup").val();
-
-      console.log(emailInput)
-      console.log(passwordInput)
 
       let userData = {
         email: emailInput,
         password: passwordInput
       };
 
-      console.log(userData)
 
       if (!userData.email || !userData.password) {
         return;
@@ -53,7 +43,6 @@ $(document).ready(function () {
       password: password
     })
       .then(function (id) {
-        console.log(id)
         window.location.replace("/profile")
       })
       .catch(function (err) {

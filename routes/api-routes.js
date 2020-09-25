@@ -37,26 +37,6 @@ router.post("/api/signup", function (req, res, cb) {
 //     });
 // });
 
-// //Retrieve cocktail saved
-// router.get("/api/saved-cocktail:id", function (req, res, cb) {
-//     db.SavedCocktail.findOne({
-//         where: {
-//             id: req.params.id
-//         }
-//     }).then(function (dbSavedCocktail) {
-//         res.json(dbSavedCocktail);
-//         cb();
-//     })
-// });
-
-// //Find all cocktails saved
-// router.get("/api/saved-cocktail", function (req, res, cb) {
-//     db.SavedCocktail.findAll({}).then(function (dbSavedCocktail) {
-//         res.json(dbSavedCocktail);
-//         cb();
-//     });
-// });
-
 // //Delete cocktail
 // router.delete("/api/saved-cocktail:id", function (req, res, cb) {
 //     db.SavedCocktail.findOne({
@@ -82,19 +62,16 @@ router.post("/api/signup", function (req, res, cb) {
 //     })
 // });
 
-
-// If the user has valid login credentials, send them to the members page.
-router.post("/api/login", passport.authenticate("local"), async function (req, res, cb) {
-    console.log("logged in")
+// Log the user in with passport -- creates req.user
+router.post('/api/login', passport.authenticate('local'), async function (req, res, cb) {
     const dbUser = await db.User.findOne({
-        where: {
-            email: req.body.email
-        }
-    })
-    cb()
-    let id = dbUser.id
-    res.json(id)
-});
+      where: {
+        email: req.body.email,
+      },
+    });
+    cb();
+    res.json(dbUser.id);
+  });
 
 
 

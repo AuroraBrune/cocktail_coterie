@@ -9,7 +9,7 @@
 
             <div class="form-group">
                 <label for="peronal-message">Email</label>
-                <input class="form-control" id="emailId" ></input>
+                <input class="form-control" id="emailId"></input>
             </div>
 
             <div class="form-group">
@@ -20,8 +20,8 @@
             <div class="form-group">
                 <label for="cocktailChoice">Choose your Cocktail</label>
                 <select type="submit" class="form-control" id="cocktailChoice">
-                    {{#each cocktail}}
-                    <option data={{id}}>{{drinkName}}</option>
+                    {{#each usersDrinks.drinkInfo}}
+                    <option data={{id}}>{{strDrink}}</option>
                     {{/each}}
                 </select>
             </div>
@@ -47,8 +47,8 @@
                 <label for="zoom-link">Your Zoom Link</label>
                 <input type="text" class="form-control" id="zoom-link" placeholder="zoom-link" value={{zoom}}>
             </div>
-            <button id="invitation-complete"  class="btn btn-primary" data-toggle="modal"
-                data-target="#shareModal">Send Invitations</button>
+            <button id="invitation-complete" class="btn btn-primary" data-toggle="modal" data-target="#shareModal">Send
+                Invitations</button>
             <p>*Remember You Can Only Have One Party At a Time!</p>
             <!--look up customize share on share.com-->
 

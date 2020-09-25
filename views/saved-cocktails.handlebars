@@ -1,15 +1,29 @@
 {{>navbar}}
 
+{{>navbar}}
 <!--find a way to make sure only that users saved cocktails are shown -->
-{{#each saved_cocktail}}
-    {{drinkName}}
-    {{drinkImage}}
-    <button id="read-more">read more</button>
-    <div>
-      <!--display none toggle this button on read more-->
-      {{ingredients read=true}}
-      {{directions read=true}}
-    </div>
-    
-    <button id="delete-cocktail">delete</button>
+{{#each usersDrinks.drinkInfo}}
+
+<div class="container">
+  <div class="row">
+      <img src={{strDrinkThumb}} alt="cocktail image">
+  </div>
+
+  <div class="row">
+    <h1>{{strDrink}}</h1>
+  </div>
+
+  <div class="row">
+    <p>
+    {{strInstructions}}
+    </p>
+  </div>
+</div>
+
+{{ingredients}}
+<!--<button id="read-more">read more</button>
+<div>
+  <display none toggle this button on read more-->
+<!--</div>
+<button id="delete-cocktail">delete</button>-->
 {{/each}}
