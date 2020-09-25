@@ -185,3 +185,10 @@ nav{
     background-position-x: center;
     background-position-y: top;
     background-size: contain;*/
+
+    .drinkImage {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 5px;
+        width: 250px;
+      }
