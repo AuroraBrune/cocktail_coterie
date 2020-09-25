@@ -54,10 +54,11 @@ function displayDrinks(response) {
     }
 
     let drinkContain = $('<div>').attr('class', 'cocktailContainer');
+    
     let ingredients = $('<h2>').html(ingredientString);
     let directions = $('<h2>').text(drink['strInstructions']);
     let drinkImage = $('<img>').attr('src', drink['strDrinkThumb']);
-    let saveBttn = $('<button>').text('Save').attr('class', 'save-cocktail');
+    let saveBttn = $('<button>').text('Save').attr('class', 'cocktailSearch');
 
     saveBttn.on('click', function() {
       $.ajax({
