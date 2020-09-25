@@ -1,8 +1,6 @@
 {{>navbar}}
-
-{{>navbar}}
 <!--find a way to make sure only that users saved cocktails are shown -->
-{{#each usersDrinks.drinkInfo}}
+{{#each usersDrinks}}
 
 <div class="container">
   <div class="row">
@@ -19,11 +17,10 @@
     </p>
   </div>
 </div>
-
-{{ingredients}}
+{{/each}}
 <!--<button id="read-more">read more</button>
+{{ingredients}}
 <div>
   <display none toggle this button on read more-->
 <!--</div>
 <button id="delete-cocktail">delete</button>-->
-{{/each}}
