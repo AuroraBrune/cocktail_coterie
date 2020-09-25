@@ -11,7 +11,7 @@ router.get('/register', function (req, res) {
 });
 
 router.get('/search-cocktails', function (req, res) {
-  res.render('/search-cocktails');
+  res.render('search-cocktails');
 });
 router.get('/login', function (req, res) {
   res.render('login');
