@@ -2,11 +2,12 @@
 $(document).ready(function () {
   // Getting references to our form and inputs
   let loginNav = $("#loginNav")
-  loginNav.on("click", function (event) {
-    event.preventDefault();
-    let loginBtn = $("#popupBtn");
 
-    loginListener(loginBtn)
+  loginNav.on("click", function (event) {
+      event.preventDefault();
+
+      let loginBtn = $("#popupBtn");
+      loginListener(loginBtn)
   })
 
   // When the form is submitted, we validate there's an email and password entered
@@ -23,7 +24,6 @@ $(document).ready(function () {
         password: passwordInput
       };
 
-
       if (!userData.email || !userData.password) {
         return;
       }
@@ -37,14 +37,15 @@ $(document).ready(function () {
 
   // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
   function loginUser(email, password) {
-    console.log("hit")
     $.post("/api/login", {
       email: email,
       password: password
     })
+
       .then(function (id) {
         window.location.replace("/profile")
       })
+      
       .catch(function (err) {
         console.log(err);
       });

@@ -45,7 +45,7 @@ function displayDrinks(response) {
     const drink = response.drinks[i];
 
     // start parsing new responses
-    let drinkName = $('<h1>').text(drink['strDrink']);
+    let drinkName = $('<h1>').text(drink['strDrink']).attr("class", "col-lg-12 interior-box")
     let ingredientString = '';
     for (let i=0; i<20; i++) {
       if (drink['strMeasure' + i]) {
@@ -54,11 +54,12 @@ function displayDrinks(response) {
       }
     }
 
-    let drinkContain = $('<div>').attr('class', 'cocktailContainer');
-    let ingredients = $('<h2>').html(ingredientString);
-    let directions = $('<h2>').text(drink['strInstructions']);
-    let drinkImage = $('<img>').attr('src', drink['strDrinkThumb']).attr('class', 'drinkImage');
-    let saveBttn = $('<button>').text('Save').attr('class', 'save-cocktail');
+    let drinkContain = $('<div>').attr('class', 'cocktailContainer containter');
+    
+    let ingredients = $('<h2>').html(ingredientString).attr("class", "interior-box");
+    let directions = $('<h2>').text(drink['strInstructions']).attr("class", "col").attr("class", "interior-box");
+    let drinkImage = $('<img>').attr('src', drink['strDrinkThumb']).attr("class", "col");
+    let saveBttn = $('<button>').text('Save').attr('class', 'cocktailSearch');
 
     saveBttn.on('click', function() {
       $.ajax({
@@ -70,7 +71,7 @@ function displayDrinks(response) {
      })
 
     // append the new drink content
-    drinkContain.append(drinkName, drinkImage, ingredients, directions, saveBttn);
+    drinkContain.append(drinkName, drinkImage, directions, ingredients, saveBttn);
     $('#drink-div').append(drinkContain);
   }
 }

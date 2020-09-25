@@ -3,16 +3,22 @@ const db = require('../models');
 const express = require('express');
 const router = express.Router();
 const path = require('path');
+const fs = require('fs');
+const util = require('util');
+
 const axios = require('axios');
 const { response } = require('express');
 
 // Create user
 router.post('/api/signup', async function (req, res, cb) {
+
   let user = await db.User.findOrCreate({
     where: {email: req.body.email},
     defaults: req.body,
   })
+
   cb();
+
   if (Array.isArray(user)) user = user[0];
   // use passport's req.login function to log the user in -- creates req.user
   req.login(user, function (err) {
@@ -25,11 +31,13 @@ router.post('/api/signup', async function (req, res, cb) {
 
 // Log the user in with passport -- creates req.user
 router.post('/api/login', passport.authenticate('local'), async function (req, res, cb) {
+
   const dbUser = await db.User.findOne({
     where: {
       email: req.body.email,
     },
   });
+
   cb();
   res.json(dbUser.id);
 });
@@ -60,34 +68,47 @@ router.get('/logout', function (req, res) {
 
 // Save a drink
 router.post('/api/save-drink', async function (req, res) {
+
   let drink = await db.Drink.findOrCreate({
     // idDrink is the cocktail db id for the drink
     where: {idDrink: req.body.drink.idDrink},
     defaults: req.body.drink,
   });
+
   if (Array.isArray(drink)) drink = drink[0];
   drink = drink.dataValues;
   // if there's an authenticated user store saved drinks
   const user = req.user;
+
   if (!user) return res.json({status: 'success'});
+
   // save the user's drink request
   const savedDrink = await db.SavedDrink.findOrCreate({
     where: {drinkId: drink.id, userId: user.id},
     defaults: {drinkId: drink.id, userId: user.id},
   });
+
   return res.json({status: 'success'});
 })
 
-router.post('/api/writeInvitation', function (req, res) {
-  const fs = require('fs');
-  const util = require('util');
+router.post('/api/cocktailChoice/:drinkId', async function(req, res){
+  let drinkInfo = await db.Drink.findAll({
 
+    where: {
+      id: req.params.drinkId
+    }
+
+  })
+  res.json(drinkInfo[0].dataValues)
+  console.log(drinkInfo[0].dataValues)
+})
+router.post('/api/writeInvitation', function (req, res) {
   // changes fs.writeFile into a promise oriented object
   const writeFileAsync = util.promisify(fs.writeFile);
-  console.log(req.body);
   let { email, name, cocktailName, date, time, description, zoom } = req.body;
   // use email to get user id
   let pageName = email.split('@')[0] + '-' + name;
+  
   writeFileAsync(
     './views/Invitations/' + pageName + '.html',
     `<!DOCTYPE html>
@@ -105,14 +126,41 @@ router.post('/api/writeInvitation', function (req, res) {
     <title>${name}</title>
   </head>
   <body>
-  <h1>${name}</h1>
-  <h1>${date}</h1>
-  <h1>${time}</h1>
-  <h1>${cocktailName}
-  <h1>${description}</h1>
-  <h1>${zoom}</h1>
-  </body>
-  </html>`
+  <header>
+    <h1 id="title">Via Cocktail_Coterie</h1>
+    <br>
+    <pre>You are Cordially Invited To...</pre>
+</header>
+  <div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="interior-box">${name}</h1>
+    </div>
+
+    
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10"><p class="interior-box">${description}</p></div>
+      <div class="col-lg-1"></div>
+
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10"><h3 class="interior-box">Cocktail: ${cocktailName}</h3></div>
+      <div class="col-lg-1"></div>
+
+      <div class="col-lg-1"></div>
+      <div class="col-lg-5"><p class="interior-box">Time: ${time}</p></div>
+      <div class="col-lg-5"><p class="interior-box">Date: ${date}</p></div>
+      <div class="col-lg-1"></div>
+
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10"><p class="interior-box">Zoom-Link: <a style="color:white" href=${zoom}>${zoom}</a></p></div>
+      <div class="col-lg-1"></div>
+    </div>
+
+  </div>
+</div>
+    
+</body>
+</html>`
   ).then(function (err) {
     if (err) res.json(err);
     res.json(pageName);
