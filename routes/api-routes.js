@@ -1,122 +1,75 @@
-const passport = require("../config/passport");
-const db = require("../models");
-const express = require("express");
+const passport = require('../config/passport');
+const db = require('../models');
+const express = require('express');
 const router = express.Router();
-const path = require("path");
+const path = require('path');
 
-//Create user
-router.post("/api/signup", function (req, res, cb) {
-    db.User.create({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        password: req.body.password,
-        // prefDrink: req.body.prefDrink,
-    }).then(function (dbUser) {
-        console.log(dbUser)
-        let id = dbUser.id
-        cb()
-        res.redirect("/profile/" + id)
-    }).catch(function (err) {
-        console.log(err);
-        res.status(401).json(err);
-    });
+// Create user
+router.post('/api/signup', async function (req, res, cb) {
+  let user = await db.User.findOrCreate({
+    where: {email: req.body.email},
+    defaults: req.body,
+  })
+  cb();
+  if (Array.isArray(user)) user = user[0];
+  // use passport's req.login function to log the user in -- creates req.user
+  req.login(user, function (err) {
+    if (!err) {
+      res.json(user.dataValues.id);
+    }
+  })
 });
 
-//Update user
-// router.put("/api/users/update", function (req, res, cb) {
-//     db.User.update({
-//         firstName: req.body.firstName,
-//         lastName: req.body.lastName,
-//         email: req.body.email,
-//         userName: req.body.userName,
-//         prefDrink: req.body.prefDrink,
-//     }).then(function (dbuser) {
-//         res.json(dbuser);
-//         cb();
-//     });
-// });
-
-// //Retrieve cocktail saved
-// router.get("/api/saved-cocktail:id", function (req, res, cb) {
-//     db.SavedCocktail.findOne({
-//         where: {
-//             id: req.params.id
-//         }
-//     }).then(function (dbSavedCocktail) {
-//         res.json(dbSavedCocktail);
-//         cb();
-//     })
-// });
-
-// //Find all cocktails saved
-// router.get("/api/saved-cocktail", function (req, res, cb) {
-//     db.SavedCocktail.findAll({}).then(function (dbSavedCocktail) {
-//         res.json(dbSavedCocktail);
-//         cb();
-//     });
-// });
-
-// //Delete cocktail
-// router.delete("/api/saved-cocktail:id", function (req, res, cb) {
-//     db.SavedCocktail.findOne({
-//         where: {
-//             id: req.params.id
-//         }
-//     }).then(function (dbSavedCocktail) {
-//         res.json(dbSavedCocktail);
-//         cb();
-//     });
-// });
-
-// //Create Guest 
-// router.post("/api/guest", function(req, res, cb) {
-//     db.Guest.create({
-//         firstName: req.body.firstName,
-//         lastName: req.body.lastName,
-//         email: req.body.email,
-//         prefDrink: req.body.prefDrink
-//     }).then(function (dbguest) {
-//         res.json(dbguest);
-//         cb();
-//     })
-// });
-
-
-// If the user has valid login credentials, send them to the members page.
-router.post("/api/login", passport.authenticate("local"), async function (req, res, cb) {
-    console.log("logged in")
-    const dbUser = await db.User.findOne({
-        where: {
-            email: req.body.email
-        }
-    })
-    cb()
-    let id = dbUser.id
-    res.json(id)
+// Log the user in with passport -- creates req.user
+router.post('/api/login', passport.authenticate('local'), async function (req, res, cb) {
+  const dbUser = await db.User.findOne({
+    where: {
+      email: req.body.email,
+    },
+  });
+  cb();
+  res.json(dbUser.id);
 });
 
-
-
-// Logging Out
-router.get("/logout", function (req, res) {
-    req.logout();
-    res.redirect("/");
+// Log the user out
+router.get('/logout', function (req, res) {
+  req.logout();
+  res.redirect('/');
 });
 
+// Save a drink
+router.post('/api/save-drink', async function (req, res) {
+  let drink = await db.Drink.findOrCreate({
+    // idDrink is the cocktail db id for the drink
+    where: {idDrink: req.body.drink.idDrink},
+    defaults: req.body.drink,
+  });
+  if (Array.isArray(drink)) drink = drink[0];
+  drink = drink.dataValues;
+  // if there's an authenticated user store saved drinks
+  const user = req.user;
+  if (!user) return res.json({status: 'success'});
+  // save the user's drink request
+  const savedDrink = await db.SavedDrink.findOrCreate({
+    where: {drinkId: drink.id, userId: user.id},
+    defaults: {drinkId: drink.id, userId: user.id},
+  });
+  return res.json({status: 'success'});
+})
 
-router.post("/api/writeInvitation", function (req, res) {
-    const fs = require("fs")
-    const util = require("util")
+router.post('/api/writeInvitation', function (req, res) {
+  const fs = require('fs');
+  const util = require('util');
 
-    //changes fs.writeFile into a promise oriented object
-    const writeFileAsync = util.promisify(fs.writeFile)
-    console.log(req.body)
-    let { email, name, date, time, description, zoom } = req.body
-    //use email to get user id 
-    let pageName = email.split("@")[0] + "-" + name
-    writeFileAsync("./views/Invitations/" + pageName + ".html",
-        `<!DOCTYPE html>
+  // changes fs.writeFile into a promise oriented object
+  const writeFileAsync = util.promisify(fs.writeFile);
+  console.log(req.body);
+  let { email, name, date, time, description, zoom } = req.body;
+  // use email to get user id
+  let pageName = email.split('@')[0] + '-' + name;
+  writeFileAsync(
+    './views/Invitations/' + pageName + '.html',
+    `<!DOCTYPE html>
 <html lang="en">
   <head>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -137,13 +90,11 @@ router.post("/api/writeInvitation", function (req, res) {
   <h1>${description}</h1>
   <h1>${zoom}</h1>
   </body>
-  </html>`)
-        .then(function (err) {
-            if (err) res.json(err);
-            res.json(pageName)
-        })
-})
-
+  </html>`
+  ).then(function (err) {
+    if (err) res.json(err);
+    res.json(pageName);
+  });
+});
 
 module.exports = router;
-
