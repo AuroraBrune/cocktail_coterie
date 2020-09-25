@@ -4,6 +4,13 @@
      $("#cocktailChoice").on("click", function(){     
         cocktailId = $(this).val()
         //$.post("/api/cocktailChoice")
+        let queryURL = '/api/cocktailChoice' + cocktailId
+        $.ajax({
+          url: queryURL,
+          method: 'POST',
+        }).then(
+            console.log(res)
+        )
      })
     
     

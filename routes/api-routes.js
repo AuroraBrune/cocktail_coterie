@@ -3,14 +3,11 @@ const db = require('../models');
 const express = require('express');
 const router = express.Router();
 const path = require('path');
-<<<<<<< HEAD
 const fs = require('fs');
 const util = require('util');
 
-=======
 const axios = require('axios');
 const { response } = require('express');
->>>>>>> ccf5637aa8d9e20663659a0efdc41d9b534872da
 
 // Create user
 router.post('/api/signup', async function (req, res, cb) {
@@ -94,6 +91,16 @@ router.post('/api/save-drink', async function (req, res) {
   return res.json({status: 'success'});
 })
 
+router.post('api/cocktailChoice/:drinkId', async function(req, res){
+  let drinkInfo = await db.Drink.findAll({
+
+    where: {
+      id: req.params.drinkId
+    }
+
+  })
+  console.log(drinkInfo)
+})
 router.post('/api/writeInvitation', function (req, res) {
   // changes fs.writeFile into a promise oriented object
   const writeFileAsync = util.promisify(fs.writeFile);
@@ -137,7 +144,7 @@ router.post('/api/writeInvitation', function (req, res) {
       <div class="col-lg-1"></div>
       <div class="col-lg-10"><h3 class="interior-box">Cocktail: ${cocktailName}</h3></div><
       <div class="col-lg-1"></div>
-      
+
       <div class="col-lg-1"></div>
       <div class="col-lg-5"><p class="interior-box">Time: ${time}</p></div>
       <div class="col-lg-5"><p class="interior-box">Date: ${date}</p></div>
