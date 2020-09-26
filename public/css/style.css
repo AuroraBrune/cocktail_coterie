@@ -194,6 +194,9 @@ nav{
       }
 
         @media only screen and (max-width: 930px) {
+            body{
+                margin:auto;
+            }
             .navbar-nav{
                 text-align: center;
                 width: fit-content;
@@ -210,10 +213,20 @@ nav{
                 border: 1px solid #e85871;
             }
             #title{
-                font-size:reset;
+                font-size:revert;
+            }
+            pre{
+                font-size: revert;
+            }
+            .row{
+                padding:0px;
+            }
+            .container{
+                padding:0px;
             }
             button, input{
                 width: -webkit-fill-available;
             }
+    
         }
                
