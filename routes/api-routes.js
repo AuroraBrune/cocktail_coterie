@@ -178,6 +178,7 @@ router.post('/api/writeInvitation', async function (req, res) {
 </html>`
   ).then(function (err) {
     if (err) res.json(err);
+    console.log(pageName)
     res.json(pageName);
   });
 });
