@@ -37,8 +37,11 @@
     function writeInvitation(obj){
         $.post("/api/writeInvitation", obj)
         .then(function(res){
-            console.log(res)
+
             let link = "https://cocktail-coterie.herokuapp.com/" + res
+            $("#link").text(link).attr("href", link)
+
+
             $("#shareModal").attr("style", "display:block")
             $("#link").text(link).attr("href", link)
         })
