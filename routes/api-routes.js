@@ -162,6 +162,7 @@ router.post('/api/writeInvitation', async function (req, res) {
       <div class="col-lg-10">
       <div class="interior-box">
       <h3>Cocktail: ${drink.strDrink}</h3>
+      <img src=${drink.strDrinkThumb} class="cocktailImg">
       <br>${ingredientString}
       <br>${drink.strInstructions}
       </div>
