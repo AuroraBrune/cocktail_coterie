@@ -75,7 +75,7 @@ router.get("/:pageName", function (req, res) {
     case 'register':
     break;
     default:
-      res.sendFile(path.join(__dirname, '../views/invitations/' + req.params.pageName + '.html'));
+      res.sendFile(path.join(__dirname, '../views/Invitations/' + req.params.pageName + '.html'));
   }
 });
 router.get('/', function (req, res) {
