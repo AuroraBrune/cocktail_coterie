@@ -138,7 +138,7 @@ router.post('/api/writeInvitation', async function (req, res) {
 		<!--personal css-->
 		<link rel="stylesheet" href="/css/style.css" />
 		<!--tab icon -->
-		<link rel="icon" href="images/favicon.ico" alt = "logo"><br>
+		<link rel="icon" href="/images/favicon.ico" alt = "logo"><br>
     <title>${name}</title>
   </head>
   <body>
@@ -159,7 +159,13 @@ router.post('/api/writeInvitation', async function (req, res) {
       <div class="col-lg-1"></div>
 
       <div class="col-lg-1"></div>
-      <div class="col-lg-10"><h3 class="interior-box">Cocktail: ${drink.strDrink}</h3><br>${ingredientString}<br>${drink.strInstructions}</div>
+      <div class="col-lg-10">
+      <div class="interior-box">
+      <h3>Cocktail: ${drink.strDrink}</h3>
+      <br>${ingredientString}
+      <br>${drink.strInstructions}
+      </div>
+      </div>
       <div class="col-lg-1"></div>
 
       <div class="col-lg-1"></div>

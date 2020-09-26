@@ -4,23 +4,7 @@ const router = express.Router();
 const path = require('path');
 // Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require('../config/middleware/isAuthenticated');
-router.get("/:pageName", function (req, res) {
-  console.log(req.params.pageName)
-  switch(req.params.pageName){
-    case 'profile':
-    break;
-    case "search-cocktails":
-    break;
-    case 'create-party':
-    break;
-    case  "saved-cocktails":
-    break;
-    case 'register':
-    break;
-    default:
-      res.sendFile(path.join(__dirname, '../views/invitations/' + req.params.pageName + '.html'));
-  }
-});
+
 router.get('/register', function (req, res) {
   res.render('register');
 });
@@ -77,7 +61,23 @@ router.get("/saved-cocktails", isAuthenticated, async function (req, res, cb) {
   }
   res.render('saved-cocktails', {usersDrinks: usersDrinks});
 })
-
+router.get("/:pageName", function (req, res) {
+  console.log(req.params.pageName)
+  switch(req.params.pageName){
+    case 'profile':
+    break;
+    case "search-cocktails":
+    break;
+    case 'create-party':
+    break;
+    case  "saved-cocktails":
+    break;
+    case 'register':
+    break;
+    default:
+      res.sendFile(path.join(__dirname, '../views/invitations/' + req.params.pageName + '.html'));
+  }
+});
 router.get('/', function (req, res) {
   res.render('index');
 });

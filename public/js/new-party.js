@@ -38,11 +38,9 @@
         $.post("/api/writeInvitation", obj)
         .then(function(res){
 
-            let link = "https://cocktail-coterie.herokuapp.com/" + res
+            let link = "http://localhost:8080/" + res 
+            console.log(link)
             $("#link").text(link).attr("href", link)
-
-
             $("#shareModal").attr("style", "display:block")
-            $("#link").text(link).attr("href", link)
         })
     }
