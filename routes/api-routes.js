@@ -136,9 +136,9 @@ router.post('/api/writeInvitation', async function (req, res) {
 		<!-- google fonts-->
 		<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
 		<!--personal css-->
-		<link rel="stylesheet" href="../../public/css/style.css" />
+		<link rel="stylesheet" href="/css/style.css" />
 		<!--tab icon -->
-		<link rel="icon" href="../../public/images/favicon.ico" alt = "logo"><br>
+		<link rel="icon" href="/images/favicon.ico" alt = "logo"><br>
     <title>${name}</title>
   </head>
   <body>
