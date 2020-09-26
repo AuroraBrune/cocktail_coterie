@@ -58,7 +58,7 @@ function displayDrinks(response) {
     
     let ingredients = $('<h2>').html(ingredientString).attr("class", "interior-box");
     let directions = $('<h2>').text(drink['strInstructions']).attr("class", "col").attr("class", "interior-box");
-    let drinkImage = $('<img>').attr('src', drink['strDrinkThumb']).attr("class", "col");
+    let drinkImage = $('<img>').attr('src', drink['strDrinkThumb']).attr("class", "drinkImage");
     let saveBttn = $('<button>').text('Save').attr('class', 'cocktailSearch');
 
     saveBttn.on('click', function() {
