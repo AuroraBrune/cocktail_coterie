@@ -103,6 +103,7 @@ router.post('/api/cocktailChoice/:drinkId', async function(req, res){
 })
 router.post('/api/writeInvitation', async function (req, res) {
   let { email, name, drinkId, date, time, description, zoom } = req.body;
+  let pageName = email.split('@')[0] + '-' + name;
   let drink;
   try { 
     drink = await db.Drink.findOne({
@@ -122,7 +123,7 @@ router.post('/api/writeInvitation', async function (req, res) {
 
   console.log(drink);
   // use email to get user id
-  let pageName = email.split('@')[0] + '-' + name;
+ 
   const writeFileAsync = util.promisify(fs.writeFile);
   writeFileAsync(
     './views/Invitations/' + pageName + '.html',
@@ -178,6 +179,7 @@ router.post('/api/writeInvitation', async function (req, res) {
 </html>`
   ).then(function (err) {
     if (err) res.json(err);
+    console.log(pageName)
     res.json(pageName);
   });
 });
