@@ -100,15 +100,30 @@ router.post('/api/cocktailChoice/:drinkId', async function(req, res){
 
   })
   res.json(drinkInfo[0].dataValues)
-  console.log(drinkInfo[0].dataValues)
 })
-router.post('/api/writeInvitation', function (req, res) {
-  // changes fs.writeFile into a promise oriented object
-  const writeFileAsync = util.promisify(fs.writeFile);
-  let { email, name, cocktailName, date, time, description, zoom } = req.body;
+router.post('/api/writeInvitation', async function (req, res) {
+  let { email, name, drinkId, date, time, description, zoom } = req.body;
+  let drink;
+  try { 
+    drink = await db.Drink.findOne({
+      where: {id: parseInt(drinkId)},
+    })
+  } catch{
+    drink = {}
+  }
+
+  let ingredientString = '';
+  for (let i=0; i<20; i++) {
+    if (drink['strMeasure' + i]) {
+      if (i > 1) ingredientString += '<br/>';
+      ingredientString += drink['strMeasure' + i] + drink['strIngredient' + i];
+    }
+  }
+
+  console.log(drink);
   // use email to get user id
   let pageName = email.split('@')[0] + '-' + name;
-  
+  const writeFileAsync = util.promisify(fs.writeFile);
   writeFileAsync(
     './views/Invitations/' + pageName + '.html',
     `<!DOCTYPE html>
@@ -143,7 +158,7 @@ router.post('/api/writeInvitation', function (req, res) {
       <div class="col-lg-1"></div>
 
       <div class="col-lg-1"></div>
-      <div class="col-lg-10"><h3 class="interior-box">Cocktail: ${cocktailName}</h3></div>
+      <div class="col-lg-10"><h3 class="interior-box">Cocktail: ${drink.strDrink}</h3><br>${ingredientString}<br>${drink.strInstructions}</div>
       <div class="col-lg-1"></div>
 
       <div class="col-lg-1"></div>

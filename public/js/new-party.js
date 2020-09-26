@@ -1,31 +1,17 @@
-
-
-
      $("#cocktailChoice").on("click", function(){     
          // console.log(cocktailName)
          // console.log(drinkId)
          // $(this).attr("value")
          //$.post("/api/cocktailChoice")
         })
-        
-        
-        
+                      
         //create invitation button will take the inputs from the user and write a new html file user_id + ".html"
         $("#invitation-complete").on("click", function(event){ 
             event.preventDefault();
-        //    let drinkId = $("#cocktailChoice").find("option:selected").attr("value");
-           let cocktailName = $("#cocktailChoice").find("option:selected").text();
-       
-        // let queryURL = '/api/cocktailChoice/' + drinkId
-        // $.ajax({
-        //   url: queryURL,
-        //   method: 'POST',
-        // }).then(
-        //     console.log(response)
-        // )
-        
-        // let cocktailName = $("#coctailChoice").attr("name")
+        //let cocktailName = $("#cocktailChoice").find("option:selected").text();
 
+        let drinkId = $("#cocktailChoice").find("option:selected").val();
+        
         let email = $("#emailId").val().trim()
         let partyName = $("#partyName").val().trim()
         let time = $("#time").val()
@@ -36,7 +22,10 @@
         let partyData = {
             email: email,
             name: partyName,
-            cocktailName: cocktailName,
+            drinkId: drinkId,
+            // drinkImage: drinkImage,
+            // ingredients: ingredients,
+            // directions: directions,
             date: date,
             time: time,
             description: description,
@@ -48,9 +37,8 @@
     function writeInvitation(obj){
         $.post("/api/writeInvitation", obj)
         .then(function(res){
-            let link = "https://cocktail-coterie.herokuapp.com/" + res
+            let link = "https://cocktail-coterie.herokuapp.com" + res
             $("#link").text(link).attr("href", link)
             $("#shareModal").attr("style", "display:block")
         })
     }
-
