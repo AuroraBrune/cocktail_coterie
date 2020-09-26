@@ -1,6 +1,6 @@
 body{
     margin:150px;
-    background-color:rgb(248, 117, 139);
+    background-color:rgb(241 156 170);;
     margin-top:35px;
     color:white;
     font-size:18px;
@@ -193,8 +193,27 @@ nav{
     width: 250px;
       }
 
-      @media only screen and (max-width: 1145px) {
-        body {
-          background-color: lightgray;
+        @media only screen and (max-width: 930px) {
+            .navbar-nav{
+                text-align: center;
+                width: fit-content;
+                background-color: rgb(200 61 99 / 99%);
+            }
+            .navbar-collapse{
+                z-index: 1
+            }
+            .nav-link{
+                background-color: #b72b55;
+            }
+            .navbar-toggler{
+                background-color: #e8546de3;
+                border: 1px solid #e85871;
+            }
+            #title{
+                font-size:reset;
+            }
+            button, input{
+                width: -webkit-fill-available;
+            }
         }
-      }
+               

@@ -136,9 +136,9 @@ router.post('/api/writeInvitation', async function (req, res) {
 		<!-- google fonts-->
 		<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
 		<!--personal css-->
-		<link rel="stylesheet" href="/css/style.css" />
+		<link rel="stylesheet" href="../../public/css/style.css" />
 		<!--tab icon -->
-		<link rel="icon" href="images/favicon.ico" alt = "logo"><br>
+		<link rel="icon" href="../../public/images/favicon.ico" alt = "logo"><br>
     <title>${name}</title>
   </head>
   <body>
@@ -159,7 +159,13 @@ router.post('/api/writeInvitation', async function (req, res) {
       <div class="col-lg-1"></div>
 
       <div class="col-lg-1"></div>
-      <div class="col-lg-10"><h3 class="interior-box">Cocktail: ${drink.strDrink}</h3><br>${ingredientString}<br>${drink.strInstructions}</div>
+      <div class="col-lg-10">
+      <div class="interior-box">
+      <h3>Cocktail: ${drink.strDrink}</h3>
+      <br>${ingredientString}
+      <br>${drink.strInstructions}
+      </div>
+      </div>
       <div class="col-lg-1"></div>
 
       <div class="col-lg-1"></div>
