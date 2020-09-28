@@ -1,5 +1,7 @@
 # Cocktail_Coterie
 
+## Deployed: https://cocktail-coterie.herokuapp.com/
+
 ## Description 
 This app allows the user who is in seclusion during the Covid-19 pandemic to socialize with friends while staying safe at home.  The user can organize an online cocktail party and stay socially connected with friends.  Searching for a favorite cocktail by ingredient will bring up receipes containing that ingredient.
 
