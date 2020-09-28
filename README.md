@@ -31,8 +31,6 @@ Aurora Brune / Julie Schaub / Anthony Stematz-Breitling / Charlene Peters
 ## Tests
 eSlint
 
-## Link Heroku
-https://dashboard.heroku.com/apps/cocktail-coterie
 ---
 © 2020 Aurora Brune🏆 
 
