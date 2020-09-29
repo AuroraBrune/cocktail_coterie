@@ -2,8 +2,13 @@
 
 ## Deployed: https://cocktail-coterie.herokuapp.com/
 
-## Description 
-This app allows the user who is in seclusion during the Covid-19 pandemic to socialize with friends while staying safe at home.  The user can organize an online cocktail party and stay socially connected with friends.  Searching for a favorite cocktail by ingredient will bring up receipes containing that ingredient.
+## User Story
+As a social butterfly stuck inside due to Covid,
+
+I want an easy way to host a video cocktail party, 
+
+So that I can have fun with my friends and family while keeping everyone safe.
+
 
 ## Table of Contents
 
@@ -16,7 +21,7 @@ This app allows the user who is in seclusion during the Covid-19 pandemic to soc
 npm mysql / npm bcryptjs / npm express / npm express-handlebars / npm nodemon / npm session / npm dotenv / npm sequelize
 
 ## Usage 
-We are bringing people together in a virtual environment.
+User will need to register and login, they can then search for cocktials, save cocktails, and create an invitation for a virtual cocktail party with a chosen cocktail.  
 
 ## Credits
 TheCocktailDB.com API
@@ -26,7 +31,14 @@ TheCocktailDB.com API
 
 
 ## Contributing
-Aurora Brune / Julie Schaub / Anthony Stematz-Breitling / Charlene Peters
+/ Aurora Brune -HTML and API Routes -Github Merge & Heroku Management
+
+/ Julie Schaub -Database and Models -Scrum Manager
+
+/ Anthony Stematz-Breitling -Handlebars -CSS Style Polish
+
+/ Charlene Peters -Authentication -Login & Register Routes and Forms
+
 
 ## Tests
 eSlint
