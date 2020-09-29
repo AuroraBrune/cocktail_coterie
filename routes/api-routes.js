@@ -13,10 +13,9 @@ const { response } = require('express');
 router.post('/api/signup', async function (req, res, cb) {
 
   let user = await db.User.findOrCreate({
-    where: {email: req.body.email},
+    where: { email: req.body.email },
     defaults: req.body,
   })
-
   cb();
 
   if (Array.isArray(user)) user = user[0];
@@ -28,7 +27,6 @@ router.post('/api/signup', async function (req, res, cb) {
   })
 });
 
-
 // Log the user in with passport -- creates req.user
 router.post('/api/login', passport.authenticate('local'), async function (req, res, cb) {
 
@@ -37,7 +35,6 @@ router.post('/api/login', passport.authenticate('local'), async function (req, r
       email: req.body.email,
     },
   });
-
   cb();
   res.json(dbUser.id);
 });
@@ -71,7 +68,7 @@ router.post('/api/save-drink', async function (req, res) {
 
   let drink = await db.Drink.findOrCreate({
     // idDrink is the cocktail db id for the drink
-    where: {idDrink: req.body.drink.idDrink},
+    where: { idDrink: req.body.drink.idDrink },
     defaults: req.body.drink,
   });
 
@@ -80,24 +77,23 @@ router.post('/api/save-drink', async function (req, res) {
   // if there's an authenticated user store saved drinks
   const user = req.user;
 
-  if (!user) return res.json({status: 'success'});
+  if (!user) return res.json({ status: 'success' });
 
   // save the user's drink request
   const savedDrink = await db.SavedDrink.findOrCreate({
-    where: {drinkId: drink.id, userId: user.id},
-    defaults: {drinkId: drink.id, userId: user.id},
+    where: { drinkId: drink.id, userId: user.id },
+    defaults: { drinkId: drink.id, userId: user.id },
   });
 
-  return res.json({status: 'success'});
+  return res.json({ status: 'success' });
 })
 
-router.post('/api/cocktailChoice/:drinkId', async function(req, res){
+router.post('/api/cocktailChoice/:drinkId', async function (req, res) {
   let drinkInfo = await db.Drink.findAll({
 
     where: {
       id: req.params.drinkId
     }
-
   })
   res.json(drinkInfo[0].dataValues)
 })
@@ -105,16 +101,16 @@ router.post('/api/writeInvitation', async function (req, res) {
   let { email, name, drinkId, date, time, description, zoom } = req.body;
   let pageName = email.split('@')[0] + '-' + name;
   let drink;
-  try { 
+  try {
     drink = await db.Drink.findOne({
-      where: {id: parseInt(drinkId)},
+      where: { id: parseInt(drinkId) },
     })
-  } catch{
+  } catch {
     drink = {}
   }
 
   let ingredientString = '';
-  for (let i=0; i<20; i++) {
+  for (let i = 0; i < 20; i++) {
     if (drink['strMeasure' + i]) {
       if (i > 1) ingredientString += '<br/>';
       ingredientString += drink['strMeasure' + i] + drink['strIngredient' + i];
@@ -123,7 +119,6 @@ router.post('/api/writeInvitation', async function (req, res) {
 
   console.log(drink);
   // use email to get user id
- 
   const writeFileAsync = util.promisify(fs.writeFile);
   writeFileAsync(
     './views/Invitations/' + pageName + '.html',
@@ -152,7 +147,6 @@ router.post('/api/writeInvitation', async function (req, res) {
     <div class="col-lg-12">
       <h1 class="interior-box">${name}</h1>
     </div>
-
     
       <div class="col-lg-1"></div>
       <div class="col-lg-10"><p class="interior-box">${description}</p></div>

@@ -4,10 +4,10 @@ $(document).ready(function () {
   let loginNav = $("#loginNav")
 
   loginNav.on("click", function (event) {
-      event.preventDefault();
+    event.preventDefault();
 
-      let loginBtn = $("#popupBtn");
-      loginListener(loginBtn)
+    let loginBtn = $("#popupBtn");
+    loginListener(loginBtn)
   })
 
   // When the form is submitted, we validate there's an email and password entered
@@ -45,7 +45,7 @@ $(document).ready(function () {
       .then(function (id) {
         window.location.replace("/profile")
       })
-      
+
       .catch(function (err) {
         console.log(err);
       });

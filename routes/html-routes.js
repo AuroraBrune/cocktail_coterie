@@ -34,7 +34,7 @@ router.get("/create-party", isAuthenticated, async function (req, res, cb) {
     }
   })
   let usersDrinks = []
-  for (i=0; i<savedDrinks.length; i++) {
+  for (i = 0; i < savedDrinks.length; i++) {
     let drinkInfo = await db.Drink.findAll({
       where: {
         id: savedDrinks[i].dataValues.drinkId
@@ -42,7 +42,7 @@ router.get("/create-party", isAuthenticated, async function (req, res, cb) {
     })
     usersDrinks.push(drinkInfo[0].dataValues)
   }
-  res.render('create-party', {usersDrinks: usersDrinks});
+  res.render('create-party', { usersDrinks: usersDrinks });
 })
 router.get("/saved-cocktails", isAuthenticated, async function (req, res, cb) {
   const savedDrinks = await db.SavedDrink.findAll({
@@ -51,7 +51,7 @@ router.get("/saved-cocktails", isAuthenticated, async function (req, res, cb) {
     }
   })
   let usersDrinks = []
-  for (i=0; i<savedDrinks.length; i++) {
+  for (i = 0; i < savedDrinks.length; i++) {
     let drinkInfo = await db.Drink.findAll({
       where: {
         id: savedDrinks[i].dataValues.drinkId
@@ -59,21 +59,21 @@ router.get("/saved-cocktails", isAuthenticated, async function (req, res, cb) {
     })
     usersDrinks.push(drinkInfo[0].dataValues)
   }
-  res.render('saved-cocktails', {usersDrinks: usersDrinks});
+  res.render('saved-cocktails', { usersDrinks: usersDrinks });
 })
 router.get("/:pageName", function (req, res) {
   console.log(req.params.pageName)
-  switch(req.params.pageName){
+  switch (req.params.pageName) {
     case 'profile':
-    break;
+      break;
     case "search-cocktails":
-    break;
+      break;
     case 'create-party':
-    break;
-    case  "saved-cocktails":
-    break;
+      break;
+    case "saved-cocktails":
+      break;
     case 'register':
-    break;
+      break;
     default:
       res.sendFile(path.join(__dirname, '../views/Invitations/' + req.params.pageName + '.html'));
   }

@@ -1,8 +1,6 @@
 // search button will call the cocktail api and write response on the page
 // save cocktial will update the database
 
-
-
 function searchCocktailDB(drink) {
   // Querying the Cocktail DB api for the selected drink, the ?app_id parameter is required, but can equal anything
   let queryURL = '/cocktailsdb/drinks/' + drink
@@ -12,9 +10,8 @@ function searchCocktailDB(drink) {
   }).then(displayDrinks);
 }
 
-
 function searchCocktailDBByIngredient(ingredient) {
-    // Querying the Cocktail DB api for the selected drink, the ?app_id parameter is required, but can equal anything
+  // Querying the Cocktail DB api for the selected drink, the ?app_id parameter is required, but can equal anything
   let queryURL = '/cocktailsdb/drinks/' + ingredient;
   $.ajax({
     url: queryURL,
@@ -47,7 +44,7 @@ function displayDrinks(response) {
     // start parsing new responses
     let drinkName = $('<h1>').text(drink['strDrink']).attr("class", "col-lg-12 interior-box")
     let ingredientString = '';
-    for (let i=0; i<20; i++) {
+    for (let i = 0; i < 20; i++) {
       if (drink['strMeasure' + i]) {
         if (i > 1) ingredientString += '<br/>';
         ingredientString += drink['strMeasure' + i] + drink['strIngredient' + i];
@@ -55,20 +52,19 @@ function displayDrinks(response) {
     }
 
     let drinkContain = $('<div>').attr('class', 'cocktailContainer containter');
-    
     let ingredients = $('<h2>').html(ingredientString).attr("class", "interior-box");
     let directions = $('<h2>').text(drink['strInstructions']).attr("class", "col").attr("class", "interior-box");
     let drinkImage = $('<img>').attr('src', drink['strDrinkThumb']).attr("class", "drinkImage");
     let saveBttn = $('<button>').text('Save').attr('class', 'cocktailSearch');
 
-    saveBttn.on('click', function() {
+    saveBttn.on('click', function () {
       $.ajax({
         type: 'POST',
         url: '/api/save-drink',
-        data: {drink: drink},
+        data: { drink: drink },
       });
       alert("Your drink has been saved!")
-     })
+    })
 
     // append the new drink content
     drinkContain.append(drinkName, drinkImage, directions, ingredients, saveBttn);
