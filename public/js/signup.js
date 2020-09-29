@@ -2,7 +2,7 @@ $(document).ready(function () {
   // When the signup button is clicked, we validate the email and password are not blank
   $('#signup').on('click', function (event) {
     event.preventDefault();
-    
+
     let user = {
       firstName: $('#firstName').val().trim(),
       lastName: $('#lastName').val().trim(),
@@ -13,16 +13,16 @@ $(document).ready(function () {
 
     if (!user.email || !user.password) {
       return;
-    } 
-    
+    }
+
     else {
       $.ajax({
         url: '/api/signup',
         method: 'POST',
         data: user,
-      }).then(function(userId) {
+      }).then(function (userId) {
         window.location.replace('/profile/' + userId);
-      }).catch(function(err) {
+      }).catch(function (err) {
         $('#alert .msg').text(err.responseJSON);
         $('#alert').fadeIn(500);
       });

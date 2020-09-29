@@ -31,7 +31,7 @@ var db = require("./models");
 
 // Creating express app and configuring middleware needed for authentication
 var app = express();
-app.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
@@ -41,7 +41,6 @@ var exphbs = require("express-handlebars");
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
-
 
 //Makes html public view, and accesses database and protects it
 //const publicDirectory = path.join(__dirname, './public');
@@ -61,10 +60,9 @@ app.use(passport.session());
 app.use('/', require('./routes/api-routes.js'));
 app.use('/', require('./routes/html-routes.js'));
 
-
 // Syncing our database and logging a message to the user upon success
-db.sequelize.sync().then(function() {
-  app.listen(PORT, function() {
+db.sequelize.sync().then(function () {
+  app.listen(PORT, function () {
     console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
   });
 });
