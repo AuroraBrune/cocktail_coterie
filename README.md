@@ -18,7 +18,7 @@ So that I can have fun with my friends and family while keeping everyone safe.
 * [License](#license)
 
 ## Installation 
-npm mysql / npm bcryptjs / npm express / npm express-handlebars / npm nodemon / npm session / npm dotenv / npm sequelize
+npm install
 
 ## Usage 
 User will need to register and login, they can then search for cocktials, save cocktails, and create an invitation for a virtual cocktail party with a chosen cocktail.  
