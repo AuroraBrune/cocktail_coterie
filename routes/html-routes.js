@@ -42,7 +42,7 @@ router.get("/create-party", isAuthenticated, async function (req, res, cb) {
     })
     usersDrinks.push(drinkInfo[0].dataValues)
   }
-  res.render('create-party', { usersDrinks: usersDrinks });
+  res.render('create-party', { usersDrinks: usersDrinks, user: req.user });
 })
 router.get("/saved-cocktails", isAuthenticated, async function (req, res, cb) {
   const savedDrinks = await db.SavedDrink.findAll({

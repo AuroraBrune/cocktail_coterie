@@ -6,6 +6,9 @@ body{
     font-size:18px;
     font-family: 'Libre Baskerville', serif;
 }
+.hide{
+    display:none;
+}
 h1{
     text-align:center;
 }
@@ -131,35 +134,61 @@ nav{
 /*global*/
 .interior-box{
     background-color:rgb(175 34 79 / 66%);
-    padding:20px;
+    padding:10px;
     margin:10px;
-    
+    height: min-content;
 }
 /*search cocktails page */
+
+#drink-div{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
 .cocktailSearch{
     padding:5px;
-    margin:10px;
+    margin:5px;
     font-weight: 900;
-    color:white;
-    background-color: rgb(246, 80, 108);
-    border-color:rgb(246, 80, 108);
+    color:rgb(172, 60, 79);
+    background-color: pink;
+    border-color:pink;
+    width: 42%;
+    min-width: fit-content;
+    max-height: min-content;
 }
 .cocktailSearch:hover{
-    background-color:pink;
-    border-color:pink;
-    color:rgb(172, 60, 79);
+    background-color:#b6305a;
+    border-color:#b6305a;
+    color:white;
     
 }
-.cocktailImg {
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 5px;
-    width: 150px;
-}
+.searchBtn:hover{
+    background-color:  #c54b6e; 
+    border-color:#c54b6e ;
+ }
 .cocktailContainer{
-    margin:30px;
+    margin-bottom:30px;
+    margin-top:30px;
     background-color:rgb(175 34 79 / 66%);
-    padding:20px;
+    padding:10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: min-content;
+    font-size: 20px;
+}
+.card-drinkName{
+    width:max-content;
+    padding: 5px;
+}
+.card-ingred{
+    width: max-content;
+    min-width: 50%;
+}
+.card-direct{
+    height: fit-content;
+    max-height: 150px;
+    overflow: scroll;
 }
 /*new party page*/
 #party-form{
@@ -187,10 +216,12 @@ nav{
     background-size: contain;*/
 
 .drinkImage {
-    border: 1px solid #ddd;
+    border: 3px groove white;
     border-radius: 4px;
-    padding: 5px;
-    width: 250px;
+    padding: 2px;
+    width: 200px;
+
+    height: 200px;
       }
 
         @media only screen and (max-width: 930px) {
