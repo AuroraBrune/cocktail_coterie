@@ -135,7 +135,6 @@ nav{
 .interior-box{
     background-color:rgb(175 34 79 / 66%);
     padding:10px;
-    margin:10px;
     height: min-content;
 }
 /*search cocktails page */
@@ -173,17 +172,21 @@ nav{
     padding:10px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    width: min-content;
+    justify-content: center;
+    align-content: space-between;
+    width: 30%;
     font-size: 20px;
 }
 .card-drinkName{
     width:max-content;
     padding: 5px;
+    text-align: center;
+    font-size: 32px;
 }
 .card-ingred{
     width: max-content;
-    min-width: 50%;
+    min-width: 60%;
+    margin-top: 5px;
 }
 .card-direct{
     height: fit-content;
